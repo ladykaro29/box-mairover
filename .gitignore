@@ -1,0 +1,47 @@
+# Antigravity
+.antigravity.json
+.antigravity/
+antigravity.log
+
+# Node modules
+node_modules/
+yarn.lock
+pnpm-lock.yaml
+# package-lock.json SÍ se versiona: el servidor debe instalar las mismas versiones exactas
+
+# Env / Secrets
+.env.local
+.env.*.local
+.env
+!backend/.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Builds
+dist/
+build/
+.next/
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# Base de datos local (fallback SQLite de desarrollo)
+*.sqlite
+*.sqlite3
+
+# Uploads
+backend/uploads/
+frontend/public/uploads/
+
+# Temporary
+tmp/
+temp/
+*.tmp

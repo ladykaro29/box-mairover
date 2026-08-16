@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Build outputs (will be built inside Docker)
+frontend/dist/
+
+# Git
+.git/
+.gitignore
+
+# Environment files (injected via EasyPanel env vars)
+.env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.local
+backend/.env.*.local
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Antigravity
+.antigravity.json
+.antigravity/
+antigravity.log
+.agents/
+
+# Design assets (not needed in production image)
+Diseño_web_Maerovert/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Documentation
+historial.md
+README.md
+
+# Uploads (should be mounted as a volume)
+backend/uploads/
+frontend/public/uploads/
+
+# Temp
+tmp/
+temp/
+*.tmp
