@@ -68,7 +68,7 @@ async function initializeDatabase() {
   console.log('✅ Base de datos sincronizada con éxito.');
 
   // Seed default data if database is empty
-  await seedDefaultData(Cliente, Pago, Clase, Evaluacion);
+  await seedDefaultData(Cliente, Pago, Clase, Evaluacion, Contacto);
 
   // Las cuentas de acceso se siembran siempre que falten (independiente del resto)
   await seedDefaultUsers(Cliente, Usuario);
@@ -108,7 +108,7 @@ async function seedDefaultUsers(Cliente, Usuario) {
   }
 }
 
-async function seedDefaultData(Cliente, Pago, Clase, Evaluacion) {
+async function seedDefaultData(Cliente, Pago, Clase, Evaluacion, Contacto) {
   const clientCount = await Cliente.count();
   if (clientCount > 0) {
     console.log('📊 La base de datos ya contiene registros. Saltando sembrado.');
@@ -181,10 +181,32 @@ async function seedDefaultData(Cliente, Pago, Clase, Evaluacion) {
 
   // Carlos Rodríguez (id: c3.id) Progress
   await Evaluacion.bulkCreate([
-    { clienteId: c3.id, fecha: '10 Ene 2026', tipo: 'Inicial', peso: 90.00, imc: 29.10, grasa: 28, musculo: 32, nota: 'Meta: Recomposición corporal y acondicionamiento inicial.' },
-    { clienteId: c3.id, fecha: '10 Mar 2026', tipo: 'Bimensual', peso: 86.50, imc: 27.80, grasa: 24, musculo: 34, nota: 'Muy buen avance. Se incrementa intensidad en entrenamientos.' },
     { clienteId: c3.id, fecha: '10 May 2026', tipo: 'Bimensual', peso: 84.00, imc: 27.00, grasa: 21, musculo: 35, nota: 'Excelente reducción de grasa y aumento de tono muscular.' },
   ]);
+
+  // Create Contactos Iniciales
+  if (Contacto) {
+    await Contacto.bulkCreate([
+      {
+        nombre: 'Valeria Mendoza',
+        telefono: '+58 412-8899112',
+        email: 'valeria.mendoza@gmail.com',
+        servicio: 'CROSSFIT',
+        objetivo: 'Aumentar fuerza y resistencia general',
+        mensaje: 'Hola Mairover, me gustaría comenzar a entrenar CrossFit en el turno de las 6:00 PM. ¿Tienen cupos disponibles esta semana?',
+        status: 'pendiente',
+      },
+      {
+        nombre: 'Ricardo Silva',
+        telefono: '+58 414-3322114',
+        email: 'ricardo.silva@outlook.com',
+        servicio: 'ENTRENAMIENTO PERSONAL',
+        objetivo: 'Bajar porcentaje de grasa corporal',
+        mensaje: 'Buenas tardes. Requiero información sobre el plan personalizado 1 a 1 y asesoría nutricional.',
+        status: 'contactado',
+      },
+    ]);
+  }
 
   console.log('🌲 Sembrado de base de datos finalizado con éxito.');
 }

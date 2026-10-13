@@ -13,6 +13,7 @@ export default function AdminLayout() {
     { name: 'Pagos', path: '/admin/pagos', icon: '💰' },
     { name: 'Horarios', path: '/admin/horarios', icon: '📅' },
     { name: 'Procesos', path: '/admin/procesos', icon: '📈' },
+    { name: 'Contactos', path: '/admin/contactos', icon: '✉️' },
   ];
 
   const handleLogout = async () => {

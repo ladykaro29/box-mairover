@@ -72,3 +72,20 @@ exports.updateContactoStatus = async (req, res, next) => {
     next(error);
   }
 };
+
+// DELETE /api/v1/admin/contactos/:id (Admin protegido)
+exports.deleteContacto = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const contacto = await Contacto.findByPk(id);
+
+    if (!contacto) {
+      return res.status(404).json({ success: false, message: 'Contacto no encontrado.' });
+    }
+
+    await contacto.destroy(); // Soft delete via paranoid
+    res.json({ success: true, message: 'Mensaje de contacto eliminado con éxito.' });
+  } catch (error) {
+    next(error);
+  }
+};

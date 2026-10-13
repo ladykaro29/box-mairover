@@ -35,5 +35,6 @@ router.post('/procesos', adminController.createEvaluacion);
 const contactoController = require('../controllers/contactoController');
 router.get('/contactos', contactoController.getContactos);
 router.put('/contactos/:id', contactoController.updateContactoStatus);
+router.delete('/contactos/:id', contactoController.deleteContacto);
 
 module.exports = router;

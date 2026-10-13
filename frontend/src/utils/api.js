@@ -84,6 +84,43 @@ let mockEvaluaciones = {
   ]
 };
 
+let mockContactos = [
+  {
+    id: 1,
+    nombre: 'Valeria Mendoza',
+    telefono: '+58 412-8899112',
+    email: 'valeria.mendoza@gmail.com',
+    servicio: 'CROSSFIT',
+    objetivo: 'Aumentar fuerza y resistencia general',
+    mensaje: 'Hola Mairover, me gustaría comenzar a entrenar CrossFit en el turno de las 6:00 PM. ¿Tienen cupos disponibles esta semana?',
+    status: 'pendiente',
+    createdAt: new Date(Date.now() - 3600000 * 4).toISOString(),
+  },
+  {
+    id: 2,
+    nombre: 'Ricardo Silva',
+    telefono: '+58 414-3322114',
+    email: 'ricardo.silva@outlook.com',
+    servicio: 'ENTRENAMIENTO PERSONAL',
+    objetivo: 'Bajar porcentaje de grasa corporal',
+    mensaje: 'Buenas tardes. Requiero información sobre el plan personalizado 1 a 1 y asesoría nutricional.',
+    status: 'contactado',
+    createdAt: new Date(Date.now() - 3600000 * 28).toISOString(),
+  },
+  {
+    id: 3,
+    nombre: 'Gabriela Torres',
+    telefono: '+58 424-5544332',
+    email: 'gaby.torres@gmail.com',
+    servicio: 'CROSSFIT KIDS',
+    objetivo: 'Actividad física y coordinación motriz',
+    mensaje: 'Hola! Quiero inscribir a mi hijo de 9 años en las clases de CrossFit Kids de las 4:00 PM.',
+    status: 'pendiente',
+    createdAt: new Date(Date.now() - 3600000 * 52).toISOString(),
+  },
+];
+
+
 // Logger helper for fallbacks.
 // El respaldo local solo aplica cuando el servidor no responde (red caída o timeout).
 // Si el backend contestó (401, 403, 404, 500...) el error se propaga: no se
@@ -403,5 +440,56 @@ export const api = {
       mockEvaluaciones[cId].unshift(newEval);
       return newEval;
     }
-  }
+  },
+
+  // 6. Contactos / Leads
+  async getContactos(params = {}) {
+    try {
+      const res = await apiClient.get('/contactos', { params });
+      return res.data.data;
+    } catch (err) {
+      logFallback('getContactos', err);
+      let filtered = [...mockContactos];
+      if (params.search) {
+        const q = params.search.toLowerCase();
+        filtered = filtered.filter(
+          (c) =>
+            c.nombre.toLowerCase().includes(q) ||
+            c.email.toLowerCase().includes(q) ||
+            c.telefono.toLowerCase().includes(q) ||
+            (c.servicio && c.servicio.toLowerCase().includes(q))
+        );
+      }
+      if (params.status && params.status !== 'all') {
+        filtered = filtered.filter((c) => c.status === params.status);
+      }
+      return filtered;
+    }
+  },
+
+  async updateContactoStatus(id, status) {
+    try {
+      const res = await apiClient.put(`/contactos/${id}`, { status });
+      return res.data.data;
+    } catch (err) {
+      logFallback('updateContactoStatus', err);
+      const idx = mockContactos.findIndex((c) => c.id === parseInt(id, 10));
+      if (idx !== -1) {
+        mockContactos[idx].status = status;
+        return mockContactos[idx];
+      }
+      throw new Error('Contacto no encontrado');
+    }
+  },
+
+  async deleteContacto(id) {
+    try {
+      await apiClient.delete(`/contactos/${id}`);
+      return true;
+    } catch (err) {
+      logFallback('deleteContacto', err);
+      mockContactos = mockContactos.filter((c) => c.id !== parseInt(id, 10));
+      return true;
+    }
+  },
 };

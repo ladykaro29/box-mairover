@@ -88,11 +88,17 @@ Las variables de color están mapeadas en la directiva `@theme` dentro de `front
 
 ---
 
-## 🌐 5. PERSISTENCIA DE CONTACTOS Y ENDPOINTS PÚBLICOS
+## 🌐 5. PERSISTENCIA DE CONTACTOS Y PANEL ADMINISTRATIVO DE LEADS
 *   **Modelo `Contacto`** (`backend/src/models/Contacto.js`): tabla `contactos` con soporte de `nombre`, `telefono`, `email`, `servicio`, `objetivo`, `mensaje`, `status` y soft deletes (`paranoid: true`).
 *   **Endpoint Público `POST /api/v1/contactos`:** conecta el formulario de `Contacto.jsx` directamente con Express y MySQL/SQLite para registrar nuevos prospectos.
 *   **Endpoint Público `GET /api/v1/horarios`:** permite consultar la disponibilidad de clases de forma pública.
-*   **Panel Administrativo de Contactos:** endpoints protegidos `GET /api/v1/admin/contactos` y `PUT /api/v1/admin/contactos/:id` para que la administración gestione y actualice el estatus de cada lead.
+*   **Panel Administrativo de Contactos (`Contactos.jsx`):**
+    *   Muestra KPI en tiempo real: total de prospectos recibidos, mensajes pendientes por responder y atletas contactados.
+    *   Búsqueda instantánea multidimensional (por nombre, email, teléfono o disciplina) y filtros rápidos por estado (*Pendiente*, *Contactado*, *Archivado*).
+    *   Acciones inmediatas en un clic: botón directo para abrir chat de **WhatsApp** con el prospecto (con mensaje pre-llenado de bienvenida/asesoría), botón `mailto:` y selector de estatus.
+    *   Integración en el menú lateral de [AdminLayout.jsx](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/components/admin/AdminLayout.jsx) y ruta protegida `/admin/contactos` en [App.jsx](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/App.jsx).
+    *   Soporte para soft-delete de leads en `DELETE /api/v1/admin/contactos/:id`.
+    *   Respaldo local enriquecido en [api.js](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/utils/api.js) con datos mock para previsualización inmediata.
 
 ---
 

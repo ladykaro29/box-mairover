@@ -22,6 +22,7 @@ import Clientes from './pages/admin/Clientes';
 import Pagos from './pages/admin/Pagos';
 import HorariosAdmin from './pages/admin/HorariosAdmin';
 import Procesos from './pages/admin/Procesos';
+import Contactos from './pages/admin/Contactos';
 
 import './App.css';
 
@@ -65,6 +66,7 @@ function App() {
               <Route path="pagos" element={<Pagos />} />
               <Route path="horarios" element={<HorariosAdmin />} />
               <Route path="procesos" element={<Procesos />} />
+              <Route path="contactos" element={<Contactos />} />
             </Route>
           </Route>
         </Routes>
