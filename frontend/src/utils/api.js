@@ -45,6 +45,47 @@ apiClient.interceptors.response.use(
   }
 );
 
+// Cliente HTTP dedicado para rutas de atletas / clientes (/api/v1/cliente)
+const clienteApiClient = axios.create({
+  baseURL: '/api/v1/cliente',
+  timeout: 8000,
+});
+
+clienteApiClient.interceptors.request.use((config) => {
+  const token = tokenStore.getToken();
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+clienteApiClient.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const original = error.config;
+    const isExpired = error.response?.status === 401
+      && error.response?.data?.code === 'TOKEN_EXPIRED';
+
+    if (isExpired && original && !original._retried && tokenStore.getRefreshToken()) {
+      original._retried = true;
+      try {
+        const session = await authApi.refresh();
+        original.headers.Authorization = `Bearer ${session.token}`;
+        return clienteApiClient(original);
+      } catch {
+        tokenStore.clear();
+      }
+    }
+
+    if (error.response?.status === 401) {
+      tokenStore.clear();
+      if (!window.location.pathname.startsWith('/login')) {
+        window.location.href = '/login?expired=1';
+      }
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 // =============================================================
 // HIGH-FIDELITY LOCAL MOCK FALLBACK DATA
 // =============================================================
@@ -117,6 +158,29 @@ let mockContactos = [
     mensaje: 'Hola! Quiero inscribir a mi hijo de 9 años en las clases de CrossFit Kids de las 4:00 PM.',
     status: 'pendiente',
     createdAt: new Date(Date.now() - 3600000 * 52).toISOString(),
+  },
+];
+
+let mockReservas = [
+  {
+    id: 1,
+    usuarioId: 1,
+    claseId: 1,
+    fecha: '2026-10-15',
+    claseNombre: 'CrossTraining Matutino',
+    claseHora: '06:00 AM - 07:00 AM',
+    coach: 'Mairover',
+    status: 'confirmada',
+  },
+  {
+    id: 2,
+    usuarioId: 1,
+    claseId: 4,
+    fecha: '2026-10-16',
+    claseNombre: 'CrossTraining Noche',
+    claseHora: '06:30 PM - 07:30 PM',
+    coach: 'Mairover',
+    status: 'confirmada',
   },
 ];
 
@@ -502,6 +566,61 @@ export const api = {
       logFallback('deleteContacto', err);
       mockContactos = mockContactos.filter((c) => c.id !== parseInt(id, 10));
       return true;
+    }
+  },
+
+  // 7. Reservas de Clases (Atletas / Mi Cuenta)
+  async getMisReservas() {
+    try {
+      const res = await clienteApiClient.get('/reservas');
+      return res.data.data;
+    } catch (err) {
+      logFallback('getMisReservas', err);
+      return [...mockReservas];
+    }
+  },
+
+  async crearReserva(data) {
+    try {
+      const res = await clienteApiClient.post('/reservas', data);
+      return res.data;
+    } catch (err) {
+      logFallback('crearReserva', err);
+      const targetClass = mockHorarios.find((h) => h.id === parseInt(data.claseId, 10));
+      const newRes = {
+        id: mockReservas.length ? Math.max(...mockReservas.map((r) => r.id)) + 1 : 1,
+        usuarioId: 1,
+        claseId: parseInt(data.claseId, 10),
+        fecha: data.fecha,
+        claseNombre: targetClass ? targetClass.name : 'CrossTraining',
+        claseHora: targetClass ? targetClass.time : '07:00 AM',
+        coach: targetClass ? targetClass.coach : 'Mairover',
+        status: 'confirmada',
+      };
+      mockReservas.push(newRes);
+      if (targetClass && targetClass.enrolled < targetClass.capacity) {
+        targetClass.enrolled += 1;
+      }
+      return { success: true, data: newRes, message: '¡Clase reservada con éxito!' };
+    }
+  },
+
+  async cancelarReserva(id) {
+    try {
+      const res = await clienteApiClient.delete(`/reservas/${id}`);
+      return res.data;
+    } catch (err) {
+      logFallback('cancelarReserva', err);
+      const rIdx = mockReservas.findIndex((r) => r.id === parseInt(id, 10));
+      if (rIdx !== -1) {
+        const item = mockReservas[rIdx];
+        const targetClass = mockHorarios.find((h) => h.id === item.claseId);
+        if (targetClass && targetClass.enrolled > 0) {
+          targetClass.enrolled -= 1;
+        }
+        mockReservas.splice(rIdx, 1);
+      }
+      return { success: true, message: 'Reserva cancelada exitosamente.' };
     }
   },
 };

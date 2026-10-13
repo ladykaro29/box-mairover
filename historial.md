@@ -126,7 +126,28 @@ El `index.js` cargaba las rutas —y con ellas los modelos de Sequelize— **ant
 
 ---
 
-## 🔒 6. REGLAS ARQUITECTÓNICAS Y COMPROMISOS
-1.  **Integración de la API:** Al modificar el frontend de contacto u horarios, **nunca** se deben eliminar o renombrar los hooks de validación (`react-hook-form`), los nombres de los atributos en los campos de entrada (`nombre`, `telefono`, `email`, etc.), ni los endpoints del backend (`POST /api/v1/contactos`), asegurando que la conexión y persistencia con Express y MySQL nunca se rompa.
+## 📅 6. FLUJO DE RESERVAS DE CLASES PARA ATLETAS (`/mi-cuenta` + API CLIENTE)
+*   **Modelo `Reserva`** (`backend/src/models/Reserva.js`):
+    *   Campos: `id`, `usuarioId` (`usuario_id`), `clienteId` (`cliente_id`), `claseId` (`clase_id`), `fecha` (YYYY-MM-DD), `claseNombre`, `claseHora`, `coach`, `status` (`confirmada` | `cancelada` | `asistio`), soft delete (`paranoid: true`).
+    *   Asociaciones bidireccionales en `dbInitializer.js`: `Usuario.hasMany(Reserva)`, `Reserva.belongsTo(Usuario)`, `Clase.hasMany(Reserva)`, `Reserva.belongsTo(Clase)`.
+*   **Endpoints de Cliente (`backend/src/routes/clienteRoutes.js` bajo `/api/v1/cliente`):**
+    *   `GET /api/v1/cliente/reservas`: Obtiene las reservas activas confirmadas del usuario en sesión, ordenadas por fecha y turno horario.
+    *   `POST /api/v1/cliente/reservas`: Valida fecha futura (o presente), verifica que no exista reserva duplicada para el usuario en el mismo turno y fecha, valida que el aforo no esté agotado (`enrolled < capacity`), crea el registro e incrementa el contador `enrolled` de la clase.
+    *   `DELETE /api/v1/cliente/reservas/:id`: Permite al usuario cancelar su propia reserva (o a un administrador), marcándola como cancelada, aplicando soft delete y decrementando el contador `enrolled` de la clase para liberar el cupo en tiempo real.
+*   **Cliente HTTP Dedicado y Soporte Offline:**
+    *   `clienteApiClient` en [api.js](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/utils/api.js) con inyección automática de token JWT y refresco transparente ante `TOKEN_EXPIRED`.
+    *   Métodos `api.getMisReservas()`, `api.crearReserva({ claseId, fecha })`, y `api.cancelarReserva(id)` con fallback a datos locales (`mockReservas`) para funcionamiento continuo sin conexión.
+*   **Interfaz de Atleta en Mi Cuenta (`MiCuenta.jsx`):**
+    *   **Panel de Clases Reservadas:** Contador de reservas activas, tarjetas de turno con fecha formateada en español, hora, coach, badge verde de cupo confirmado y botón de cancelación con diálogo modal de confirmación previa.
+    *   **Modal Interactivo de Reserva:**
+        *   Selector rápido de días (*Hoy*, *Mañana*, *Pasado Mañana*) e input nativo para fechas futuras.
+        *   Lista en tiempo real de clases disponibles con contador de cupos libres (*"X cupos libres"* o *"Agotado"*).
+        *   Prevención de reservas dobles con indicador visual *"✓ Ya Reservada"*.
+        *   Alertas de feedback instantáneo al agendar o cancelar.
+
+---
+
+## 🔒 7. REGLAS ARQUITECTÓNICAS Y COMPROMISOS
+1.  **Integración de la API:** Al modificar el frontend de contacto, reservas u horarios, **nunca** se deben eliminar o renombrar los hooks de validación (`react-hook-form`), los nombres de los atributos en los campos de entrada (`nombre`, `telefono`, `email`, etc.), ni los endpoints del backend (`POST /api/v1/contactos`, `/api/v1/cliente/reservas`), asegurando que la conexión y persistencia con Express y MySQL/SQLite nunca se rompa.
 2.  **Reglas de ESLint:** Evitar la re-declaración de variables externas y evitar la mutación directa de estados de React de forma síncrona dentro de `useEffect` para prevenir warnings en la compilación.
-3.  **Compilación Limpia:** Antes de finalizar cualquier cambio estético, es obligatorio verificar que no existan errores sintácticos ejecutando la compilación del frontend (`npm run build:frontend`), asegurando un bundle limpio en `frontend/dist`.
+3.  **Compilación Limpia:** Antes de finalizar cualquier cambio estético o funcional, es obligatorio verificar que no existan errores sintácticos ejecutando la compilación del frontend (`npm run build:frontend`), asegurando un bundle limpio en `frontend/dist`.

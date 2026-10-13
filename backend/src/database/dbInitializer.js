@@ -50,6 +50,7 @@ async function initializeDatabase() {
   const Evaluacion = require('../models/Evaluacion');
   const Usuario = require('../models/Usuario');
   const Contacto = require('../models/Contacto');
+  const Reserva = require('../models/Reserva');
 
   // Define Associations
   Cliente.hasMany(Pago, { foreignKey: 'cliente_id', as: 'pagos', onDelete: 'CASCADE' });
@@ -61,6 +62,13 @@ async function initializeDatabase() {
   // Cuenta de acceso (login) enlazada a la ficha de cliente del box
   Cliente.hasOne(Usuario, { foreignKey: 'clienteId', as: 'usuario' });
   Usuario.belongsTo(Cliente, { foreignKey: 'clienteId', as: 'cliente' });
+
+  // Reservas de clases enlazadas al usuario y a la clase
+  Usuario.hasMany(Reserva, { foreignKey: 'usuario_id', as: 'reservas', onDelete: 'CASCADE' });
+  Reserva.belongsTo(Usuario, { foreignKey: 'usuario_id', as: 'usuario' });
+
+  Clase.hasMany(Reserva, { foreignKey: 'clase_id', as: 'reservas', onDelete: 'CASCADE' });
+  Reserva.belongsTo(Clase, { foreignKey: 'clase_id', as: 'clase' });
 
   // Sync Database
   console.log('🔄 Sincronizando tablas de la base de datos...');
