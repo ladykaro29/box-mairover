@@ -67,7 +67,7 @@ Las variables de color están mapeadas en la directiva `@theme` dentro de `front
 *   **Sección Antes/Después:** Comparación de progreso real (Daniela R. y Andrea L.) con detalles de peso, porcentaje de grasa y porcentaje de músculo ganado.
 *   **Rejilla Etapas de Edad:** Columnas dedicadas a CrossFit Kids (Niños), CrossFit Regular (Adultos) y Active Aging (Adultos Activos).
 
-### 📌 Contacto (`Contacto.jsx` - ¡Último Rediseño de Alta Fidelidad!)
+### 📌 Contacto (`Contacto.jsx` - ¡Rediseño de Alta Fidelidad!)
 *   **Hero Tridimensional en 3 Columnas (`lg:grid-cols-12`):**
     *   *Columna Izquierda:* Textos de llamado a la acción, botones redondos con SVG de WhatsApp y Agenda, y fila de características estilizadas con SVGs.
     *   *Columna Central:* Fotografía vertical recortada de Mairover con máscara de gradiente de desvanecimiento hacia la base para simular integración 3D.
@@ -77,6 +77,22 @@ Las variables de color están mapeadas en la directiva `@theme` dentro de `front
     *   *Sección Servicios:* Mancuerna horizontal (CrossFit), silueta infantil activa (CrossFit Kids), corredor (Funcionales), escudo hexagonal personalizado con el texto grabado (HYROX), silueta doble de coach y atleta (Entrenamiento Personal), y manzana silueteada con hoja (Nutrición).
     *   *Sección Horarios:* Iconos limpios de Calendario (Mañana), Sol con rayos (Tarde-Noche) y Reloj (Sábados).
 *   **Bottom CTA & Footer:** Capa de ondas vectoriales decorativas detrás del perfil inferior de la coach y actualización dinámica del año de copyright `{new Date().getFullYear()}`.
+
+### 📌 Horarios y Calendario (`Horarios.jsx` - ¡Rediseño de Alta Fidelidad 100% Mockup!)
+*   **Hero Section Dinámico:** Titular corporativo gigante (`ORGANIZA TU SEMANA`), CTAs en pastilla (`RESERVAR MI CLASE` con scroll suave y `HABLAR POR WHATSAPP`), fila de 3 insignias vectoriales (*Horarios flexibles*, *Clases por nivel*, *Presencial y personalizado*) y fotografía recortada con anillos de ondas concéntricas de fondo.
+*   **Matriz Semanal Gráfica Interactiva:** Replicación al 100% del mockup corporativo (`calendario de la semana.png`) con paleta de colores pasteles premium diferenciada por disciplina (CrossFit, CrossFit Kids, Funcionales, Hyrox, Entrenamiento Personal, Asesoría Nutricional, Bienestar Físico y Open Box).
+*   **Adaptabilidad Responsive:** Selector rápido por días para pantallas móviles y vista completa matricial para escritorios y tablets.
+*   **Horarios por Categoría:** 6 tarjetas estilizadas con SVGs vectoriales que desglosan los turnos exactos por disciplina deportiva y botón directo de consulta a WhatsApp.
+*   **Horario General del Box:** 3 tarjetas en Azul Profundo (`#071628`) para las franjas horarias de Mañana, Tarde/Noche y Sábados.
+*   **Banner Inferior CTA & Modal de Turnos:** Llamado a la acción con integración directa de WhatsApp prellenado con la clase y hora elegida, además de enlace al portal privado del cliente.
+
+---
+
+## 🌐 5. PERSISTENCIA DE CONTACTOS Y ENDPOINTS PÚBLICOS
+*   **Modelo `Contacto`** (`backend/src/models/Contacto.js`): tabla `contactos` con soporte de `nombre`, `telefono`, `email`, `servicio`, `objetivo`, `mensaje`, `status` y soft deletes (`paranoid: true`).
+*   **Endpoint Público `POST /api/v1/contactos`:** conecta el formulario de `Contacto.jsx` directamente con Express y MySQL/SQLite para registrar nuevos prospectos.
+*   **Endpoint Público `GET /api/v1/horarios`:** permite consultar la disponibilidad de clases de forma pública.
+*   **Panel Administrativo de Contactos:** endpoints protegidos `GET /api/v1/admin/contactos` y `PUT /api/v1/admin/contactos/:id` para que la administración gestione y actualice el estatus de cada lead.
 
 ---
 

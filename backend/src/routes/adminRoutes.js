@@ -31,4 +31,9 @@ router.delete('/horarios/:id', adminController.deleteHorario);
 router.get('/procesos/:clienteId', adminController.getEvaluacionesByCliente);
 router.post('/procesos', adminController.createEvaluacion);
 
+// Contactos (Leads)
+const contactoController = require('../controllers/contactoController');
+router.get('/contactos', contactoController.getContactos);
+router.put('/contactos/:id', contactoController.updateContactoStatus);
+
 module.exports = router;

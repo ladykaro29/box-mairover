@@ -49,6 +49,7 @@ async function initializeDatabase() {
   const Clase = require('../models/Clase');
   const Evaluacion = require('../models/Evaluacion');
   const Usuario = require('../models/Usuario');
+  const Contacto = require('../models/Contacto');
 
   // Define Associations
   Cliente.hasMany(Pago, { foreignKey: 'cliente_id', as: 'pagos', onDelete: 'CASCADE' });
