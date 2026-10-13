@@ -78,13 +78,14 @@ Las variables de color están mapeadas en la directiva `@theme` dentro de `front
     *   *Sección Horarios:* Iconos limpios de Calendario (Mañana), Sol con rayos (Tarde-Noche) y Reloj (Sábados).
 *   **Bottom CTA & Footer:** Capa de ondas vectoriales decorativas detrás del perfil inferior de la coach y actualización dinámica del año de copyright `{new Date().getFullYear()}`.
 
-### 📌 Horarios y Calendario (`Horarios.jsx` - ¡Rediseño de Alta Fidelidad 100% Mockup!)
+### 📌 Horarios y Calendario (`Horarios.jsx` & `HorariosAdmin.jsx` - ¡Sincronización en Tiempo Real!)
 *   **Hero Section Dinámico:** Titular corporativo gigante (`ORGANIZA TU SEMANA`), CTAs en pastilla (`RESERVAR MI CLASE` con scroll suave y `HABLAR POR WHATSAPP`), fila de 3 insignias vectoriales (*Horarios flexibles*, *Clases por nivel*, *Presencial y personalizado*) y fotografía recortada con anillos de ondas concéntricas de fondo.
-*   **Matriz Semanal Gráfica Interactiva:** Replicación al 100% del mockup corporativo (`calendario de la semana.png`) con paleta de colores pasteles premium diferenciada por disciplina (CrossFit, CrossFit Kids, Funcionales, Hyrox, Entrenamiento Personal, Asesoría Nutricional, Bienestar Físico y Open Box).
-*   **Adaptabilidad Responsive:** Selector rápido por días para pantallas móviles y vista completa matricial para escritorios y tablets.
-*   **Horarios por Categoría:** 6 tarjetas estilizadas con SVGs vectoriales que desglosan los turnos exactos por disciplina deportiva y botón directo de consulta a WhatsApp.
-*   **Horario General del Box:** 3 tarjetas en Azul Profundo (`#071628`) para las franjas horarias de Mañana, Tarde/Noche y Sábados.
-*   **Banner Inferior CTA & Modal de Turnos:** Llamado a la acción con integración directa de WhatsApp prellenado con la clase y hora elegida, además de enlace al portal privado del cliente.
+*   **Matriz Semanal Gráfica Interactiva & Sincronizada:** Replicación al 100% del mockup corporativo (`calendario de la semana.png`) con paleta de colores pasteles premium diferenciada por disciplina (CrossFit, CrossFit Kids, Funcionales, Hyrox, Entrenamiento Personal, Asesoría Nutricional, Bienestar Físico y Open Box).
+*   **Conexión en Vivo con Base de Datos:** `Horarios.jsx` consume el endpoint público `GET /api/v1/horarios` mediante `api.getPublicHorarios()`. Cualquier clase agregada, modificada o eliminada desde el panel administrativo de [HorariosAdmin.jsx](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/pages/admin/HorariosAdmin.jsx) se refleja inmediatamente en la cuadrícula pública.
+*   **Controles de Aforo y Asistencia en Vivo:** Botones rápidos `+` y `-` en el panel admin para que la coach gestione en tiempo real el paso de lista de atletas en clase, mostrando en la web el aforo ocupado y los cupos restantes disponibles (*"X cupos"* o *"Lleno"*).
+*   **Flexibilidad en Modelado de Turnos:** Campo `day` en [Clase.js](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/backend/src/models/Clase.js) expandido a `DataTypes.STRING` para permitir combinaciones completas (*Lunes a Viernes*, *Lunes, Miércoles y Viernes*, *Martes y Jueves*, *Sábados* o días puntuales).
+*   **Sembrado Completo de la Grilla Oficial:** Carga automática de los 20 turnos de entrenamiento del box en [dbInitializer.js](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/backend/src/database/dbInitializer.js).
+*   **Modal Interactivo de Turnos:** Muestra el coach asignado, aforo en tiempo real y enlace de reserva directa a WhatsApp prellenado o al portal de usuario.
 
 ---
 

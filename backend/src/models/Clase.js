@@ -18,7 +18,7 @@ const Clase = sequelize.define('Clase', {
     allowNull: false,
   },
   day: {
-    type: DataTypes.ENUM('Lunes a Viernes', 'Sábados'),
+    type: DataTypes.STRING,
     allowNull: false,
     defaultValue: 'Lunes a Viernes',
   },

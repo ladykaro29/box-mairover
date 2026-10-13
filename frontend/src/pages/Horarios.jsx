@@ -8,6 +8,9 @@ export default function Horarios() {
   const [activeDayMobile, setActiveDayMobile] = useState('Lunes');
   const [modalClass, setModalClass] = useState(null);
 
+  const [liveClasses, setLiveClasses] = useState([]);
+  const [loadingSchedule, setLoadingSchedule] = useState(true);
+
   // Categorías y paleta exacta del diseño
   const categories = {
     crossfit: {
@@ -68,99 +71,203 @@ export default function Horarios() {
     },
   };
 
-  // Matriz semanal de horarios según el mockup corporativo
-  const scheduleRows = [
+  // Carga de horarios en vivo desde la base de datos
+  useEffect(() => {
+    async function loadSchedule() {
+      try {
+        setLoadingSchedule(true);
+        const data = await api.getPublicHorarios();
+        if (data && Array.isArray(data)) {
+          setLiveClasses(data);
+        }
+      } catch (err) {
+        console.warn('Usando matriz local de respaldo para horarios:', err);
+      } finally {
+        setLoadingSchedule(false);
+      }
+    }
+    loadSchedule();
+  }, []);
+
+  // Mapeo dinámico de disciplinas a claves de diseño
+  const detectCategoryType = (name) => {
+    const n = (name || '').toLowerCase();
+    if (n.includes('kids')) return 'kids';
+    if (n.includes('crossfit') || n.includes('crosstraining') || n.includes('wod')) return 'crossfit';
+    if (n.includes('funcional')) return 'funcionales';
+    if (n.includes('hyrox')) return 'hyrox';
+    if (n.includes('personal') || n.includes('1 a 1')) return 'personal';
+    if (n.includes('nutrici')) return 'nutricion';
+    if (n.includes('bienestar')) return 'bienestar';
+    if (n.includes('open')) return 'openbox';
+    return 'crossfit';
+  };
+
+  const getTargetDays = (dayStr) => {
+    const s = (dayStr || '').toLowerCase();
+    if (s.includes('lunes a viernes') || s.includes('lunes a vie')) {
+      return ['lunes', 'martes', 'miercoles', 'jueves', 'viernes'];
+    }
+    if (s.includes('lunes, miércoles y viernes') || s.includes('lunes, miercoles y viernes') || s.includes('lun / mié / vie')) {
+      return ['lunes', 'miercoles', 'viernes'];
+    }
+    if (s.includes('martes y jueves') || s.includes('mar / jue')) {
+      return ['martes', 'jueves'];
+    }
+    if (s.includes('sábado') || s.includes('sabado') || s.includes('fin de semana')) {
+      return ['sabado'];
+    }
+    const result = [];
+    if (s.includes('lunes')) result.push('lunes');
+    if (s.includes('martes')) result.push('martes');
+    if (s.includes('miércoles') || s.includes('miercoles')) result.push('miercoles');
+    if (s.includes('jueves')) result.push('jueves');
+    if (s.includes('viernes')) result.push('viernes');
+    if (s.includes('sábado') || s.includes('sabado')) result.push('sabado');
+    return result.length > 0 ? result : ['lunes', 'martes', 'miercoles', 'jueves', 'viernes'];
+  };
+
+  const normalizeTimeToSlot = (timeStr) => {
+    if (!timeStr) return null;
+    const s = timeStr.toLowerCase();
+    if (s.includes('06:00') || s.includes('6:00')) {
+      if (s.includes('pm') || s.includes('18:00') || s.includes('tarde') || s.includes('noche')) return '6:00 p. m.';
+      return '6:00 a. m.';
+    }
+    if (s.includes('07:00') || s.includes('7:00')) {
+      if (s.includes('pm') || s.includes('19:00') || s.includes('noche')) return '7:00 p. m.';
+      return '7:00 a. m.';
+    }
+    if (s.includes('08:00') || s.includes('8:00')) return '8:00 a. m.';
+    if (s.includes('09:00') || s.includes('9:00')) return '9:00 a. m.';
+    if (s.includes('10:00')) return '10:00 a. m.';
+    if (s.includes('03:00') || s.includes('3:00') || s.includes('15:00')) return '3:00 p. m.';
+    if (s.includes('04:00') || s.includes('4:00') || s.includes('16:00')) return '4:00 p. m.';
+    if (s.includes('05:00') || s.includes('5:00') || s.includes('05:30') || s.includes('5:30') || s.includes('17:00')) return '5:00 p. m.';
+    return null;
+  };
+
+  // Matriz base de respaldo
+  const baseScheduleRows = [
     {
       time: '6:00 a. m.',
-      lunes: { name: 'CrossFit', type: 'crossfit' },
-      martes: { name: 'CrossFit', type: 'crossfit' },
-      miercoles: { name: 'CrossFit', type: 'crossfit' },
-      jueves: { name: 'CrossFit', type: 'crossfit' },
-      viernes: { name: 'CrossFit', type: 'crossfit' },
-      sabado: { name: 'CrossFit', type: 'crossfit' },
+      lunes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 12 },
+      martes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 14 },
+      miercoles: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 13 },
+      jueves: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 15 },
+      viernes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 11 },
+      sabado: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 20, enrolled: 18 },
     },
     {
       time: '7:00 a. m.',
-      lunes: { name: 'Funcionales', type: 'funcionales' },
-      martes: { name: 'CrossFit', type: 'crossfit' },
-      miercoles: { name: 'Funcionales', type: 'funcionales' },
-      jueves: { name: 'CrossFit', type: 'crossfit' },
-      viernes: { name: 'Funcionales', type: 'funcionales' },
-      sabado: { name: 'Hyrox', type: 'hyrox' },
+      lunes: { name: 'Funcionales', type: 'funcionales', coach: 'Carlos', capacity: 15, enrolled: 8 },
+      martes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 14 },
+      miercoles: { name: 'Funcionales', type: 'funcionales', coach: 'Carlos', capacity: 15, enrolled: 8 },
+      jueves: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 14 },
+      viernes: { name: 'Funcionales', type: 'funcionales', coach: 'Carlos', capacity: 15, enrolled: 8 },
+      sabado: { name: 'Hyrox', type: 'hyrox', coach: 'Carlos', capacity: 15, enrolled: 12 },
     },
     {
       time: '8:00 a. m.',
-      lunes: { name: 'Bienestar Físico', type: 'bienestar' },
-      martes: { name: 'CrossFit', type: 'crossfit' },
-      miercoles: { name: 'Bienestar Físico', type: 'bienestar' },
-      jueves: { name: 'CrossFit', type: 'crossfit' },
-      viernes: { name: 'Bienestar Físico', type: 'bienestar' },
-      sabado: { name: 'CrossFit Kids', type: 'kids' },
+      lunes: { name: 'Bienestar Físico', type: 'bienestar', coach: 'Mairover', capacity: 12, enrolled: 6 },
+      martes: { name: 'CrossFit', type: 'crossfit', coach: 'Carlos', capacity: 15, enrolled: 11 },
+      miercoles: { name: 'Bienestar Físico', type: 'bienestar', coach: 'Mairover', capacity: 12, enrolled: 6 },
+      jueves: { name: 'CrossFit', type: 'crossfit', coach: 'Carlos', capacity: 15, enrolled: 11 },
+      viernes: { name: 'Bienestar Físico', type: 'bienestar', coach: 'Mairover', capacity: 12, enrolled: 6 },
+      sabado: { name: 'CrossFit Kids', type: 'kids', coach: 'Carlos', capacity: 12, enrolled: 9 },
     },
     {
       time: '9:00 a. m.',
-      lunes: { name: 'Entrenamiento Personal', type: 'personal' },
-      martes: { name: 'Asesoría Nutricional', type: 'nutricion' },
-      miercoles: { name: 'Entrenamiento Personal', type: 'personal' },
-      jueves: { name: 'Asesoría Nutricional', type: 'nutricion' },
-      viernes: { name: 'Entrenamiento Personal', type: 'personal' },
-      sabado: { name: 'Open Box', type: 'openbox' },
+      lunes: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 3, enrolled: 3 },
+      martes: { name: 'Asesoría Nutricional', type: 'nutricion', coach: 'Mairover', capacity: 2, enrolled: 2 },
+      miercoles: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 3, enrolled: 3 },
+      jueves: { name: 'Asesoría Nutricional', type: 'nutricion', coach: 'Mairover', capacity: 2, enrolled: 2 },
+      viernes: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 3, enrolled: 3 },
+      sabado: { name: 'Open Box', type: 'openbox', coach: 'Staff', capacity: 25, enrolled: 14 },
     },
     {
       time: '10:00 a. m.',
-      lunes: { name: 'Open Box', type: 'openbox' },
-      martes: { name: 'Entrenamiento Personal', type: 'personal' },
-      miercoles: { name: 'Open Box', type: 'openbox' },
-      jueves: { name: 'Entrenamiento Personal', type: 'personal' },
-      viernes: { name: 'Open Box', type: 'openbox' },
-      sabado: { name: 'Open Box', type: 'openbox' },
+      lunes: { name: 'Open Box', type: 'openbox', coach: 'Staff', capacity: 20, enrolled: 9 },
+      martes: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 3, enrolled: 2 },
+      miercoles: { name: 'Open Box', type: 'openbox', coach: 'Staff', capacity: 20, enrolled: 9 },
+      jueves: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 3, enrolled: 2 },
+      viernes: { name: 'Open Box', type: 'openbox', coach: 'Staff', capacity: 20, enrolled: 9 },
+      sabado: { name: 'Open Box', type: 'openbox', coach: 'Staff', capacity: 25, enrolled: 14 },
     },
     {
       time: '3:00 p. m.',
-      lunes: { name: 'Entrenamiento Personal', type: 'personal' },
-      martes: { name: 'Entrenamiento Personal', type: 'personal' },
-      miercoles: { name: 'Entrenamiento Personal', type: 'personal' },
-      jueves: { name: 'Entrenamiento Personal', type: 'personal' },
-      viernes: { name: 'Entrenamiento Personal', type: 'personal' },
+      lunes: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 4, enrolled: 3 },
+      martes: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 4, enrolled: 3 },
+      miercoles: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 4, enrolled: 3 },
+      jueves: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 4, enrolled: 3 },
+      viernes: { name: 'Entrenamiento Personal', type: 'personal', coach: 'Mairover', capacity: 4, enrolled: 3 },
       sabado: null,
     },
     {
       time: '4:00 p. m.',
-      lunes: { name: 'CrossFit Kids', type: 'kids' },
-      martes: { name: 'Programa Bienestar Físico', type: 'bienestar' },
-      miercoles: { name: 'CrossFit Kids', type: 'kids' },
-      jueves: { name: 'Programa Bienestar Físico', type: 'bienestar' },
-      viernes: { name: 'CrossFit Kids', type: 'kids' },
+      lunes: { name: 'CrossFit Kids', type: 'kids', coach: 'Carlos', capacity: 12, enrolled: 8 },
+      martes: { name: 'Programa Bienestar Físico', type: 'bienestar', coach: 'Mairover', capacity: 12, enrolled: 7 },
+      miercoles: { name: 'CrossFit Kids', type: 'kids', coach: 'Carlos', capacity: 12, enrolled: 8 },
+      jueves: { name: 'Programa Bienestar Físico', type: 'bienestar', coach: 'Mairover', capacity: 12, enrolled: 7 },
+      viernes: { name: 'CrossFit Kids', type: 'kids', coach: 'Carlos', capacity: 12, enrolled: 8 },
       sabado: null,
     },
     {
       time: '5:00 p. m.',
-      lunes: { name: 'Funcionales', type: 'funcionales' },
-      martes: { name: 'Hyrox', type: 'hyrox' },
-      miercoles: { name: 'Funcionales', type: 'funcionales' },
-      jueves: { name: 'Hyrox', type: 'hyrox' },
-      viernes: { name: 'Funcionales', type: 'funcionales' },
+      lunes: { name: 'Funcionales', type: 'funcionales', coach: 'Carlos', capacity: 15, enrolled: 10 },
+      martes: { name: 'Hyrox', type: 'hyrox', coach: 'Carlos', capacity: 15, enrolled: 13 },
+      miercoles: { name: 'Funcionales', type: 'funcionales', coach: 'Carlos', capacity: 15, enrolled: 10 },
+      jueves: { name: 'Hyrox', type: 'hyrox', coach: 'Carlos', capacity: 15, enrolled: 13 },
+      viernes: { name: 'Funcionales', type: 'funcionales', coach: 'Carlos', capacity: 15, enrolled: 10 },
       sabado: null,
     },
     {
       time: '6:00 p. m.',
-      lunes: { name: 'CrossFit', type: 'crossfit' },
-      martes: { name: 'CrossFit', type: 'crossfit' },
-      miercoles: { name: 'CrossFit', type: 'crossfit' },
-      jueves: { name: 'CrossFit', type: 'crossfit' },
-      viernes: { name: 'CrossFit', type: 'crossfit' },
+      lunes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 15 },
+      martes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 15 },
+      miercoles: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 15 },
+      jueves: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 15 },
+      viernes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 15 },
       sabado: null,
     },
     {
       time: '7:00 p. m.',
-      lunes: { name: 'Hyrox', type: 'hyrox' },
-      martes: { name: 'CrossFit', type: 'crossfit' },
-      miercoles: { name: 'Hyrox', type: 'hyrox' },
-      jueves: { name: 'CrossFit', type: 'crossfit' },
-      viernes: { name: 'Hyrox', type: 'hyrox' },
+      lunes: { name: 'Hyrox', type: 'hyrox', coach: 'Carlos', capacity: 15, enrolled: 11 },
+      martes: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 14 },
+      miercoles: { name: 'Hyrox', type: 'hyrox', coach: 'Carlos', capacity: 15, enrolled: 11 },
+      jueves: { name: 'CrossFit', type: 'crossfit', coach: 'Mairover', capacity: 15, enrolled: 14 },
+      viernes: { name: 'Hyrox', type: 'hyrox', coach: 'Carlos', capacity: 15, enrolled: 11 },
       sabado: null,
     },
   ];
+
+  // Construcción dinámica de la matriz: si hay clases en vivo en BD, se integran
+  const scheduleRows = baseScheduleRows.map((row) => {
+    if (!liveClasses || liveClasses.length === 0) return row;
+
+    const updatedRow = { ...row };
+
+    // Buscar si hay clases vivas que coincidan con este horario
+    liveClasses.forEach((cls) => {
+      const slotTime = normalizeTimeToSlot(cls.time);
+      if (slotTime === row.time) {
+        const days = getTargetDays(cls.day);
+        days.forEach((d) => {
+          updatedRow[d] = {
+            id: cls.id,
+            name: cls.name,
+            type: detectCategoryType(cls.name),
+            coach: cls.coach || 'Mauroly Mercado',
+            capacity: cls.capacity || 15,
+            enrolled: cls.enrolled || 0,
+            originalTime: cls.time,
+          };
+        });
+      }
+    });
+
+    return updatedRow;
+  });
 
   const daysList = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
@@ -482,11 +589,16 @@ export default function Horarios() {
                           {item ? (
                             <button
                               onClick={() => handleCellClick(item, row.time, day)}
-                              className={`w-full h-full py-2.5 px-2 md:py-3 md:px-3 rounded-lg text-center transition-all duration-200 cursor-pointer border ${cat.bg} ${cat.text} ${cat.border} hover:scale-[1.02] hover:shadow-md active:scale-95 flex flex-col items-center justify-center min-h-[48px]`}
+                              className={`w-full h-full py-2.5 px-2 md:py-3 md:px-3 rounded-lg text-center transition-all duration-200 cursor-pointer border ${cat.bg} ${cat.text} ${cat.border} hover:scale-[1.02] hover:shadow-md active:scale-95 flex flex-col items-center justify-center min-h-[52px] relative`}
                             >
                               <span className="text-[11px] md:text-xs font-extrabold leading-tight">
                                 {item.name}
                               </span>
+                              {item.capacity && (
+                                <span className={`text-[9px] font-semibold mt-0.5 ${item.enrolled >= item.capacity ? 'text-red-500 font-bold' : 'opacity-75'}`}>
+                                  {item.enrolled >= item.capacity ? 'Lleno' : `${item.capacity - item.enrolled} cupos`}
+                                </span>
+                              )}
                             </button>
                           ) : (
                             <div className="w-full h-full py-2.5 px-2 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-300 font-bold min-h-[48px]">
@@ -814,11 +926,15 @@ export default function Horarios() {
             <div className="bg-gray-50 rounded-xl p-4 border border-gray-200 space-y-2 mb-6 text-xs text-gray-600">
               <div className="flex justify-between">
                 <span>Coach responsable:</span>
-                <span className="font-bold text-[#071628]">Mauroly Mercado / Staff</span>
+                <span className="font-bold text-[#071628]">{modalClass.coach || 'Mauroly Mercado'}</span>
               </div>
               <div className="flex justify-between">
-                <span>Cupo máximo por turno:</span>
-                <span className="font-bold text-[#071628]">15 Atletas</span>
+                <span>Aforo / Disponibilidad:</span>
+                <span className={`font-bold ${(modalClass.enrolled || 0) >= (modalClass.capacity || 15) ? 'text-red-500' : 'text-emerald-600'}`}>
+                  {(modalClass.enrolled || 0) >= (modalClass.capacity || 15)
+                    ? 'Turno Lleno (Sin cupos)'
+                    : `${(modalClass.capacity || 15) - (modalClass.enrolled || 0)} cupos disponibles (${modalClass.enrolled || 0}/${modalClass.capacity || 15})`}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span>Nivel requerido:</span>

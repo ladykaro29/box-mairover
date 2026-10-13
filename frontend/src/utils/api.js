@@ -336,6 +336,18 @@ export const api = {
   },
 
   // 4. Horarios
+  async getPublicHorarios(params = {}) {
+    try {
+      const res = await axios.get('/api/v1/horarios', { params, timeout: 6000 });
+      return res.data.data;
+    } catch (err) {
+      if (params.day && params.day !== 'all') {
+        return mockHorarios.filter(s => s.day.includes(params.day));
+      }
+      return mockHorarios;
+    }
+  },
+
   async getHorarios(params = {}) {
     try {
       const res = await apiClient.get('/horarios', { params });

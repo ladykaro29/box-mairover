@@ -164,11 +164,26 @@ async function seedDefaultData(Cliente, Pago, Clase, Evaluacion, Contacto) {
 
   // Create Clases / Horarios
   await Clase.bulkCreate([
-    { name: 'CrossTraining Matutino', time: '06:00 AM - 07:00 AM', day: 'Lunes a Viernes', coach: 'Mairover', capacity: 15, enrolled: 12 },
-    { name: 'CrossTraining Media Mañana', time: '08:00 AM - 09:00 AM', day: 'Lunes a Viernes', coach: 'Mairover', capacity: 15, enrolled: 8 },
-    { name: 'CrossTraining Tarde', time: '05:00 PM - 06:00 PM', day: 'Lunes a Viernes', coach: 'Invitado', capacity: 20, enrolled: 20 },
-    { name: 'CrossTraining Noche', time: '06:30 PM - 07:30 PM', day: 'Lunes a Viernes', coach: 'Mairover', capacity: 20, enrolled: 18 },
-    { name: 'Especial Fin de Semana', time: '09:00 AM - 11:00 AM', day: 'Sábados', coach: 'Mairover', capacity: 30, enrolled: 25 },
+    { name: 'CrossFit', time: '06:00 AM - 07:00 AM', day: 'Lunes a Viernes', coach: 'Mairover', capacity: 15, enrolled: 12 },
+    { name: 'Funcionales', time: '07:00 AM - 08:00 AM', day: 'Lunes, Miércoles y Viernes', coach: 'Carlos', capacity: 15, enrolled: 8 },
+    { name: 'CrossFit', time: '07:00 AM - 08:00 AM', day: 'Martes y Jueves', coach: 'Mairover', capacity: 15, enrolled: 14 },
+    { name: 'Bienestar Físico', time: '08:00 AM - 09:00 AM', day: 'Lunes, Miércoles y Viernes', coach: 'Mairover', capacity: 12, enrolled: 6 },
+    { name: 'CrossFit', time: '08:00 AM - 09:00 AM', day: 'Martes y Jueves', coach: 'Carlos', capacity: 15, enrolled: 11 },
+    { name: 'Entrenamiento Personal', time: '09:00 AM - 10:00 AM', day: 'Lunes, Miércoles y Viernes', coach: 'Mairover', capacity: 3, enrolled: 3 },
+    { name: 'Asesoría Nutricional', time: '09:00 AM - 10:00 AM', day: 'Martes y Jueves', coach: 'Mairover', capacity: 2, enrolled: 2 },
+    { name: 'Open Box', time: '10:00 AM - 11:30 AM', day: 'Lunes a Viernes', coach: 'Staff', capacity: 20, enrolled: 9 },
+    { name: 'Entrenamiento Personal', time: '03:00 PM - 04:00 PM', day: 'Lunes a Viernes', coach: 'Mairover', capacity: 4, enrolled: 3 },
+    { name: 'CrossFit Kids', time: '04:00 PM - 05:00 PM', day: 'Lunes, Miércoles y Viernes', coach: 'Carlos', capacity: 12, enrolled: 8 },
+    { name: 'Bienestar Físico', time: '04:00 PM - 05:00 PM', day: 'Martes y Jueves', coach: 'Mairover', capacity: 12, enrolled: 7 },
+    { name: 'Funcionales', time: '05:00 PM - 06:00 PM', day: 'Lunes, Miércoles y Viernes', coach: 'Carlos', capacity: 15, enrolled: 10 },
+    { name: 'Hyrox', time: '05:00 PM - 06:00 PM', day: 'Martes y Jueves', coach: 'Carlos', capacity: 15, enrolled: 13 },
+    { name: 'CrossFit', time: '06:00 PM - 07:00 PM', day: 'Lunes a Viernes', coach: 'Mairover', capacity: 15, enrolled: 15 },
+    { name: 'Hyrox', time: '07:00 PM - 08:00 PM', day: 'Lunes, Miércoles y Viernes', coach: 'Carlos', capacity: 15, enrolled: 11 },
+    { name: 'CrossFit', time: '07:00 PM - 08:00 PM', day: 'Martes y Jueves', coach: 'Mairover', capacity: 15, enrolled: 14 },
+    { name: 'CrossFit (WOD Sábado)', time: '08:00 AM - 09:00 AM', day: 'Sábados', coach: 'Mairover', capacity: 20, enrolled: 18 },
+    { name: 'Hyrox Sábado', time: '07:00 AM - 08:00 AM', day: 'Sábados', coach: 'Carlos', capacity: 15, enrolled: 12 },
+    { name: 'CrossFit Kids Sábado', time: '08:00 AM - 09:00 AM', day: 'Sábados', coach: 'Carlos', capacity: 12, enrolled: 9 },
+    { name: 'Open Box Sábado', time: '09:00 AM - 10:00 AM', day: 'Sábados', coach: 'Staff', capacity: 25, enrolled: 14 },
   ]);
 
   // Create Evaluaciones (Físicas/Procesos)
