@@ -50,14 +50,13 @@ COPY --from=builder /app/frontend/dist/ ./frontend/dist/
 
 # Set production environment
 ENV NODE_ENV=production
-ENV PORT=3000
 
-# Expose the application port
-EXPOSE 3000
+# Expose the application ports (supports both 80 and 3000)
+EXPOSE 80 3000
 
-# Health check — EasyPanel uses this to verify the container is alive
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/api/v1/health || exit 1
+# Dynamic health check — supports whichever PORT EasyPanel assigns (80 or 3000)
+HEALTHCHECK --interval=20s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:${PORT:-80}/api/v1/health || wget --no-verbose --tries=1 --spider http://127.0.0.1:80/api/v1/health || wget --no-verbose --tries=1 --spider http://127.0.0.1:3000/api/v1/health || exit 1
 
 # Use dumb-init to handle PID 1 and forward signals correctly
 ENTRYPOINT ["dumb-init", "--"]
