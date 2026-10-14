@@ -1,5 +1,7 @@
 const Reserva = require('../models/Reserva');
 const Clase = require('../models/Clase');
+const Evaluacion = require('../models/Evaluacion');
+const Cliente = require('../models/Cliente');
 
 // GET /api/v1/cliente/reservas - Obtiene las reservas del usuario autenticado
 exports.getMisReservas = async (req, res, next) => {
@@ -161,3 +163,40 @@ exports.cancelarReserva = async (req, res, next) => {
     next(error);
   }
 };
+
+// GET /api/v1/cliente/evaluaciones - Obtiene el historial de composición y progreso del atleta
+exports.getMisEvaluaciones = async (req, res, next) => {
+  try {
+    let clienteId = req.user.clienteId;
+
+    if (!clienteId) {
+      // Si la cuenta aún no tiene clienteId explícito, vincular por email
+      const cliente = await Cliente.findOne({ where: { email: req.user.email } });
+      if (cliente) {
+        clienteId = cliente.id;
+        await req.user.update({ clienteId: cliente.id });
+      }
+    }
+
+    if (!clienteId) {
+      return res.json({
+        success: true,
+        data: [],
+        message: 'No hay ficha de atleta vinculada a este usuario.',
+      });
+    }
+
+    const evaluaciones = await Evaluacion.findAll({
+      where: { clienteId },
+      order: [['createdAt', 'ASC']],
+    });
+
+    res.json({
+      success: true,
+      data: evaluaciones,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+

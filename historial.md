@@ -147,7 +147,22 @@ El `index.js` cargaba las rutas —y con ellas los modelos de Sequelize— **ant
 
 ---
 
-## 🔒 7. REGLAS ARQUITECTÓNICAS Y COMPROMISOS
-1.  **Integración de la API:** Al modificar el frontend de contacto, reservas u horarios, **nunca** se deben eliminar o renombrar los hooks de validación (`react-hook-form`), los nombres de los atributos en los campos de entrada (`nombre`, `telefono`, `email`, etc.), ni los endpoints del backend (`POST /api/v1/contactos`, `/api/v1/cliente/reservas`), asegurando que la conexión y persistencia con Express y MySQL/SQLite nunca se rompa.
+## 📈 7. SEGUIMIENTO DE PROGRESO FÍSICO Y COMPOSICIÓN CORPORAL EN MI CUENTA (`/mi-cuenta`)
+*   **Endpoint de Cliente (`backend/src/routes/clienteRoutes.js`):**
+    *   `GET /api/v1/cliente/evaluaciones`: Localiza el `clienteId` de la cuenta de usuario (con fallback inteligente por email si no estaba enlazado), y recupera todas las evaluaciones físicas registradas en el box ordenadas cronológicamente.
+*   **Método API en [api.js](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/utils/api.js):**
+    *   `api.getMisEvaluaciones()`: Consulta `/api/v1/cliente/evaluaciones` mediante `clienteApiClient` con fallback a datos mock locales de evaluaciones para demostración o funcionamiento offline.
+*   **Pestañas de Navegación del Portal de Atleta (`MiCuenta.jsx`):**
+    *   **Pestaña 1 (Clases & Reservas):** Gestión de cupos, reservas y modal con aforo en vivo.
+    *   **Pestaña 2 (Mi Progreso Físico):**
+        *   **KPIs de Composición:** Peso actual (con comparativa vs valor inicial), IMC corporal (indicador de rango), % Grasa corporal (con comparativa) y % Masa muscular ganada.
+        *   **Gráfica Dinámica (Chart.js):** Gráfico interactivo con curvas suaves que conmuta entre *Grasa vs Músculo* y *Evolución de Peso (kg)*.
+        *   **Historial y Notas de la Coach:** Registro cronológico de cada valoración con fecha, tipo (*Inicial*, *Bimensual*, *Anual*) y bloque destacado con la observación personalizada de la Coach Mauroly Mercado.
+    *   **Pestaña 3 (Membresía & Seguridad):** Ficha de membresía activa y formulario de actualización de contraseña.
+
+---
+
+## 🔒 8. REGLAS ARQUITECTÓNICAS Y COMPROMISOS
+1.  **Integración de la API:** Al modificar el frontend de contacto, reservas, evaluaciones u horarios, **nunca** se deben eliminar o renombrar los hooks de validación (`react-hook-form`), los nombres de los atributos en los campos de entrada (`nombre`, `telefono`, `email`, etc.), ni los endpoints del backend (`POST /api/v1/contactos`, `/api/v1/cliente/reservas`, `/api/v1/cliente/evaluaciones`), asegurando que la conexión y persistencia con Express y MySQL/SQLite nunca se rompa.
 2.  **Reglas de ESLint:** Evitar la re-declaración de variables externas y evitar la mutación directa de estados de React de forma síncrona dentro de `useEffect` para prevenir warnings en la compilación.
 3.  **Compilación Limpia:** Antes de finalizar cualquier cambio estético o funcional, es obligatorio verificar que no existan errores sintácticos ejecutando la compilación del frontend (`npm run build:frontend`), asegurando un bundle limpio en `frontend/dist`.

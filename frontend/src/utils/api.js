@@ -623,4 +623,15 @@ export const api = {
       return { success: true, message: 'Reserva cancelada exitosamente.' };
     }
   },
+
+  // 8. Evaluaciones y Progreso Físico del Atleta (Mi Cuenta)
+  async getMisEvaluaciones() {
+    try {
+      const res = await clienteApiClient.get('/evaluaciones');
+      return res.data.data;
+    } catch (err) {
+      logFallback('getMisEvaluaciones', err);
+      return mockEvaluaciones[1] || [];
+    }
+  },
 };
