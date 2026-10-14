@@ -45,3 +45,4 @@ frontend/public/uploads/
 tmp/
 temp/
 *.tmp
+*.zip
