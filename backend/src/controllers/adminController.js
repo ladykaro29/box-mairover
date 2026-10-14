@@ -3,6 +3,8 @@ const Cliente = require('../models/Cliente');
 const Pago = require('../models/Pago');
 const Clase = require('../models/Clase');
 const Evaluacion = require('../models/Evaluacion');
+const Reserva = require('../models/Reserva');
+const Usuario = require('../models/Usuario');
 const { getSequelizeInstance } = require('../database/config');
 
 // Helper to generate transaction IDs
@@ -436,3 +438,159 @@ exports.getDashboardStats = async (req, res, next) => {
     next(error);
   }
 };
+
+// -------------------------------------------------------------
+// RESERVAS & ASISTENCIA CONTROLLER
+// -------------------------------------------------------------
+exports.getReservas = async (req, res, next) => {
+  try {
+    const { fecha, claseId, status, search } = req.query;
+    const where = {};
+
+    if (fecha && fecha !== 'all') {
+      where.fecha = fecha;
+    }
+    if (claseId && claseId !== 'all') {
+      where.claseId = claseId;
+    }
+    if (status && status !== 'all') {
+      where.status = status;
+    }
+
+    const reservas = await Reserva.findAll({
+      where,
+      include: [
+        {
+          model: Usuario,
+          as: 'usuario',
+          attributes: ['id', 'name', 'email'],
+          include: [
+            {
+              model: Cliente,
+              as: 'cliente',
+              attributes: ['phone', 'plan', 'status'],
+            },
+          ],
+        },
+        {
+          model: Clase,
+          as: 'clase',
+          attributes: ['id', 'name', 'time', 'day', 'coach', 'capacity', 'enrolled'],
+        },
+      ],
+      order: [
+        ['fecha', 'DESC'],
+        ['claseHora', 'ASC'],
+      ],
+    });
+
+    let result = reservas.map((r) => {
+      const json = r.toJSON();
+      return {
+        ...json,
+        nombreAtleta: json.usuario?.name || 'Atleta',
+        emailAtleta: json.usuario?.email || '',
+        telefonoAtleta: json.usuario?.cliente?.phone || '',
+        planAtleta: json.usuario?.cliente?.plan || 'Membresía',
+      };
+    });
+
+    if (search) {
+      const q = search.toLowerCase();
+      result = result.filter(
+        (r) =>
+          r.nombreAtleta.toLowerCase().includes(q) ||
+          r.emailAtleta.toLowerCase().includes(q) ||
+          r.claseNombre.toLowerCase().includes(q)
+      );
+    }
+
+    res.json({ success: true, data: result });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateAsistencia = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body; // 'confirmada' | 'asistio' | 'cancelada'
+
+    const reserva = await Reserva.findByPk(id);
+    if (!reserva) {
+      return res.status(404).json({ success: false, message: 'Reserva no encontrada.' });
+    }
+
+    const prevStatus = reserva.status;
+    await reserva.update({ status });
+
+    // Ajustar aforo en la clase si cambia a cancelada o vuelve de cancelada
+    if (status === 'cancelada' && prevStatus !== 'cancelada') {
+      const clase = await Clase.findByPk(reserva.claseId);
+      if (clase && clase.enrolled > 0) {
+        await clase.decrement('enrolled', { by: 1 });
+      }
+    } else if (prevStatus === 'cancelada' && status !== 'cancelada') {
+      const clase = await Clase.findByPk(reserva.claseId);
+      if (clase) {
+        await clase.increment('enrolled', { by: 1 });
+      }
+    }
+
+    res.json({
+      success: true,
+      data: reserva,
+      message: `Asistencia actualizada a "${status}".`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.createReservaAdmin = async (req, res, next) => {
+  try {
+    const { clienteId, claseId, fecha } = req.body;
+
+    const clase = await Clase.findByPk(claseId);
+    if (!clase) {
+      return res.status(404).json({ success: false, message: 'Clase no encontrada.' });
+    }
+
+    // Buscar o generar usuario/cliente
+    let targetCliente = null;
+    let usuarioId = 1;
+
+    if (clienteId) {
+      targetCliente = await Cliente.findByPk(clienteId, {
+        include: [{ model: Usuario, as: 'usuario' }],
+      });
+      if (targetCliente && targetCliente.usuario) {
+        usuarioId = targetCliente.usuario.id;
+      }
+    }
+
+    const nuevaReserva = await Reserva.create({
+      usuarioId,
+      clienteId: targetCliente ? targetCliente.id : null,
+      claseId: clase.id,
+      fecha: fecha || new Date().toISOString().split('T')[0],
+      claseNombre: clase.name,
+      claseHora: clase.time,
+      coach: clase.coach,
+      status: 'confirmada',
+    });
+
+    if (clase.enrolled < clase.capacity) {
+      await clase.increment('enrolled', { by: 1 });
+    }
+
+    res.status(201).json({
+      success: true,
+      data: nuevaReserva,
+      message: 'Atleta agregado a la clase con éxito.',
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+

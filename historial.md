@@ -162,7 +162,31 @@ El `index.js` cargaba las rutas —y con ellas los modelos de Sequelize— **ant
 
 ---
 
-## 🔒 8. REGLAS ARQUITECTÓNICAS Y COMPROMISOS
-1.  **Integración de la API:** Al modificar el frontend de contacto, reservas, evaluaciones u horarios, **nunca** se deben eliminar o renombrar los hooks de validación (`react-hook-form`), los nombres de los atributos en los campos de entrada (`nombre`, `telefono`, `email`, etc.), ni los endpoints del backend (`POST /api/v1/contactos`, `/api/v1/cliente/reservas`, `/api/v1/cliente/evaluaciones`), asegurando que la conexión y persistencia con Express y MySQL/SQLite nunca se rompa.
+## 📋 8. GESTIÓN Y LISTA DE ASISTENCIA POR CLASE EN EL PANEL ADMIN (`/admin/horarios`)
+*   **Endpoints de Administración (`backend/src/routes/adminRoutes.js` + `adminController.js`):**
+    *   `GET /api/v1/admin/reservas`: Consulta centralizada de reservas con filtros por fecha, clase, estado (`confirmada`, `asistio`, `cancelada`) y búsqueda por atleta. Incluye asociaciones con `Usuario`, `Cliente` y `Clase`.
+    *   `PUT /api/v1/admin/reservas/:id/asistencia`: Actualiza el estatus de asistencia del atleta en 1 clic y ajusta automáticamente el contador de aforo de la clase si el atleta cancela o se reincorpora.
+    *   `POST /api/v1/admin/reservas`: Permite a la coach anotar atletas en puerta (*walk-in*) vinculándolos a su ficha de cliente.
+*   **Métodos en [api.js](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/utils/api.js):**
+    *   `api.getAdminReservas(params)`
+    *   `api.updateAsistencia(id, status)`
+    *   `api.createReservaAdmin(data)`
+    *   Dataset mock enriquecido de reservas con nombres de atletas, números telefónicos y estados de asistencia.
+*   **Interfaz de Control en [HorariosAdmin.jsx](file:///c:/Users/troni/Documents/Descarga-Antigravity/box-mairover/frontend/src/pages/admin/HorariosAdmin.jsx):**
+    *   **Pestañas Superiores:** Conmutador fluido entre *Clases y Grilla Semanal* y *Pase de Asistencia & Atletas*.
+    *   **Botón Directo en Tarjeta:** Cada tarjeta de clase incluye el botón *"📋 Ver Asistencia"* que lleva directamente al roster del turno seleccionado.
+    *   **Dashboard KPI de Asistencia:** Total de reservas, atletas presentes, confirmadas pendientes y canceladas del día.
+    *   **Filtros Rápidos:** Selector de fecha (*Hoy*, *Mañana*, selector nativo), filtro por turno, selector de estatus y buscador por nombre/email.
+    *   **Acciones Instantáneas en Roster:**
+        *   `✓ Presente`: Marca asistencia inmediata.
+        *   `✗ Cancelar`: Da de baja el cupo liberando el aforo de la clase.
+        *   `↺`: Restablece el turno a confirmada.
+        *   `💬 WhatsApp Directo`: Abre chat con mensaje prellenado avisando al atleta sobre el inicio de su clase.
+    *   **Modal de Atleta en Puerta (Walk-in):** Permite a la coach agregar a cualquier cliente registrado a la clase al momento de ingresar al box.
+
+---
+
+## 🔒 9. REGLAS ARQUITECTÓNICAS Y COMPROMISOS
+1.  **Integración de la API:** Al modificar el frontend de contacto, reservas, evaluaciones u horarios, **nunca** se deben eliminar o renombrar los hooks de validación (`react-hook-form`), los nombres de los atributos en los campos de entrada (`nombre`, `telefono`, `email`, etc.), ni los endpoints del backend (`POST /api/v1/contactos`, `/api/v1/cliente/reservas`, `/api/v1/cliente/evaluaciones`, `/api/v1/admin/reservas`), asegurando que la conexión y persistencia con Express y MySQL/SQLite nunca se rompa.
 2.  **Reglas de ESLint:** Evitar la re-declaración de variables externas y evitar la mutación directa de estados de React de forma síncrona dentro de `useEffect` para prevenir warnings en la compilación.
 3.  **Compilación Limpia:** Antes de finalizar cualquier cambio estético o funcional, es obligatorio verificar que no existan errores sintácticos ejecutando la compilación del frontend (`npm run build:frontend`), asegurando un bundle limpio en `frontend/dist`.

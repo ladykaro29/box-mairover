@@ -37,4 +37,9 @@ router.get('/contactos', contactoController.getContactos);
 router.put('/contactos/:id', contactoController.updateContactoStatus);
 router.delete('/contactos/:id', contactoController.deleteContacto);
 
+// Reservas & Asistencia a Clases
+router.get('/reservas', adminController.getReservas);
+router.put('/reservas/:id/asistencia', adminController.updateAsistencia);
+router.post('/reservas', adminController.createReservaAdmin);
+
 module.exports = router;

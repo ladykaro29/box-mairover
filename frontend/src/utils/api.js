@@ -165,20 +165,60 @@ let mockReservas = [
   {
     id: 1,
     usuarioId: 1,
+    clienteId: 1,
+    nombreAtleta: 'María García',
+    emailAtleta: 'maria@example.com',
+    telefonoAtleta: '+58 414-1234567',
+    planAtleta: 'Clase Regular',
     claseId: 1,
-    fecha: '2026-10-15',
-    claseNombre: 'CrossTraining Matutino',
+    fecha: new Date().toISOString().split('T')[0],
+    claseNombre: 'CrossFit',
     claseHora: '06:00 AM - 07:00 AM',
     coach: 'Mairover',
     status: 'confirmada',
   },
   {
     id: 2,
-    usuarioId: 1,
-    claseId: 4,
-    fecha: '2026-10-16',
-    claseNombre: 'CrossTraining Noche',
-    claseHora: '06:30 PM - 07:30 PM',
+    usuarioId: 2,
+    clienteId: 2,
+    nombreAtleta: 'Juan Pérez',
+    emailAtleta: 'juan@example.com',
+    telefonoAtleta: '+58 424-9876543',
+    planAtleta: 'Max Performance',
+    claseId: 1,
+    fecha: new Date().toISOString().split('T')[0],
+    claseNombre: 'CrossFit',
+    claseHora: '06:00 AM - 07:00 AM',
+    coach: 'Mairover',
+    status: 'asistio',
+  },
+  {
+    id: 3,
+    usuarioId: 3,
+    clienteId: 3,
+    nombreAtleta: 'Carlos Rodríguez',
+    emailAtleta: 'carlos@example.com',
+    telefonoAtleta: '+58 412-5555555',
+    planAtleta: 'Básico',
+    claseId: 3,
+    fecha: new Date().toISOString().split('T')[0],
+    claseNombre: 'CrossFit',
+    claseHora: '07:00 AM - 08:00 AM',
+    coach: 'Mairover',
+    status: 'confirmada',
+  },
+  {
+    id: 4,
+    usuarioId: 4,
+    clienteId: 4,
+    nombreAtleta: 'Ana Martínez',
+    emailAtleta: 'ana@example.com',
+    telefonoAtleta: '+58 414-7778899',
+    planAtleta: 'Clase Regular',
+    claseId: 10,
+    fecha: new Date().toISOString().split('T')[0],
+    claseNombre: 'CrossFit',
+    claseHora: '06:00 PM - 07:00 PM',
     coach: 'Mairover',
     status: 'confirmada',
   },
@@ -632,6 +672,81 @@ export const api = {
     } catch (err) {
       logFallback('getMisEvaluaciones', err);
       return mockEvaluaciones[1] || [];
+    }
+  },
+
+  // 9. Admin - Reservas y Control de Asistencia
+  async getAdminReservas(params = {}) {
+    try {
+      const res = await apiClient.get('/reservas', { params });
+      return res.data.data;
+    } catch (err) {
+      logFallback('getAdminReservas', err);
+      let list = [...mockReservas];
+      if (params.fecha && params.fecha !== 'all') {
+        list = list.filter((r) => r.fecha === params.fecha);
+      }
+      if (params.claseId && params.claseId !== 'all') {
+        list = list.filter((r) => r.claseId === parseInt(params.claseId, 10));
+      }
+      if (params.status && params.status !== 'all') {
+        list = list.filter((r) => r.status === params.status);
+      }
+      if (params.search) {
+        const q = params.search.toLowerCase();
+        list = list.filter(
+          (r) =>
+            (r.nombreAtleta && r.nombreAtleta.toLowerCase().includes(q)) ||
+            (r.emailAtleta && r.emailAtleta.toLowerCase().includes(q)) ||
+            (r.claseNombre && r.claseNombre.toLowerCase().includes(q))
+        );
+      }
+      return list;
+    }
+  },
+
+  async updateAsistencia(id, status) {
+    try {
+      const res = await apiClient.put(`/reservas/${id}/asistencia`, { status });
+      return res.data;
+    } catch (err) {
+      logFallback('updateAsistencia', err);
+      const rIdx = mockReservas.findIndex((r) => r.id === parseInt(id, 10));
+      if (rIdx !== -1) {
+        mockReservas[rIdx].status = status;
+      }
+      return { success: true, message: `Asistencia actualizada a "${status}".` };
+    }
+  },
+
+  async createReservaAdmin(data) {
+    try {
+      const res = await apiClient.post('/reservas', data);
+      return res.data;
+    } catch (err) {
+      logFallback('createReservaAdmin', err);
+      const targetClass = mockHorarios.find((h) => h.id === parseInt(data.claseId, 10));
+      const targetClient = mockClientes.find((c) => c.id === parseInt(data.clienteId, 10));
+      const newR = {
+        id: mockReservas.length ? Math.max(...mockReservas.map((r) => r.id)) + 1 : 1,
+        usuarioId: 1,
+        clienteId: targetClient ? targetClient.id : null,
+        nombreAtleta: targetClient ? targetClient.name : (data.nombreAtleta || 'Atleta Pase Diario'),
+        emailAtleta: targetClient ? targetClient.email : '',
+        telefonoAtleta: targetClient ? targetClient.phone : '',
+        planAtleta: targetClient ? targetClient.plan : 'Clase Suelta',
+        claseId: parseInt(data.claseId, 10),
+        fecha: data.fecha || new Date().toISOString().split('T')[0],
+        claseNombre: targetClass ? targetClass.name : 'CrossFit',
+        claseHora: targetClass ? targetClass.time : '07:00 AM',
+        coach: targetClass ? targetClass.coach : 'Mairover',
+        status: 'confirmada',
+      };
+      mockReservas.push(newR);
+      if (targetClass && targetClass.enrolled < targetClass.capacity) {
+        targetClass.enrolled += 1;
+      }
+      return { success: true, data: newR, message: 'Atleta agregado con éxito a la clase.' };
     }
   },
 };
