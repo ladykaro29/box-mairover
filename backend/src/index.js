@@ -4,9 +4,10 @@ const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 
-// Load environment variables from .env.local in development
-const dotenvPath = path.resolve(__dirname, '../.env.local');
-require('dotenv').config({ path: dotenvPath });
+// Load environment variables (.env in root, backend/.env, or backend/.env.local)
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
 
 const app = express();
 const PORT = process.env.PORT || 3000;

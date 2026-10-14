@@ -2,8 +2,9 @@ const { Sequelize } = require('sequelize');
 const path = require('path');
 
 // Ensure dotenv is loaded in case config is run standalone (e.g. for migrations)
-const dotenvPath = path.resolve(__dirname, '../../.env.local');
-require('dotenv').config({ path: dotenvPath });
+require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env.local') });
 
 const config = {
   username: process.env.DB_USER || 'root',
