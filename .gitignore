@@ -44,5 +44,7 @@ frontend/public/uploads/
 # Temporary
 tmp/
 temp/
+scratch/
 *.tmp
 *.zip
+

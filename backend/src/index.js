@@ -19,20 +19,34 @@ app.use(
   })
 );
 
-// CORS settings
-const allowedOrigins = [
-  process.env.CORS_ORIGIN || 'http://localhost:5173',
-  'http://localhost:3000'
-];
-
+// CORS settings: permitir localhost, EasyPanel, dominios personalizados y peticiones del mismo origen
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
+      // Peticiones sin header origin (mismo origen directo, scripts del sistema, curl, etc.)
+      if (!origin) return callback(null, true);
+
+      // Si se configuró CORS_ORIGIN explícito
+      if (process.env.CORS_ORIGIN && (origin === process.env.CORS_ORIGIN || process.env.CORS_ORIGIN === '*')) {
+        return callback(null, true);
       }
+
+      // Permitir cualquier dominio de easypanel.host, localhost o dominios de despliegue
+      try {
+        const parsed = new URL(origin);
+        if (
+          parsed.hostname.endsWith('.easypanel.host') ||
+          parsed.hostname === 'localhost' ||
+          parsed.hostname === '127.0.0.1'
+        ) {
+          return callback(null, true);
+        }
+      } catch {
+        // En caso de que no sea una URL estándar
+      }
+
+      // Para el despliegue unificado (frontend + backend juntos), permitir reflejando el origen
+      return callback(null, true);
     },
     credentials: true,
   })
