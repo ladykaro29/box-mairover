@@ -279,7 +279,7 @@ export default function Horarios() {
       borderColor: 'border-[#F8C8C0]',
       bgColor: 'bg-[#FEECE8]/40',
       icon: (
-        <svg className="w-8 h-8 text-[#E85D4E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-8 h-8 text-[#F43F5E]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M6 12h12M4 9a1 1 0 0 1 1-1h1v8H5a1 1 0 0 1-1-1V9zm14 0a1 1 0 0 1 1-1h1v8h-1a1 1 0 0 1-1-1V9zM2 10h1v4H2v-4zm19 0h1v4h-1v-4z" />
         </svg>
       ),
@@ -402,26 +402,26 @@ export default function Horarios() {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#071628] via-[#09203a] to-[#0d2d52] text-white pt-12 pb-20 lg:pt-16 lg:pb-24">
         {/* Decorative Wave Rings radiating from right */}
         <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] pointer-events-none opacity-20">
-          <div className="w-full h-full rounded-full border border-[#E85D4E] animate-[ping_6s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+          <div className="w-full h-full rounded-full border border-[#F43F5E] animate-[ping_6s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
         </div>
         <div className="absolute right-10 top-1/2 -translate-y-1/2 w-[450px] h-[450px] pointer-events-none opacity-25">
-          <div className="w-full h-full rounded-full border border-[#E85D4E]"></div>
+          <div className="w-full h-full rounded-full border border-[#F43F5E]"></div>
         </div>
         <div className="absolute right-24 top-1/2 -translate-y-1/2 w-[300px] h-[300px] pointer-events-none opacity-30">
-          <div className="w-full h-full rounded-full border border-[#E85D4E]"></div>
+          <div className="w-full h-full rounded-full border border-[#F43F5E]"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Columna Izquierda: Textos & CTAs */}
             <div className="lg:col-span-7 flex flex-col justify-center text-left">
-              <span className="text-[#E85D4E] font-bold text-xs uppercase tracking-[0.25em] mb-3 animate-[fadeIn_0.5s_ease-out]">
+              <span className="text-[#F43F5E] font-bold text-xs uppercase tracking-[0.25em] mb-3 animate-[fadeIn_0.5s_ease-out]">
                 CALENDARIO DE CLASES
               </span>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] uppercase text-white mb-6">
                 ORGANIZA <br />
-                <span className="text-[#E85D4E]">TU SEMANA</span>
+                <span className="text-[#F43F5E]">TU SEMANA</span>
               </h1>
 
               <p className="text-[#C2C0B6] text-base md:text-lg mb-8 max-w-xl leading-relaxed">
@@ -432,7 +432,7 @@ export default function Horarios() {
               <div className="flex flex-wrap items-center gap-4 mb-10">
                 <a
                   href="#calendario-semanal"
-                  className="px-8 py-4 bg-[#E85D4E] hover:bg-[#D64A3E] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#E85D4E]/30 flex items-center gap-2 cursor-pointer"
+                  className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2 cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2.5" viewBox="0 0 24 24">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -459,7 +459,7 @@ export default function Horarios() {
               {/* Fila de Características (3 Icons) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full border border-[#E85D4E] flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full border border-[#F43F5E] flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                     <svg className="w-5 h-5 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
@@ -471,7 +471,7 @@ export default function Horarios() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                     <svg className="w-5 h-5 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                       <line x1="18" y1="20" x2="18" y2="10" />
                       <line x1="12" y1="20" x2="12" y2="4" />
@@ -484,7 +484,7 @@ export default function Horarios() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                     <svg className="w-5 h-5 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                       <circle cx="12" cy="7" r="4" />
@@ -508,7 +508,7 @@ export default function Horarios() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071628] via-transparent to-transparent opacity-80 pointer-events-none"></div>
                 <div className="absolute bottom-4 left-4 right-4 bg-black/40 backdrop-blur-md rounded-xl p-3 border border-white/10 text-center">
                   <p className="text-white font-bold text-sm">Mauroly Mercado</p>
-                  <p className="text-[#E85D4E] text-xs font-semibold">Head Coach & Nutricionista</p>
+                  <p className="text-[#F43F5E] text-xs font-semibold">Head Coach & Nutricionista</p>
                 </div>
               </div>
             </div>
@@ -522,9 +522,9 @@ export default function Horarios() {
       <section id="calendario-semanal" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-[#071628]">
-            CALENDARIO <span className="text-[#E85D4E]">SEMANAL</span>
+            CALENDARIO <span className="text-[#F43F5E]">SEMANAL</span>
           </h2>
-          <div className="h-1.5 w-20 bg-[#E85D4E] rounded-full mx-auto mt-3 mb-4"></div>
+          <div className="h-1.5 w-20 bg-[#F43F5E] rounded-full mx-auto mt-3 mb-4"></div>
           <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
             Consulta la programación completa del box. Haz clic sobre cualquier clase para ver los detalles y agendar tu cupo.
           </p>
@@ -538,7 +538,7 @@ export default function Horarios() {
               onClick={() => setActiveDayMobile(day)}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeDayMobile === day
-                  ? 'bg-[#E85D4E] text-white shadow-md shadow-[#E85D4E]/20'
+                  ? 'bg-[#F43F5E] text-white shadow-md shadow-[#F43F5E]/20'
                   : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-100'
               }`}
             >
@@ -639,9 +639,9 @@ export default function Horarios() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-[#071628]">
-              HORARIOS <span className="text-[#E85D4E]">POR CATEGORÍA</span>
+              HORARIOS <span className="text-[#F43F5E]">POR CATEGORÍA</span>
             </h2>
-            <div className="h-1.5 w-20 bg-[#E85D4E] rounded-full mx-auto mt-3 mb-4"></div>
+            <div className="h-1.5 w-20 bg-[#F43F5E] rounded-full mx-auto mt-3 mb-4"></div>
             <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">
               Revisa los turnos fijos asignados para cada disciplina y planifica tus sesiones semanales.
             </p>
@@ -678,7 +678,7 @@ export default function Horarios() {
                   href={getWhatsAppLink(card.title, 'los horarios asignados', 'semanal')}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-6 w-full py-2.5 px-4 bg-gray-50 hover:bg-[#E85D4E] text-gray-700 hover:text-white rounded-xl text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-2 border border-gray-200"
+                  className="mt-6 w-full py-2.5 px-4 bg-gray-50 hover:bg-[#F43F5E] text-gray-700 hover:text-white rounded-xl text-xs font-bold transition-colors duration-200 flex items-center justify-center gap-2 border border-gray-200"
                 >
                   <span>Consultar Cupos</span>
                   <span>→</span>
@@ -696,9 +696,9 @@ export default function Horarios() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-[#071628]">
-              HORARIO <span className="text-[#E85D4E]">GENERAL DEL BOX</span>
+              HORARIO <span className="text-[#F43F5E]">GENERAL DEL BOX</span>
             </h2>
-            <div className="h-1.5 w-20 bg-[#E85D4E] rounded-full mx-auto mt-3 mb-4"></div>
+            <div className="h-1.5 w-20 bg-[#F43F5E] rounded-full mx-auto mt-3 mb-4"></div>
             <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto">
               Franjas de apertura del box para clases guiadas y sesiones de Open Box.
             </p>
@@ -706,8 +706,8 @@ export default function Horarios() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Tarjeta 1: Mañana */}
-            <div className="bg-[#071628] rounded-2xl p-8 border border-white/10 shadow-xl flex items-center gap-6 group hover:border-[#E85D4E]/40 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-[#E85D4E]/10 border border-[#E85D4E]/20 flex items-center justify-center text-[#E85D4E] flex-shrink-0 group-hover:scale-110 transition-transform">
+            <div className="bg-[#071628] rounded-2xl p-8 border border-white/10 shadow-xl flex items-center gap-6 group hover:border-[#F43F5E]/40 transition-all duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-[#F43F5E]/10 border border-[#F43F5E]/20 flex items-center justify-center text-[#F43F5E] flex-shrink-0 group-hover:scale-110 transition-transform">
                 <svg className="w-8 h-8 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M17 18a5 5 0 0 0-10 0" />
                   <line x1="12" y1="2" x2="12" y2="9" />
@@ -722,7 +722,7 @@ export default function Horarios() {
                 <span className="text-white/60 text-[11px] font-bold uppercase tracking-wider block">
                   Lunes a Viernes
                 </span>
-                <h3 className="text-2xl font-black text-[#E85D4E] tracking-tight uppercase">
+                <h3 className="text-2xl font-black text-[#F43F5E] tracking-tight uppercase">
                   MAÑANA
                 </h3>
                 <p className="text-white font-bold text-sm mt-1">
@@ -732,8 +732,8 @@ export default function Horarios() {
             </div>
 
             {/* Tarjeta 2: Tarde / Noche */}
-            <div className="bg-[#071628] rounded-2xl p-8 border border-white/10 shadow-xl flex items-center gap-6 group hover:border-[#E85D4E]/40 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-[#E85D4E]/10 border border-[#E85D4E]/20 flex items-center justify-center text-[#E85D4E] flex-shrink-0 group-hover:scale-110 transition-transform">
+            <div className="bg-[#071628] rounded-2xl p-8 border border-white/10 shadow-xl flex items-center gap-6 group hover:border-[#F43F5E]/40 transition-all duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-[#F43F5E]/10 border border-[#F43F5E]/20 flex items-center justify-center text-[#F43F5E] flex-shrink-0 group-hover:scale-110 transition-transform">
                 <svg className="w-8 h-8 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="5" />
                   <line x1="12" y1="1" x2="12" y2="3" />
@@ -750,7 +750,7 @@ export default function Horarios() {
                 <span className="text-white/60 text-[11px] font-bold uppercase tracking-wider block">
                   Lunes a Viernes
                 </span>
-                <h3 className="text-2xl font-black text-[#E85D4E] tracking-tight uppercase">
+                <h3 className="text-2xl font-black text-[#F43F5E] tracking-tight uppercase">
                   TARDE/NOCHE
                 </h3>
                 <p className="text-white font-bold text-sm mt-1">
@@ -760,8 +760,8 @@ export default function Horarios() {
             </div>
 
             {/* Tarjeta 3: Sábados */}
-            <div className="bg-[#071628] rounded-2xl p-8 border border-white/10 shadow-xl flex items-center gap-6 group hover:border-[#E85D4E]/40 transition-all duration-300">
-              <div className="w-16 h-16 rounded-2xl bg-[#E85D4E]/10 border border-[#E85D4E]/20 flex items-center justify-center text-[#E85D4E] flex-shrink-0 group-hover:scale-110 transition-transform">
+            <div className="bg-[#071628] rounded-2xl p-8 border border-white/10 shadow-xl flex items-center gap-6 group hover:border-[#F43F5E]/40 transition-all duration-300">
+              <div className="w-16 h-16 rounded-2xl bg-[#F43F5E]/10 border border-[#F43F5E]/20 flex items-center justify-center text-[#F43F5E] flex-shrink-0 group-hover:scale-110 transition-transform">
                 <svg className="w-8 h-8 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
@@ -773,7 +773,7 @@ export default function Horarios() {
                 <span className="text-white/60 text-[11px] font-bold uppercase tracking-wider block">
                   Fin de Semana
                 </span>
-                <h3 className="text-2xl font-black text-[#E85D4E] tracking-tight uppercase">
+                <h3 className="text-2xl font-black text-[#F43F5E] tracking-tight uppercase">
                   SÁBADOS
                 </h3>
                 <p className="text-white font-bold text-sm mt-1">
@@ -799,7 +799,7 @@ export default function Horarios() {
             <div className="lg:col-span-8 text-left">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">
                 TU PRÓXIMA CLASE <br />
-                <span className="text-[#E85D4E]">TE ESTÁ ESPERANDO.</span>
+                <span className="text-[#F43F5E]">TE ESTÁ ESPERANDO.</span>
               </h2>
               <p className="text-[#C2C0B6] text-sm sm:text-base mt-4 mb-8 max-w-lg leading-relaxed">
                 Escríbeme y reserva el horario que mejor se adapte a ti. Te asesoramos desde tu primera sesión.
@@ -810,7 +810,7 @@ export default function Horarios() {
                   href="https://wa.me/584147225979?text=Hola%20Mairover,%20quiero%20agendar%20mi%20próxima%20clase%20en%20el%20box"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-8 py-4 bg-[#E85D4E] hover:bg-[#D64A3E] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#E85D4E]/30 flex items-center gap-2 cursor-pointer"
+                  className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2 cursor-pointer"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
@@ -855,14 +855,14 @@ export default function Horarios() {
             <Link to="/" className="flex items-center gap-3 group">
               <div className="flex flex-col gap-[3px] justify-center h-8">
                 <svg width="24" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </div>
               <div className="flex flex-col leading-[1.1] justify-center text-left">
                 <span className="font-black text-lg tracking-wider text-white">
-                  MAIROVER<span className="text-[#E85D4E]">Fit</span>
+                  MAIROVER<span className="text-[#F43F5E]">Fit</span>
                 </span>
                 <span className="text-[7px] tracking-[0.25em] text-[#C2C0B6] uppercase font-bold">
                   COACH • NUTRICIÓN
@@ -877,17 +877,17 @@ export default function Horarios() {
 
             {/* Socials */}
             <div className="flex items-center gap-4 text-[#C2C0B6]">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#E85D4E] transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#E85D4E] transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                 </svg>
               </a>
-              <a href="https://wa.me/584147225979" target="_blank" rel="noreferrer" className="hover:text-[#E85D4E] transition-colors">
+              <a href="https://wa.me/584147225979" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
                 </svg>
@@ -911,8 +911,8 @@ export default function Horarios() {
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <span className={`w-3.5 h-3.5 rounded-full ${categories[modalClass.type]?.dot || 'bg-[#E85D4E]'}`}></span>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#E85D4E]">
+              <span className={`w-3.5 h-3.5 rounded-full ${categories[modalClass.type]?.dot || 'bg-[#F43F5E]'}`}></span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#F43F5E]">
                 Detalles del Turno
               </span>
             </div>
@@ -948,7 +948,7 @@ export default function Horarios() {
                 href={getWhatsAppLink(modalClass.name, modalClass.time, modalClass.day)}
                 target="_blank"
                 rel="noreferrer"
-                className="w-full py-3.5 px-4 bg-[#E85D4E] hover:bg-[#D64A3E] text-white rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all duration-200 shadow-md shadow-[#E85D4E]/20 flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3.5 px-4 bg-[#F43F5E] hover:bg-[#E11D48] text-white rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all duration-200 shadow-md shadow-[#F43F5E]/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Reservar Cupo vía WhatsApp</span>
                 <span>💬</span>

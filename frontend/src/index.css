@@ -2,31 +2,32 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand color scales */
-  --color-primary-50: #FFF5F0;
-  --color-primary-100: #FFE5DA;
-  --color-primary-200: #FFD1BB;
-  --color-primary-300: #FFC3A3;
-  --color-primary-400: #F5A584;
-  --color-primary-500: #E85D4E; /* PRIMARY CORAL */
-  --color-primary-600: #D64A3E;
-  --color-primary-700: #B83C33;
-  --color-primary-800: #8B2D27;
-  --color-primary-900: #5C1F1C;
+  /* Brand color scales: Blanco, Azul y Rosa */
+  --color-primary-50: #FFF1F2;
+  --color-primary-100: #FFE4E6;
+  --color-primary-200: #FECDD3;
+  --color-primary-300: #FDA4AF;
+  --color-primary-400: #FB7185;
+  --color-primary-500: #F43F5E; /* ROSA FIT DE LA MARCA */
+  --color-primary-600: #E11D48;
+  --color-primary-700: #BE123C;
+  --color-primary-800: #9F1239;
+  --color-primary-900: #881337;
 
-  --color-dark-50: #F8F6F3;
-  --color-dark-100: #E8E5E0;
-  --color-dark-200: #D1CCC5;
-  --color-dark-300: #A8A29A;
-  --color-dark-400: #807970;
-  --color-dark-500: #3D3D3A; /* DARK TEXT */
-  --color-dark-600: #2C2C2A;
-  --color-dark-700: #1A1A18;
-  --color-dark-800: #0F0F0D;
-  --color-dark-900: #000000;
+  /* Escala de Azul Marino / Azul Deportivo */
+  --color-dark-50: #F0F7FF;
+  --color-dark-100: #E0EFFF;
+  --color-dark-200: #BAE0FD;
+  --color-dark-300: #93C5FD;
+  --color-dark-400: #60A5FA;
+  --color-dark-500: #2563EB; /* AZUL VIBRANTE */
+  --color-dark-600: #1D4ED8;
+  --color-dark-700: #13335A; /* BORDES NAVY */
+  --color-dark-800: #0B2240; /* AZUL MARINO DE TARJETAS */
+  --color-dark-900: #071628; /* AZUL NOCHE PROFUNDO */
 
-  --color-accent-gray: #73726C;
-  --color-accent-gray-light: #C2C0B6;
+  --color-accent-gray: #94A3B8;
+  --color-accent-gray-light: #E2E8F0;
 
   /* Fonts */
   --font-sans: "Poppins", system-ui, -apple-system, sans-serif;

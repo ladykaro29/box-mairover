@@ -113,21 +113,21 @@ export default function Contacto() {
         ></div>
         
         {/* Decorative background blurs */}
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#E85D4E]/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-        <div className="absolute bottom-[-10%] left-[-10%] w-[350px] h-[350px] bg-[#E85D4E]/5 rounded-full blur-[90px] pointer-events-none"></div>
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#F43F5E]/10 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+        <div className="absolute bottom-[-10%] left-[-10%] w-[350px] h-[350px] bg-[#F43F5E]/5 rounded-full blur-[90px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left Content Column */}
             <div className="lg:col-span-5 flex flex-col justify-center text-left relative z-20">
-              <span className="text-[#E85D4E] font-bold text-xs uppercase tracking-[0.25em] mb-4 animate-[fadeIn_0.5s_ease-out]">
+              <span className="text-[#F43F5E] font-bold text-xs uppercase tracking-[0.25em] mb-4 animate-[fadeIn_0.5s_ease-out]">
                 CONTÁCTANOS
               </span>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.1] mb-6 uppercase text-white">
                 HABLEMOS DE <br />
-                <span className="text-[#E85D4E]">TU META</span>
+                <span className="text-[#F43F5E]">TU META</span>
               </h1>
               
               <p className="text-[#C2C0B6] text-sm md:text-base mb-10 max-w-xl leading-relaxed">
@@ -140,7 +140,7 @@ export default function Contacto() {
                   href="https://wa.me/584147225979"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-8 py-4 bg-[#E85D4E] hover:bg-[#D64A3E] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#E85D4E]/30 flex items-center gap-2"
+                  className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
@@ -165,7 +165,7 @@ export default function Contacto() {
               {/* Lower Hero Features */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
@@ -176,7 +176,7 @@ export default function Contacto() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
@@ -187,7 +187,7 @@ export default function Contacto() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -217,14 +217,14 @@ export default function Contacto() {
             {/* Right Column (Conéctate Conmigo sidebar card) */}
             <div className="lg:col-span-4 flex items-center relative z-20">
               <div className="w-full bg-[#0B2240]/60 border border-white/10 rounded-2xl p-6 text-left shadow-2xl backdrop-blur-md">
-                <span className="text-[#E85D4E] font-bold text-[10px] uppercase tracking-[0.2em] block mb-6">
+                <span className="text-[#F43F5E] font-bold text-[10px] uppercase tracking-[0.2em] block mb-6">
                   CONÉCTATE CONMIGO
                 </span>
                 
                 <div className="space-y-6">
                   {/* Whatsapp */}
                   <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                       <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                         <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
                       </svg>
@@ -237,7 +237,7 @@ export default function Contacto() {
 
                   {/* Instagram */}
                   <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -252,7 +252,7 @@ export default function Contacto() {
 
                   {/* Correo */}
                   <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                         <polyline points="22,6 12,13 2,6"></polyline>
@@ -266,7 +266,7 @@ export default function Contacto() {
 
                   {/* Atención */}
                   <div className="flex gap-4 pt-4 border-t border-white/10 items-start">
-                    <div className="w-10 h-10 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0 mt-1">
+                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0 mt-1">
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
@@ -276,10 +276,10 @@ export default function Contacto() {
                       <h4 className="font-extrabold text-[10px] uppercase tracking-wider text-[#C2C0B6]">ATENCIÓN</h4>
                       <p className="text-[10px] font-semibold text-white mt-1 leading-relaxed">
                         Lunes a viernes <br />
-                        <span className="text-[#E85D4E] font-bold">6:00 a. m. - 11:30 a. m.</span> <br />
-                        <span className="text-[#E85D4E] font-bold">3:00 p. m. - 8:00 p. m.</span> <br />
+                        <span className="text-[#F43F5E] font-bold">6:00 a. m. - 11:30 a. m.</span> <br />
+                        <span className="text-[#F43F5E] font-bold">3:00 p. m. - 8:00 p. m.</span> <br />
                         Sábados <br />
-                        <span className="text-[#E85D4E] font-bold">8:00 a. m. - 10:00 a. m.</span>
+                        <span className="text-[#F43F5E] font-bold">8:00 a. m. - 10:00 a. m.</span>
                       </p>
                     </div>
                   </div>
@@ -300,16 +300,16 @@ export default function Contacto() {
             <div className="lg:col-span-5 text-left lg:pt-6">
               <h2 className="text-3xl md:text-4xl font-black text-[#071628] tracking-tight uppercase leading-tight">
                 CUÉNTAME CÓMO <br />
-                <span className="text-[#E85D4E]">PUEDO AYUDARTE</span>
+                <span className="text-[#F43F5E]">PUEDO AYUDARTE</span>
               </h2>
               
               {/* Coral wavy SVGs */}
               <div className="flex flex-col gap-1 my-6">
                 <svg width="40" height="8" viewBox="0 0 40 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 4C6 4 7 2 11 2C15 2 16 4 20 4C24 4 25 2 29 2C33 2 34 4 38 4" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 4C6 4 7 2 11 2C15 2 16 4 20 4C24 4 25 2 29 2C33 2 34 4 38 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
                 <svg width="40" height="8" viewBox="0 0 40 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 4C6 4 7 2 11 2C15 2 16 4 20 4C24 4 25 2 29 2C33 2 34 4 38 4" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 4C6 4 7 2 11 2C15 2 16 4 20 4C24 4 25 2 29 2C33 2 34 4 38 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </div>
 
@@ -350,7 +350,7 @@ export default function Contacto() {
                       placeholder="Nombre"
                       {...register('nombre', { required: 'El nombre es obligatorio' })}
                       className={`w-full bg-[#F9F9FA] border ${
-                        errors.nombre ? 'border-red-500' : 'border-dark-100 focus:border-[#E85D4E]'
+                        errors.nombre ? 'border-red-500' : 'border-dark-100 focus:border-[#F43F5E]'
                       } rounded-xl p-4 text-xs focus:outline-none transition-all duration-200`}
                     />
                     {errors.nombre && <span className="text-[10px] text-red-500 mt-1 pl-2">⚠ {errors.nombre.message}</span>}
@@ -363,7 +363,7 @@ export default function Contacto() {
                       placeholder="Teléfono"
                       {...register('telefono', { required: 'El teléfono es obligatorio' })}
                       className={`w-full bg-[#F9F9FA] border ${
-                        errors.telefono ? 'border-red-500' : 'border-dark-100 focus:border-[#E85D4E]'
+                        errors.telefono ? 'border-red-500' : 'border-dark-100 focus:border-[#F43F5E]'
                       } rounded-xl p-4 text-xs focus:outline-none transition-all duration-200`}
                     />
                     {errors.telefono && <span className="text-[10px] text-red-500 mt-1 pl-2">⚠ {errors.telefono.message}</span>}
@@ -381,7 +381,7 @@ export default function Contacto() {
                         pattern: { value: /^\S+@\S+$/i, message: 'Dirección de correo inválida' },
                       })}
                       className={`w-full bg-[#F9F9FA] border ${
-                        errors.email ? 'border-red-500' : 'border-dark-100 focus:border-[#E85D4E]'
+                        errors.email ? 'border-red-500' : 'border-dark-100 focus:border-[#F43F5E]'
                       } rounded-xl p-4 text-xs focus:outline-none transition-all duration-200`}
                     />
                     {errors.email && <span className="text-[10px] text-red-500 mt-1 pl-2">⚠ {errors.email.message}</span>}
@@ -393,7 +393,7 @@ export default function Contacto() {
                       defaultValue=""
                       {...register('servicio', { required: 'Selecciona un servicio' })}
                       className={`w-full bg-[#F9F9FA] border ${
-                        errors.servicio ? 'border-red-500' : 'border-dark-100 focus:border-[#E85D4E]'
+                        errors.servicio ? 'border-red-500' : 'border-dark-100 focus:border-[#F43F5E]'
                       } rounded-xl p-4 text-xs focus:outline-none transition-all duration-200 text-[#71717A]`}
                     >
                       <option value="" disabled>Servicio de interés</option>
@@ -414,7 +414,7 @@ export default function Contacto() {
                     defaultValue=""
                     {...register('objetivo', { required: 'Selecciona tu objetivo' })}
                     className={`w-full bg-[#F9F9FA] border ${
-                      errors.objetivo ? 'border-red-500' : 'border-dark-100 focus:border-[#E85D4E]'
+                      errors.objetivo ? 'border-red-500' : 'border-dark-100 focus:border-[#F43F5E]'
                     } rounded-xl p-4 text-xs focus:outline-none transition-all duration-200 text-[#71717A]`}
                   >
                     <option value="" disabled>Objetivo</option>
@@ -432,7 +432,7 @@ export default function Contacto() {
                     rows="4"
                     placeholder="Mensaje"
                     {...register('mensaje')}
-                    className="w-full bg-[#F9F9FA] border border-dark-100 focus:border-[#E85D4E] rounded-xl p-4 text-xs focus:outline-none transition-all duration-200 resize-none"
+                    className="w-full bg-[#F9F9FA] border border-dark-100 focus:border-[#F43F5E] rounded-xl p-4 text-xs focus:outline-none transition-all duration-200 resize-none"
                   />
                 </div>
 
@@ -440,7 +440,7 @@ export default function Contacto() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#E85D4E] hover:bg-[#D64A3E] text-white py-4 rounded-xl font-black text-xs transition-all duration-300 shadow-lg shadow-[#E85D4E]/10 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed relative flex items-center justify-center tracking-widest min-h-[50px]"
+                  className="w-full bg-[#F43F5E] hover:bg-[#E11D48] text-white py-4 rounded-xl font-black text-xs transition-all duration-300 shadow-lg shadow-[#F43F5E]/10 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed relative flex items-center justify-center tracking-widest min-h-[50px]"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center gap-2">
@@ -470,19 +470,19 @@ export default function Contacto() {
           className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-10 pointer-events-none" 
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=1600&q=80')" }}
         ></div>
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#E85D4E]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#F43F5E]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <h2 className="text-3xl font-black tracking-tight uppercase mb-16 text-center">
-            SERVICIOS <span className="text-[#E85D4E]">POR LOS QUE PUEDES ESCRIBIR</span>
+            SERVICIOS <span className="text-[#F43F5E]">POR LOS QUE PUEDES ESCRIBIR</span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
             {services.map((serv, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 hover:border-[#E85D4E]/30 rounded-xl p-5 flex flex-col justify-between text-center hover:-translate-y-1 transition-all duration-300">
+              <div key={idx} className="bg-white/5 border border-white/10 hover:border-[#F43F5E]/30 rounded-xl p-5 flex flex-col justify-between text-center hover:-translate-y-1 transition-all duration-300">
                 <div>
-                  <div className="w-12 h-12 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] mb-5 mx-auto">
+                  <div className="w-12 h-12 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] mb-5 mx-auto">
                     {serv.icon}
                   </div>
                   
@@ -504,14 +504,14 @@ export default function Contacto() {
       <section className="bg-white py-20 text-dark-800 relative z-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-black text-[#071628] tracking-tight uppercase mb-12">
-            HORARIOS <span className="text-[#E85D4E]">DEL BOX</span>
+            HORARIOS <span className="text-[#F43F5E]">DEL BOX</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             
             {/* Mañana */}
             <div className="bg-[#F9F9FA] rounded-2xl border border-dark-100 p-8 flex items-center gap-5 text-left shadow-sm hover:shadow-md transition-all">
-              <div className="w-12 h-12 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                   <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -524,14 +524,14 @@ export default function Contacto() {
               </div>
               <div>
                 <h4 className="font-extrabold text-xs uppercase tracking-wider text-dark-900 leading-tight">Lunes a Viernes</h4>
-                <span className="text-[9px] font-black text-[#E85D4E] uppercase tracking-widest block mt-0.5 mb-1.5">Mañana</span>
+                <span className="text-[9px] font-black text-[#F43F5E] uppercase tracking-widest block mt-0.5 mb-1.5">Mañana</span>
                 <p className="text-xs font-semibold text-dark-700">6:00 a. m. – 11:30 a. m.</p>
               </div>
             </div>
 
             {/* Tarde */}
             <div className="bg-[#F9F9FA] rounded-2xl border border-dark-100 p-8 flex items-center gap-5 text-left shadow-sm hover:shadow-md transition-all">
-              <div className="w-12 h-12 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="5"></circle>
                   <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -546,14 +546,14 @@ export default function Contacto() {
               </div>
               <div>
                 <h4 className="font-extrabold text-xs uppercase tracking-wider text-dark-900 leading-tight">Lunes a Viernes</h4>
-                <span className="text-[9px] font-black text-[#E85D4E] uppercase tracking-widest block mt-0.5 mb-1.5">Tarde - Noche</span>
+                <span className="text-[9px] font-black text-[#F43F5E] uppercase tracking-widest block mt-0.5 mb-1.5">Tarde - Noche</span>
                 <p className="text-xs font-semibold text-dark-700">3:00 p. m. – 8:00 p. m.</p>
               </div>
             </div>
 
             {/* Sábados */}
             <div className="bg-[#F9F9FA] rounded-2xl border border-dark-100 p-8 flex items-center gap-5 text-left shadow-sm hover:shadow-md transition-all">
-              <div className="w-12 h-12 rounded-full bg-[#E85D4E]/10 flex items-center justify-center text-[#E85D4E] flex-shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="10"></circle>
                   <polyline points="12 6 12 12 16 14"></polyline>
@@ -561,7 +561,7 @@ export default function Contacto() {
               </div>
               <div>
                 <h4 className="font-extrabold text-xs uppercase tracking-wider text-dark-900 leading-tight">Sábados</h4>
-                <span className="text-[9px] font-black text-[#E85D4E] uppercase tracking-widest block mt-0.5 mb-1.5">Sábados</span>
+                <span className="text-[9px] font-black text-[#F43F5E] uppercase tracking-widest block mt-0.5 mb-1.5">Sábados</span>
                 <p className="text-xs font-semibold text-dark-700">8:00 a. m. – 10:00 a. m.</p>
               </div>
             </div>
@@ -579,19 +579,19 @@ export default function Contacto() {
             <path d="M0,60 Q30,40 60,60 T100,60 L100,100 L0,100 Z" fill="currentColor" opacity="0.2" />
           </svg>
         </div>
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#E85D4E]/10 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#F43F5E]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column Content */}
             <div className="lg:col-span-7 text-left">
-              <span className="text-[#E85D4E] font-bold text-xs uppercase tracking-widest block mb-3">
+              <span className="text-[#F43F5E] font-bold text-xs uppercase tracking-widest block mb-3">
                 ESTOY LISTA PARA AYUDARTE
               </span>
               <h2 className="text-3xl sm:text-4.5xl font-black tracking-tight leading-[1.15] mb-6 uppercase">
                 TU PROCESO EMPIEZA <br />
-                <span className="text-[#E85D4E]">CON UN MENSAJE.</span>
+                <span className="text-[#F43F5E]">CON UN MENSAJE.</span>
               </h2>
               <p className="text-[#C2C0B6] text-sm md:text-base mb-10 max-w-xl leading-relaxed">
                 Escríbeme, agenda tu evaluación o solicita información sobre el plan que mejor se adapta a ti.
@@ -603,7 +603,7 @@ export default function Contacto() {
                   href="https://wa.me/584147225979"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-8 py-4 bg-[#E85D4E] hover:bg-[#D64A3E] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#E85D4E]/30 flex items-center gap-2"
+                  className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"
                 >
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
@@ -651,14 +651,14 @@ export default function Contacto() {
             <a href="/" className="flex items-center gap-3 group">
               <div className="flex flex-col gap-[3px] justify-center h-8">
                 <svg width="24" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#E85D4E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+                  <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
                 </svg>
               </div>
               <div className="flex flex-col leading-[1.1] justify-center text-left">
                 <span className="font-black text-lg tracking-wider text-white">
-                  MAIROVER<span className="text-[#E85D4E]">Fit</span>
+                  MAIROVER<span className="text-[#F43F5E]">Fit</span>
                 </span>
                 <span className="text-[7px] tracking-[0.25em] text-[#C2C0B6] uppercase font-bold">
                   COACH • NUTRICIÓN
@@ -673,17 +673,17 @@ export default function Contacto() {
 
             {/* Socials */}
             <div className="flex items-center gap-4 text-[#C2C0B6]">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#E85D4E] transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#E85D4E] transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                 </svg>
               </a>
-              <a href="https://wa.me/584147225979" target="_blank" rel="noreferrer" className="hover:text-[#E85D4E] transition-colors">
+              <a href="https://wa.me/584147225979" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
                 </svg>

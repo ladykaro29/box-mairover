@@ -39,10 +39,19 @@ export default function AdminLayout() {
         } md:translate-x-0 transition-transform duration-200 ease-in-out z-50 flex flex-col`}
       >
         {/* Logo Area */}
-        <div className="h-20 flex items-center justify-center border-b border-dark-700/50">
-          <div className="text-2xl font-bold tracking-tighter">
-            MAIROVER<span className="text-primary-500">FIT</span>
-            <span className="ml-2 text-xs font-medium px-2 py-1 bg-dark-700 rounded text-accent-gray-light">ADMIN</span>
+        <div className="h-20 flex items-center justify-center border-b border-dark-700/60 px-4">
+          <div className="flex items-center gap-2.5">
+            <svg width="24" height="18" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+              <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+            <span className="text-xl font-black tracking-tight text-white">
+              MAIROVER<span className="text-primary-500">FIT</span>
+            </span>
+            <span className="ml-1 text-[10px] font-extrabold px-2 py-0.5 bg-primary-500/20 text-primary-400 border border-primary-500/30 rounded-full uppercase tracking-wider">
+              ADMIN
+            </span>
           </div>
         </div>
 
@@ -55,10 +64,10 @@ export default function AdminLayout() {
               end={item.exact}
               onClick={() => setIsSidebarOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                   isActive 
-                    ? 'bg-primary-500/10 text-primary-500 border border-primary-500/20' 
-                    : 'text-dark-300 hover:text-white hover:bg-dark-700/50'
+                    ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/25' 
+                    : 'text-blue-100/70 hover:text-white hover:bg-dark-700/60'
                 }`
               }
             >

@@ -35,13 +35,13 @@ class GlobalErrorBoundary extends Component {
             maxWidth: '600px',
             width: '100%',
             backgroundColor: '#0B2240',
-            border: '1px solid #E85D4E',
+            border: '1px solid #F43F5E',
             borderRadius: '16px',
             padding: '32px',
             textAlign: 'center',
             boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
           }}>
-            <h1 style={{ color: '#E85D4E', fontSize: '24px', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
+            <h1 style={{ color: '#F43F5E', fontSize: '24px', margin: '0 0 12px 0', textTransform: 'uppercase' }}>
               MairoverFit
             </h1>
             <p style={{ color: '#C2C0B6', fontSize: '14px', marginBottom: '20px' }}>
@@ -62,7 +62,7 @@ class GlobalErrorBoundary extends Component {
             <button
               onClick={() => window.location.reload()}
               style={{
-                backgroundColor: '#E85D4E',
+                backgroundColor: '#F43F5E',
                 color: '#fff',
                 border: 'none',
                 padding: '12px 28px',

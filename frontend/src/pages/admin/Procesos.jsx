@@ -111,8 +111,8 @@ export default function Procesos() {
       {
         label: 'Peso (kg)',
         data: sortedEvals.length > 0 ? sortedEvals.map(e => parseFloat(e.peso)) : [0],
-        borderColor: '#E85D4E',
-        backgroundColor: 'rgba(232, 93, 78, 0.1)',
+        borderColor: '#F43F5E',
+        backgroundColor: 'rgba(244, 63, 94, 0.1)',
         fill: true,
         tension: 0.4,
       },
