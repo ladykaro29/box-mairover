@@ -444,7 +444,7 @@ export default function Horarios() {
                 </a>
 
                 <a
-                  href="https://wa.me/584147225979?text=Hola%20Mairover,%20quisiera%20consultar%20sobre%20los%20horarios%20de%20entrenamiento"
+                  href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly,%20quisiera%20consultar%20sobre%20los%20horarios%20de%20entrenamiento"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 border-2 border-white/20 hover:border-white/40 hover:bg-white/5 active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 flex items-center gap-2 cursor-pointer"
@@ -802,12 +802,12 @@ export default function Horarios() {
                 <span className="text-[#F43F5E]">TE ESTÁ ESPERANDO.</span>
               </h2>
               <p className="text-[#C2C0B6] text-sm sm:text-base mt-4 mb-8 max-w-lg leading-relaxed">
-                Escríbeme y reserva el horario que mejor se adapte a ti. Te asesoramos desde tu primera sesión.
+                Escríbenos y reserva el horario que mejor se adapte a ti en El Vigía. Te asesoramos desde tu primera sesión.
               </p>
 
               <div className="flex flex-wrap items-center gap-4">
                 <a
-                  href="https://wa.me/584147225979?text=Hola%20Mairover,%20quiero%20agendar%20mi%20próxima%20clase%20en%20el%20box"
+                  href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly,%20quiero%20agendar%20mi%20próxima%20clase%20en%20el%20box"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2 cursor-pointer"

@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const links = [
     { label: 'INICIO', href: '/' },
-    { label: 'SOBRE MÍ', href: '/sobre-mi' },
+    { label: 'COACHES', href: '/sobre-mi' },
     { label: 'SERVICIOS', href: '/servicios' },
     { label: 'PLANES', href: '/planes' },
     { label: 'HORARIOS', href: '/horarios' },
@@ -80,7 +80,7 @@ export default function Navbar() {
             <div className="flex items-center gap-3 text-[#C2C0B6]">
               {/* Instagram */}
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/mairoverfitbox/" 
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="Instagram"
@@ -104,7 +104,7 @@ export default function Navbar() {
               </a>
               {/* WhatsApp */}
               <a 
-                href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
+                href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="WhatsApp"
@@ -190,7 +190,7 @@ export default function Navbar() {
             
             {/* Social Icons inside Mobile Menu */}
             <div className="flex items-center justify-around text-[#C2C0B6] py-2 text-xs font-semibold">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors p-2">
+              <a href="https://www.instagram.com/mairoverfitbox/" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors p-2">
                 Instagram
               </a>
               <span className="text-[#13335A]">•</span>
@@ -198,7 +198,7 @@ export default function Navbar() {
                 Facebook
               </a>
               <span className="text-[#13335A]">•</span>
-              <a href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors p-2">
+              <a href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors p-2">
                 WhatsApp
               </a>
             </div>

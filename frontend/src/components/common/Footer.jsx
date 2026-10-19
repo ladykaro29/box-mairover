@@ -31,16 +31,16 @@ export default function Footer() {
             </Link>
 
             <p className="text-xs text-blue-100/75 leading-relaxed">
-              El centro de entrenamiento funcional y halterofilia donde construyes disciplina, fuerza y hábitos duraderos. Coaching profesional y comunidad de alto nivel.
+              El box de CrossFit, entrenamiento funcional y halterofilia donde construyes disciplina, fuerza y hábitos duraderos. Coaching profesional CF-L1 & CF-L2 y comunidad de alto nivel.
             </p>
 
             {/* Redes Sociales con efecto Material */}
             <div className="flex items-center gap-3 pt-2">
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/mairoverfitbox/" 
                 target="_blank" 
                 rel="noreferrer" 
-                aria-label="Instagram MairoverFit"
+                aria-label="Instagram MairoverFit Box"
                 className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#F43F5E] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ export default function Footer() {
               </a>
 
               <a 
-                href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
+                href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="WhatsApp MairoverFit"
@@ -94,7 +94,7 @@ export default function Footer() {
                 <Link to="/horarios" className="hover:text-white transition-colors duration-150">Horarios de Clases</Link>
               </li>
               <li>
-                <Link to="/sobre-mi" className="hover:text-white transition-colors duration-150">Sobre Mauroly Mercado</Link>
+                <Link to="/sobre-mi" className="hover:text-white transition-colors duration-150">Sobre Nuestras Coaches (CF-L1 & L2)</Link>
               </li>
               <li>
                 <Link to="/comunidad" className="hover:text-white transition-colors duration-150">Comunidad & Atletas</Link>
@@ -189,10 +189,15 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="text-[11px] text-blue-200/70 pt-1">
-              <p className="font-semibold text-white">Horario del Box:</p>
-              <p>Lun - Vie: 6:00 AM - 9:00 PM</p>
-              <p>Sábados: 8:00 AM - 1:00 PM</p>
+            <div className="text-[11px] text-blue-200/70 pt-1 space-y-1">
+              <p className="font-semibold text-white flex items-center gap-1.5">
+                <span>📍</span> El Vigía, Estado Mérida, Venezuela
+              </p>
+              <div className="pt-1">
+                <p className="font-semibold text-white">Horario del Box:</p>
+                <p>Lun - Vie: 6:00 AM - 9:00 PM</p>
+                <p>Sábados: 8:00 AM - 1:00 PM</p>
+              </div>
             </div>
           </div>
 

@@ -4,7 +4,7 @@ export default function Privacidad() {
   const points = [
     {
       title: '1. Responsable del Tratamiento de Datos',
-      text: `El responsable de la recopilación, almacenamiento y protección de tus datos personales es MairoverFit, liderado por la entrenadora Mauroly Mercado, con domicilio operativo y de atención a atletas a través de los canales oficiales https://mairoverfitbox.fitness y correo de contacto: privacidad@mairoverfitbox.fitness.`
+      text: `El responsable de la recopilación, almacenamiento y protección de tus datos personales es MairoverFit Box (Mairover Mercado y Mauroly Mercado) — El Vigía, Estado Mérida, Venezuela, con domicilio operativo y de atención a atletas a través de los canales oficiales https://mairoverfitbox.fitness y correo de contacto: privacidad@mairoverfitbox.fitness.`
     },
     {
       title: '2. Información que Recopilamos',

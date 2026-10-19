@@ -137,7 +137,7 @@ export default function Contacto() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4 mb-12">
                 <a
-                  href="https://wa.me/584147225979"
+                  href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20evaluaci%C3%B3n"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"
@@ -236,8 +236,13 @@ export default function Contacto() {
                   </div>
 
                   {/* Instagram */}
-                  <div className="flex gap-4 items-center">
-                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0">
+                  <a
+                    href="https://www.instagram.com/mairoverfitbox/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex gap-4 items-center group/ig"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 group-hover/ig:bg-[#F43F5E] flex items-center justify-center text-[#F43F5E] group-hover/ig:text-white flex-shrink-0 transition-colors">
                       <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -246,9 +251,9 @@ export default function Contacto() {
                     </div>
                     <div>
                       <h4 className="font-extrabold text-[10px] uppercase tracking-wider text-[#C2C0B6]">INSTAGRAM</h4>
-                      <p className="text-sm font-black text-white mt-0.5">@mairoverfit</p>
+                      <p className="text-sm font-black text-white mt-0.5 group-hover/ig:text-primary-500 transition-colors">@mairoverfitbox</p>
                     </div>
-                  </div>
+                  </a>
 
                   {/* Correo */}
                   <div className="flex gap-4 items-center">
@@ -261,6 +266,17 @@ export default function Contacto() {
                     <div>
                       <h4 className="font-extrabold text-[10px] uppercase tracking-wider text-[#C2C0B6]">CORREO</h4>
                       <p className="text-xs font-black text-white mt-0.5">mercado.mairover@gmail.com</p>
+                    </div>
+                  </div>
+
+                  {/* Ubicación */}
+                  <div className="flex gap-4 items-center">
+                    <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] flex-shrink-0 text-base font-bold">
+                      📍
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-[10px] uppercase tracking-wider text-[#C2C0B6]">UBICACIÓN</h4>
+                      <p className="text-xs font-black text-white mt-0.5">El Vigía, Estado Mérida, Venezuela</p>
                     </div>
                   </div>
 
@@ -594,13 +610,13 @@ export default function Contacto() {
                 <span className="text-[#F43F5E]">CON UN MENSAJE.</span>
               </h2>
               <p className="text-[#C2C0B6] text-sm md:text-base mb-10 max-w-xl leading-relaxed">
-                Escríbeme, agenda tu evaluación o solicita información sobre el plan que mejor se adapta a ti.
+                Escríbenos, agenda tu evaluación o solicita información sobre el plan que mejor se adapta a ti en El Vigía.
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/584147225979"
+                  href="https://wa.me/584147225979?text=Hola%20Coaches%20Mairover%20y%20Mauroly%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20y%20agendar%20una%20evaluaci%C3%B3n"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"
