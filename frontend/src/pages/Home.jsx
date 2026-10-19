@@ -385,7 +385,7 @@ export default function Home() {
                 </a>
                 
                 <a
-                  href="https://wa.me/584121234567"
+                  href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20quiero%20empezar%20a%20entrenar%20en%20MairoverFit"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 border-2 border-white/20 hover:border-white/40 active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 flex items-center gap-2"

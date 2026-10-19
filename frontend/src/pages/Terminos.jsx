@@ -45,7 +45,7 @@ export default function Terminos() {
       id: 'contacto',
       title: '6. Modificaciones y Contacto Legal',
       content: `MairoverFit se reserva el derecho de actualizar los presentes Términos y Condiciones para reflejar mejoras operativas o exigencias legales. Cualquier cambio sustancial será notificado oportunamente a los atletas registrados.
-      Para consultas legales, sugerencias o reclamos: contacto@mairoverfitbox.fitness o WhatsApp +58 412 123 4567.`
+      Para consultas legales, sugerencias o reclamos: contacto@mairoverfitbox.fitness o WhatsApp +58 414-7225979.`
     }
   ];
 

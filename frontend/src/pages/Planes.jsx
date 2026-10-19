@@ -144,7 +144,7 @@ export default function Planes() {
                 </a>
                 
                 <a
-                  href="https://wa.me/584121234567"
+                  href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20quiero%20inscribirme%20y%20consultar%20los%20planes%20del%20box"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 border-2 border-white/20 hover:border-white/40 active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 flex items-center gap-2"
@@ -411,7 +411,7 @@ export default function Planes() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/584121234567"
+                  href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20no%20s%C3%A9%20cu%C3%A1l%20plan%20elegir%20y%20me%20gustar%C3%ADa%20tu%20asesor%C3%ADa"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"

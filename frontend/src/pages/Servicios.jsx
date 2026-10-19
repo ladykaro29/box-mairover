@@ -486,7 +486,7 @@ export default function Servicios() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/584121234567"
+                  href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20quisiera%20asesor%C3%ADa%20sobre%20los%20servicios%20de%20entrenamiento"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"

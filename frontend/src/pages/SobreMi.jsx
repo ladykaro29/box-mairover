@@ -345,7 +345,7 @@ export default function SobreMi() {
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4">
                 <a
-                  href="https://wa.me/584121234567"
+                  href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20le%C3%AD%20tu%20historia%20y%20quiero%20agendar%20mi%20evaluaci%C3%B3n%20gratuita"
                   target="_blank"
                   rel="noreferrer"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"

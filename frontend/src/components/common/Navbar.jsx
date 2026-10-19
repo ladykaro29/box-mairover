@@ -104,7 +104,7 @@ export default function Navbar() {
               </a>
               {/* WhatsApp */}
               <a 
-                href="https://wa.me/584121234567" 
+                href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="WhatsApp"
@@ -198,7 +198,7 @@ export default function Navbar() {
                 Facebook
               </a>
               <span className="text-[#13335A]">•</span>
-              <a href="https://wa.me/584121234567" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors p-2">
+              <a href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly%2C%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors p-2">
                 WhatsApp
               </a>
             </div>
