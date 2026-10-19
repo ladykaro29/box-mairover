@@ -11,6 +11,12 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import MiCuenta from './pages/MiCuenta';
 
+import Terminos from './pages/Terminos';
+import Privacidad from './pages/Privacidad';
+import DescargoSalud from './pages/DescargoSalud';
+import CookieConsent from './components/common/CookieConsent';
+import Footer from './components/common/Footer';
+
 // Auth
 import AuthProvider from './context/AuthProvider';
 import ProtectedRoute from './components/common/ProtectedRoute';
@@ -27,11 +33,13 @@ import Contactos from './pages/admin/Contactos';
 import './App.css';
 
 const PublicLayout = () => (
-  <div className="flex flex-col min-h-screen bg-white text-dark-800">
+  <div className="flex flex-col min-h-screen bg-dark-900 text-white">
     <Navbar />
-    <div className="pt-20 flex-grow">
+    <main className="pt-20 flex-grow">
       <Outlet />
-    </div>
+    </main>
+    <Footer />
+    <CookieConsent />
   </div>
 );
 
@@ -51,6 +59,9 @@ function App() {
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/terminos" element={<Terminos />} />
+            <Route path="/privacidad" element={<Privacidad />} />
+            <Route path="/descargo-salud" element={<DescargoSalud />} />
 
             {/* Área privada del cliente */}
             <Route element={<ProtectedRoute />}>

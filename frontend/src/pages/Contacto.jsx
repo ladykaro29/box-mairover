@@ -642,58 +642,6 @@ export default function Contacto() {
         </div>
       </section>
 
-      {/* ================= PREMIUM FOOTER ================= */}
-      <footer className="bg-[#071628] py-12 border-t border-[#0B2240]/40 text-[#C2C0B6]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            
-            {/* Logo */}
-            <a href="/" className="flex items-center gap-3 group">
-              <div className="flex flex-col gap-[3px] justify-center h-8">
-                <svg width="24" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                </svg>
-              </div>
-              <div className="flex flex-col leading-[1.1] justify-center text-left">
-                <span className="font-black text-lg tracking-wider text-white">
-                  MAIROVER<span className="text-[#F43F5E]">Fit</span>
-                </span>
-                <span className="text-[7px] tracking-[0.25em] text-[#C2C0B6] uppercase font-bold">
-                  COACH • NUTRICIÓN
-                </span>
-              </div>
-            </a>
-
-            {/* Copyright */}
-            <div className="text-xs text-center font-medium">
-              © {new Date().getFullYear()} MairoverFit. Todos los derechos reservados.
-            </div>
-
-            {/* Socials */}
-            <div className="flex items-center gap-4 text-[#C2C0B6]">
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                </svg>
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-                </svg>
-              </a>
-              <a href="https://wa.me/584147225979" target="_blank" rel="noreferrer" className="hover:text-[#F43F5E] transition-colors">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
-                </svg>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </footer>
-
     </div>
   );
 }

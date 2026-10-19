@@ -12,10 +12,14 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Confiar en el proxy inverso (EasyPanel / Traefik / SSL) para detección precisa de IP
+app.set('trust proxy', 1);
+
 // Security and headers
 app.use(
   helmet({
     contentSecurityPolicy: false, // Turn off CSP for easy local resources loading
+    crossOriginEmbedderPolicy: false,
   })
 );
 

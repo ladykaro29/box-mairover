@@ -112,19 +112,36 @@ export default function Register() {
             )}
           </div>
 
+          {/* Legal Acceptance Disclaimer */}
+          <div className="bg-[#071628]/80 border border-[#13335A] rounded-xl p-3.5 text-[11px] text-blue-200/70 leading-relaxed">
+            Al registrarte en MairoverFit, confirmas que eres mayor de edad o cuentas con autorización, y que has leído y aceptas nuestros{' '}
+            <Link to="/terminos" target="_blank" className="text-[#F43F5E] hover:underline font-semibold">
+              Términos y Condiciones
+            </Link>
+            , nuestra{' '}
+            <Link to="/privacidad" target="_blank" className="text-[#F43F5E] hover:underline font-semibold">
+              Política de Privacidad
+            </Link>{' '}
+            y el{' '}
+            <Link to="/descargo-salud" target="_blank" className="text-[#F43F5E] hover:underline font-semibold">
+              Descargo de Salud
+            </Link>
+            .
+          </div>
+
           {/* Submit Button */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary-500 text-white py-3.5 rounded-lg font-semibold hover:bg-primary-600 active:bg-primary-700 transition-all duration-300 shadow-lg shadow-primary-500/10 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 active:scale-98 text-white py-3.5 rounded-xl font-bold tracking-wider hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 uppercase text-xs"
           >
             {isSubmitting ? (
               <>
                 <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                <span>Creando cuenta...</span>
+                <span>Creando cuenta segura...</span>
               </>
             ) : (
-              <span>REGISTRARSE</span>
+              <span>CREAR CUENTA</span>
             )}
           </button>
         </form>

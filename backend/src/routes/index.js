@@ -7,6 +7,8 @@ const clienteRoutes = require('./clienteRoutes');
 const contactoController = require('../controllers/contactoController');
 const publicController = require('../controllers/publicController');
 
+const { authLimiter } = require('../middleware/rateLimiter');
+
 // Basic verification endpoint
 router.get('/health', (req, res) => {
   res.json({
@@ -17,7 +19,7 @@ router.get('/health', (req, res) => {
 });
 
 // Public endpoints
-router.post('/contactos', contactoController.createContacto);
+router.post('/contactos', authLimiter, contactoController.createContacto);
 router.get('/horarios', publicController.getPublicHorarios);
 
 // Mount auth routes (públicas + sesión)
