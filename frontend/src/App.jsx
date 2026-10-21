@@ -59,11 +59,13 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Public Routes */}
+          {/* Página de botones / Selección de Modalidades (SIN navegación ni pie de página) */}
+          <Route path="/modalidad" element={<Modalidad />} />
+          <Route path="/empezar" element={<Modalidad />} />
+
+          {/* Public Routes con Navbar y Footer */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/modalidad" element={<Modalidad />} />
-            <Route path="/empezar" element={<Modalidad />} />
             <Route path="/online" element={<Online />} />
             <Route path="/online/formulario/personalizado" element={<FormularioPersonalizado />} />
             <Route path="/online/formulario/nutricional" element={<FormularioNutricional />} />
