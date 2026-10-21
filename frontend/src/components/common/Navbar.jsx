@@ -14,6 +14,8 @@ export default function Navbar() {
 
   const links = [
     { label: 'INICIO', href: '/' },
+    { label: 'MODALIDAD', href: '/modalidad' },
+    { label: 'ONLINE', href: '/online' },
     { label: 'COACHES', href: '/sobre-mi' },
     { label: 'SERVICIOS', href: '/servicios' },
     { label: 'PLANES', href: '/planes' },
@@ -32,23 +34,17 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo with 3 wavy lines */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="flex flex-col gap-[3px] justify-center h-8 transition-transform duration-200 group-hover:scale-105">
-              <svg width="28" height="24" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-              </svg>
-            </div>
-            <div className="flex flex-col leading-[1.1] justify-center">
-              <span className="font-black text-xl tracking-wider text-white">
-                MAIROVER<span className="text-[#F43F5E]">Fit</span>
-              </span>
-              <span className="text-[8px] tracking-[0.25em] text-[#C2C0B6] uppercase font-bold">
-                COACH • NUTRICIÓN
-              </span>
-            </div>
+          {/* Official Brand Logo */}
+          <Link to="/" className="flex items-center group transition-transform duration-200 group-hover:scale-[1.02]">
+            <img 
+              src="/images/logos/logo-horizontal.webp" 
+              alt="MairoverFit" 
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/images/logos/logo-horizontal.png';
+              }}
+            />
           </Link>
 
           {/* Desktop Links */}

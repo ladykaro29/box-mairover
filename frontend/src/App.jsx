@@ -10,6 +10,8 @@ import Contacto from './pages/Contacto';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import MiCuenta from './pages/MiCuenta';
+import Modalidad from './pages/Modalidad';
+import Online from './pages/Online';
 
 import Terminos from './pages/Terminos';
 import Privacidad from './pages/Privacidad';
@@ -21,6 +23,11 @@ import Footer from './components/common/Footer';
 import AuthProvider from './context/AuthProvider';
 import ProtectedRoute from './components/common/ProtectedRoute';
 
+import FormularioPersonalizado from './pages/online/FormularioPersonalizado';
+import FormularioNutricional from './pages/online/FormularioNutricional';
+import FormularioBasico from './pages/online/FormularioBasico';
+import ConfirmacionEnvio from './pages/online/ConfirmacionEnvio';
+
 // Admin Components
 import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './pages/admin/Dashboard';
@@ -29,6 +36,10 @@ import Pagos from './pages/admin/Pagos';
 import HorariosAdmin from './pages/admin/HorariosAdmin';
 import Procesos from './pages/admin/Procesos';
 import Contactos from './pages/admin/Contactos';
+import EvaluacionesAdmin from './pages/admin/EvaluacionesAdmin';
+import EvaluacionDetalleAdmin from './pages/admin/EvaluacionDetalleAdmin';
+import ArchivosAdmin from './pages/admin/ArchivosAdmin';
+import PlanesAdmin from './pages/admin/PlanesAdmin';
 
 import './App.css';
 
@@ -51,6 +62,13 @@ function App() {
           {/* Public Routes */}
           <Route element={<PublicLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/modalidad" element={<Modalidad />} />
+            <Route path="/empezar" element={<Modalidad />} />
+            <Route path="/online" element={<Online />} />
+            <Route path="/online/formulario/personalizado" element={<FormularioPersonalizado />} />
+            <Route path="/online/formulario/nutricional" element={<FormularioNutricional />} />
+            <Route path="/online/formulario/basico" element={<FormularioBasico />} />
+            <Route path="/online/formulario/confirmacion/:codigo" element={<ConfirmacionEnvio />} />
             <Route path="/planes" element={<Planes />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/horarios" element={<Horarios />} />
@@ -58,6 +76,7 @@ function App() {
             <Route path="/comunidad" element={<Comunidad />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/admin/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/terminos" element={<Terminos />} />
             <Route path="/privacidad" element={<Privacidad />} />
@@ -73,6 +92,10 @@ function App() {
           <Route element={<ProtectedRoute roles={['admin']} />}>
             <Route path="/admin" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
+              <Route path="evaluaciones" element={<EvaluacionesAdmin />} />
+              <Route path="evaluaciones/:id" element={<EvaluacionDetalleAdmin />} />
+              <Route path="archivos" element={<ArchivosAdmin />} />
+              <Route path="planes" element={<PlanesAdmin />} />
               <Route path="clientes" element={<Clientes />} />
               <Route path="pagos" element={<Pagos />} />
               <Route path="horarios" element={<HorariosAdmin />} />

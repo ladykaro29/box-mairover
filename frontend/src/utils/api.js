@@ -750,3 +750,114 @@ export const api = {
     }
   },
 };
+
+// =============================================================
+// API DE EVALUACIONES ONLINE Y PANEL ADMINISTRATIVO
+// =============================================================
+export const evaluacionesAdminApi = {
+  // Estadísticas del dashboard de evaluaciones online
+  async getStats() {
+    const res = await apiClient.get('/evaluaciones/stats');
+    return res.data.data;
+  },
+
+  // Listado de evaluaciones con filtros, búsqueda y paginación
+  async getEvaluaciones(params = {}) {
+    const res = await apiClient.get('/evaluaciones', { params });
+    return res.data;
+  },
+
+  // Detalle completo del expediente de una evaluación
+  async getEvaluacionById(id) {
+    const res = await apiClient.get(`/evaluaciones/${id}`);
+    return res.data.data;
+  },
+
+  // Cambiar estado de la evaluación y responsable
+  async updateEstado(id, payload) {
+    const res = await apiClient.put(`/evaluaciones/${id}/estado`, payload);
+    return res.data;
+  },
+
+  // Guardar notas internas de las coaches
+  async updateNotasInternas(id, notasInternas) {
+    const res = await apiClient.put(`/evaluaciones/${id}/notas`, { notasInternas });
+    return res.data;
+  },
+
+  // Eliminar evaluación y archivos físicos conforme a política de conservación
+  async deleteEvaluacion(id, eliminarArchivosFisicos = true) {
+    const res = await apiClient.delete(`/evaluaciones/${id}`, {
+      data: { eliminarArchivosFisicos },
+    });
+    return res.data;
+  },
+
+  // Obtener URL de imagen con autorización Bearer para visualización protegida
+  async fetchProtectedImageBlobUrl(fileId) {
+    const token = tokenStore.getToken();
+    const response = await fetch(`/api/v1/admin/evaluaciones/archivos/${fileId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('No se pudo cargar la imagen protegida.');
+    }
+
+    const blob = await response.blob();
+    return URL.createObjectURL(blob);
+  },
+
+  // Listado de archivos privados (/admin/archivos)
+  async getArchivos(params = {}) {
+    const res = await apiClient.get('/archivos', { params });
+    return res.data;
+  },
+
+  // Gestión de planes online (precios y vigencias configurables)
+  async getPlanes() {
+    const res = await apiClient.get('/planes');
+    return res.data.data;
+  },
+
+  async updatePlan(id, data) {
+    const res = await apiClient.put(`/planes/${id}`, data);
+    return res.data.data;
+  },
+};
+
+// =============================================================
+// API PÚBLICA DE FORMULARIOS DE EVALUACIÓN
+// =============================================================
+export const publicEvaluacionesApi = {
+  // Obtener planes online activos
+  async getPlanes() {
+    const res = await axios.get('/api/v1/evaluaciones/planes');
+    return res.data.data;
+  },
+
+  // Obtener detalle y configuración de un plan específico
+  async getPlan(codigo) {
+    const res = await axios.get(`/api/v1/evaluaciones/planes/${codigo}`);
+    return res.data.data;
+  },
+
+  // Envío seguro de evaluación inicial (multipart/form-data con fotos)
+  async submitEvaluacion(formData) {
+    const res = await axios.post('/api/v1/evaluaciones', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return res.data.data;
+  },
+
+  // Consultar estado de confirmación por código no predecible
+  async getConfirmacion(codigo) {
+    const res = await axios.get(`/api/v1/evaluaciones/confirmacion/${codigo}`);
+    return res.data.data;
+  },
+};
+

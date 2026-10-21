@@ -1,6 +1,21 @@
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Planes() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const elem = document.getElementById(id);
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location]);
+
   const boxPlans = [
     {
       id: 1,
@@ -59,39 +74,57 @@ export default function Planes() {
 
   const onlinePlans = [
     {
-      title: 'PLAN ONLINE ENTRENAMIENTO',
+      title: 'PLAN PERSONALIZADO ONLINE',
+      subtitle: 'Entrenamiento Personal + Plan de Alimentación',
+      price: '$70',
+      period: '/ 5 semanas',
+      emoji: '⭐',
+      popular: true,
+      formUrl: 'https://forms.gle/GP9gNNhx6sScrtZn9',
+      waText: 'Hola%20MairoverFit,%20quiero%20inscribirme%20en%20el%20PLAN%20PERSONALIZADO%20ONLINE%20($70%20/%205%20semanas)',
+      features: [
+        'Programación personal del entrenamiento',
+        'Educación y correcciones continuas',
+        'Valoración antropométrica + fotos',
+        'Plan de alimentación personal',
+        'Seguimiento directo por WhatsApp',
+      ]
+    },
+    {
+      title: 'PLAN BÁSICO ONLINE',
+      subtitle: 'Solo Plan de Entrenamiento + Guía de Alimentación',
+      price: '$45',
+      period: '/ 5 semanas',
       emoji: '🏋️‍♂️',
-      waText: 'Hola%20MairoverFit,%20quiero%20información%20sobre%20el%20PLAN%20ONLINE%20ENTRENAMIENTO',
+      popular: false,
+      formUrl: 'https://docs.google.com/forms/d/1yfogcmwnmLNAE_Zv6t-IHUMz1rZQcqI2kmHz4HWVTPk/viewform',
+      waText: 'Hola%20MairoverFit,%20quiero%20inscribirme%20en%20el%20PLAN%20BÁSICO%20ONLINE%20($45%20/%205%20semanas)',
       features: [
-        'Evaluación física inicial',
-        'Rutina personalizada en app',
-        'Ajustes continuos de cargas',
-        'Feedback directo de coaches'
+        'Programación del entrenamiento',
+        'Educación y correcciones durante el proceso',
+        'Valoración de medidas antropométricas',
+        'Guía básica de alimentación (Bienestar)',
+        'Seguimiento por WhatsApp o Telegram',
       ]
     },
     {
-      title: 'PLAN ONLINE NUTRICIÓN',
+      title: 'PLAN NUTRICIONAL',
+      subtitle: 'Solo Plan de Alimentación Personal',
+      price: '$35',
+      period: '/ mensual',
       emoji: '🍎',
-      waText: 'Hola%20MairoverFit,%20quiero%20información%20sobre%20el%20PLAN%20ONLINE%20NUTRICIÓN',
+      popular: false,
+      formUrl: 'https://forms.gle/wsDqwW62PDn37vRw8',
+      waText: 'Hola%20MairoverFit,%20quiero%20inscribirme%20en%20el%20PLAN%20NUTRICIONAL%20($35/mes)',
       features: [
-        'Guía de alimentación flexible',
-        'Hábitos reales sin pasar hambre',
-        'Cálculo de macros según tu meta',
-        'Acompañamiento semanal'
-      ]
-    },
-    {
-      title: 'PLAN ONLINE INTEGRAL',
-      emoji: '🏋️‍♂️+🍎',
-      waText: 'Hola%20MairoverFit,%20quiero%20información%20sobre%20el%20PLAN%20ONLINE%20INTEGRAL',
-      features: [
-        'Entrenamiento + nutrición activa',
-        'Seguimiento integral de evolución',
-        'Acompañamiento 1 a 1',
-        'Plan adaptado a tus metas'
+        'Plan de alimentación personal',
+        'Valoración de medidas + registro fotográfico',
+        'Asesoramiento nutricional continuo',
+        'Seguimiento por WhatsApp o Telegram',
       ]
     }
   ];
+
 
   const processSteps = [
     {
@@ -207,7 +240,7 @@ export default function Planes() {
             <div className="lg:col-span-5 relative flex justify-center">
               <div className="relative w-full max-w-[380px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group">
                 <img
-                  src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=700&q=80"
+                  src="/images/Mairober_7083.jpg"
                   alt="Planes MairoverFit Box"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -325,7 +358,7 @@ export default function Planes() {
       </section>
 
       {/* ================= PLANES ONLINE ================= */}
-      <section className="bg-gradient-to-br from-[#071628] via-[#09203a] to-[#0d2d52] text-white py-24 relative overflow-hidden">
+      <section id="planes-online" className="bg-gradient-to-br from-[#071628] via-[#09203a] to-[#0d2d52] text-white py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#F43F5E]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -347,36 +380,77 @@ export default function Planes() {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {onlinePlans.map((plan, idx) => (
-                  <div key={idx} className="bg-white/5 border border-white/10 hover:border-[#F43F5E]/40 rounded-xl p-6 text-left flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 shadow-xl">
+                  <div
+                    key={idx}
+                    className={`bg-white/5 border ${
+                      plan.popular ? 'border-[#F43F5E] shadow-2xl relative scale-102' : 'border-white/10 hover:border-[#F43F5E]/40'
+                    } rounded-xl p-6 text-left flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 shadow-xl`}
+                  >
                     <div>
-                      <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] text-lg font-bold mb-6">
-                        {plan.emoji}
+                      {plan.popular && (
+                        <span className="inline-block bg-[#F43F5E] text-white text-[8px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-3">
+                          Más Completo
+                        </span>
+                      )}
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-10 h-10 rounded-full bg-[#F43F5E]/10 flex items-center justify-center text-[#F43F5E] text-lg font-bold">
+                          {plan.emoji}
+                        </div>
+                        <div className="text-right">
+                          <span className="text-2xl font-black text-white">{plan.price}</span>
+                          <span className="text-[10px] text-dark-400 block">{plan.period}</span>
+                        </div>
                       </div>
                       
-                      <h3 className="font-extrabold text-xs uppercase tracking-wider text-white mb-6">
+                      <h3 className="font-extrabold text-xs uppercase tracking-wider text-white mb-1">
                         {plan.title}
                       </h3>
+                      <p className="text-[10px] text-[#F43F5E] font-semibold mb-4 leading-tight">
+                        {plan.subtitle}
+                      </p>
 
-                      <ul className="space-y-3 mb-8">
+                      <ul className="space-y-2.5 mb-6">
                         {plan.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="flex items-center gap-2 text-[10px] text-[#C2C0B6]">
-                            <span className="text-[#F43F5E] font-bold">✓</span>
+                          <li key={fIdx} className="flex items-start gap-2 text-[10px] text-[#C2C0B6]">
+                            <span className="text-[#F43F5E] font-bold shrink-0 mt-0.5">✓</span>
                             <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <a
-                      href={`https://wa.me/584147225979?text=${plan.waText}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-full text-center py-2.5 bg-[#F43F5E] hover:bg-[#E11D48] text-white text-[10px] font-black uppercase tracking-wider rounded-lg block transition-colors active:scale-95 shadow"
-                    >
-                      SOLICITAR PLAN ONLINE
-                    </a>
+                    <div className="space-y-2">
+                      <a
+                        href={plan.formUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full text-center py-2.5 bg-[#F43F5E] hover:bg-[#E11D48] text-white text-[10px] font-black uppercase tracking-wider rounded-lg block transition-colors active:scale-95 shadow"
+                      >
+                        LLENAR FORMULARIO →
+                      </a>
+                      <a
+                        href={`https://wa.me/584147225979?text=${plan.waText}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full text-center py-2 bg-white/10 hover:bg-white/20 text-white text-[9px] font-bold uppercase tracking-wider rounded-lg block transition-colors"
+                      >
+                        Consultar por WhatsApp
+                      </a>
+                    </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-8 p-4 rounded-xl bg-white/5 border border-white/10 text-center flex flex-col sm:flex-row items-center justify-between gap-4">
+                <span className="text-xs text-[#C2C0B6]">
+                  💳 <strong>Modalidades de Pago Oficiales:</strong> Zelle (<span className="text-white font-mono">yelimarmercado4@gmail.com</span>) y Pago Móvil Provincial a tasa Euro BCV.
+                </span>
+                <Link
+                  to="/online#datos-pago"
+                  className="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold uppercase tracking-wider rounded-lg shrink-0 transition-colors"
+                >
+                  Ver Datos de Pago
+                </Link>
               </div>
             </div>
 
@@ -384,8 +458,8 @@ export default function Planes() {
             <div className="lg:col-span-4 relative flex justify-center">
               <div className="relative w-full max-w-[340px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group">
                 <img
-                  src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
-                  alt="Online Training MairoverFit"
+                  src="/images/Mairober_7023.jpg"
+                  alt="Coach Mauroly Mercado - Asesoría Online MairoverFit"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-104"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071628]/60 via-transparent to-transparent"></div>

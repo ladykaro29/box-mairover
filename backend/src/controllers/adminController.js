@@ -17,6 +17,9 @@ function generateTransactionId() {
   return `TRX-${result}`;
 }
 
+const EvaluacionOnline = require('../models/EvaluacionOnline');
+const Plan = require('../models/Plan');
+
 // -------------------------------------------------------------
 // CLIENTES CONTROLLER
 // -------------------------------------------------------------
@@ -48,6 +51,15 @@ exports.getClientes = async (req, res, next) => {
 
     const clientes = await Cliente.findAll({
       where,
+      include: [
+        {
+          model: EvaluacionOnline,
+          as: 'evaluacionesOnline',
+          attributes: ['id', 'codigoReferencia', 'estado', 'createdAt'],
+          include: [{ model: Plan, as: 'plan', attributes: ['id', 'nombre', 'codigo'] }],
+          required: false,
+        },
+      ],
       order: [['name', 'ASC']],
     });
 

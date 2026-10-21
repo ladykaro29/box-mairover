@@ -34,7 +34,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 mb-12">
                 <Link
-                  to="/contacto"
+                  to="/modalidad"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"
                 >
                   QUIERO EMPEZAR
@@ -95,12 +95,21 @@ export default function Home() {
             {/* Right Image Column */}
             <div className="lg:col-span-5 relative flex justify-center">
               <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group">
-                <img
-                  src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?auto=format&fit=crop&w=800&q=80"
-                  alt="MairoverFit Box Training"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071628]/70 via-transparent to-transparent"></div>
+                <picture>
+                  <source srcSet="/images/Mairober_7098.webp" type="image/webp" />
+                  <source srcSet="/images/Mairober_7098.jpg" type="image/jpeg" />
+                  <img
+                    src="/images/Mairober_7098.jpg"
+                    alt="Coaches Mairover y Mauroly - MairoverFit Box"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="eager"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = '/images/Mairober_7098.png';
+                    }}
+                  />
+                </picture>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071628]/70 via-transparent to-transparent pointer-events-none"></div>
                 <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-dark-900/80 backdrop-blur-md border border-white/10">
                   <p className="text-xs text-[#F43F5E] font-bold uppercase tracking-wider">MairoverFit Box • El Vigía</p>
                   <p className="text-sm font-semibold text-white">CrossFit Level 1 & Level 2 Trainers</p>
@@ -217,8 +226,8 @@ export default function Home() {
             <div className="lg:col-span-6 relative flex justify-center">
               <div className="relative w-full max-w-[500px] aspect-video sm:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl group border border-dark-100">
                 <img
-                  src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=700&q=80"
-                  alt="Dumbbell Training MairoverFit"
+                  src="/images/Mairober_7083.jpg"
+                  alt="Entrenamiento en el Box MairoverFit"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
                 />
                 
@@ -262,8 +271,8 @@ export default function Home() {
               <div>
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=600&q=80"
-                    alt="CrossFit y Funcionales"
+                    src="/images/Mairober_7067.jpg"
+                    alt="CrossFit y Funcionales - Peso Muerto"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-[-20px] left-6 w-10 h-10 rounded-full bg-[#0B2240] flex items-center justify-center text-white text-sm shadow-lg">
@@ -294,8 +303,8 @@ export default function Home() {
               <div>
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80"
-                    alt="Programa Personalizado y Nutrición"
+                    src="/images/Mairober_7044.jpg"
+                    alt="Programa Personalizado y Nutrición - Coach Mairover"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-[-20px] left-6 w-10 h-10 rounded-full bg-[#F43F5E] flex items-center justify-center text-white text-sm shadow-lg">
@@ -326,8 +335,8 @@ export default function Home() {
               <div>
                 <div className="aspect-[16/10] overflow-hidden relative">
                   <img
-                    src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=600&q=80"
-                    alt="CrossFit Kids y Senior"
+                    src="/images/004.jpg"
+                    alt="CrossFit Kids y Halterofilia"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute bottom-[-20px] left-6 w-10 h-10 rounded-full bg-[#0B2240] flex items-center justify-center text-white text-sm shadow-lg">
@@ -443,8 +452,8 @@ export default function Home() {
               {/* Fit Coach Image */}
               <div className="relative w-full max-w-[280px] aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 group flex-shrink-0">
                 <img
-                  src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&q=80"
-                  alt="Head Coach MairoverFit"
+                  src="/images/Mairober_7023.jpg"
+                  alt="Coach Mauroly Mercado - MairoverFit"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-104"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071628]/60 via-transparent to-transparent"></div>

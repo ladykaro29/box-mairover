@@ -12,22 +12,16 @@ export default function Footer() {
           
           {/* Columna 1: Marca & Misión */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-3 group inline-block">
-              <div className="flex flex-col gap-[3px] justify-center h-8">
-                <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 4C5 4 6 2 9 2C12 2 13 4 16 4C19 4 20 2 23 2C26 2 27 4 29 4" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 10C5 10 6 8 9 8C12 8 13 10 16 10C19 10 20 8 23 8C26 8 27 10 29 10" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                  <path d="M2 16C5 16 6 14 9 14C12 14 13 16 16 16C19 16 20 14 23 14C26 14 27 16 29 16" stroke="#F43F5E" strokeWidth="2.5" strokeLinecap="round" />
-                </svg>
-              </div>
-              <div className="flex flex-col leading-[1.1] justify-center text-left">
-                <span className="font-black text-xl tracking-wider text-white">
-                  MAIROVER<span className="text-[#F43F5E]">Fit</span>
-                </span>
-                <span className="text-[7.5px] tracking-[0.25em] text-[#C2C0B6] uppercase font-bold">
-                  COACH • NUTRICIÓN
-                </span>
-              </div>
+            <Link to="/" className="inline-block group transition-transform duration-200 hover:scale-[1.02]">
+              <img 
+                src="/images/logos/logo-horizontal.webp" 
+                alt="MairoverFit" 
+                className="h-11 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = '/images/logos/logo-horizontal.png';
+                }}
+              />
             </Link>
 
             <p className="text-xs text-blue-100/75 leading-relaxed">
@@ -203,8 +197,8 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar: Copyright & Legal Disclaimer */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-center md:text-left">
+        {/* Bottom Bar: Copyright, Legal Links & Developer Credit */}
+        <div className="pt-8 flex flex-col lg:flex-row justify-between items-center gap-4 text-xs text-center lg:text-left">
           
           <div className="text-blue-200/70">
             © {currentYear} <span className="font-bold text-white">MairoverFit</span>. Todos los derechos reservados.
@@ -216,6 +210,18 @@ export default function Footer() {
             <Link to="/privacidad" className="hover:text-white transition-colors">Privacidad</Link>
             <span>•</span>
             <Link to="/descargo-salud" className="hover:text-white transition-colors">Exención Médica</Link>
+          </div>
+
+          <div className="text-[11px] text-blue-200/60 flex items-center gap-1.5">
+            <span>Desarrollado por</span>
+            <a 
+              href="https://www.kickoffdevelopment.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="font-bold text-white hover:text-[#F43F5E] transition-colors underline decoration-[#F43F5E]/50 hover:decoration-[#F43F5E]"
+            >
+              Kickoff Development
+            </a>
           </div>
 
         </div>

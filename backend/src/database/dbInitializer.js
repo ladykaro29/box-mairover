@@ -52,7 +52,15 @@ async function initializeDatabase() {
   const Contacto = require('../models/Contacto');
   const Reserva = require('../models/Reserva');
 
-  // Define Associations
+  // Modelos del sistema de evaluación online y gestión de formularios
+  const Plan = require('../models/Plan');
+  const FormularioVersion = require('../models/FormularioVersion');
+  const EvaluacionOnline = require('../models/EvaluacionOnline');
+  const ArchivoEvaluacion = require('../models/ArchivoEvaluacion');
+  const Consentimiento = require('../models/Consentimiento');
+  const HistorialAuditoria = require('../models/HistorialAuditoria');
+
+  // Define Associations - Box Presencial
   Cliente.hasMany(Pago, { foreignKey: 'cliente_id', as: 'pagos', onDelete: 'CASCADE' });
   Pago.belongsTo(Cliente, { foreignKey: 'cliente_id', as: 'cliente' });
 
@@ -70,6 +78,34 @@ async function initializeDatabase() {
   Clase.hasMany(Reserva, { foreignKey: 'clase_id', as: 'reservas', onDelete: 'CASCADE' });
   Reserva.belongsTo(Clase, { foreignKey: 'clase_id', as: 'clase' });
 
+  // Define Associations - Sistema de Evaluaciones Online
+  Plan.hasMany(FormularioVersion, { foreignKey: 'plan_id', as: 'versiones', onDelete: 'CASCADE' });
+  FormularioVersion.belongsTo(Plan, { foreignKey: 'plan_id', as: 'plan' });
+
+  Plan.hasMany(EvaluacionOnline, { foreignKey: 'plan_id', as: 'evaluaciones' });
+  EvaluacionOnline.belongsTo(Plan, { foreignKey: 'plan_id', as: 'plan' });
+
+  Cliente.hasMany(EvaluacionOnline, { foreignKey: 'cliente_id', as: 'evaluacionesOnline' });
+  EvaluacionOnline.belongsTo(Cliente, { foreignKey: 'cliente_id', as: 'cliente' });
+
+  FormularioVersion.hasMany(EvaluacionOnline, { foreignKey: 'formulario_version_id', as: 'evaluaciones' });
+  EvaluacionOnline.belongsTo(FormularioVersion, { foreignKey: 'formulario_version_id', as: 'formularioVersion' });
+
+  EvaluacionOnline.hasMany(ArchivoEvaluacion, { foreignKey: 'evaluacion_id', as: 'archivos', onDelete: 'CASCADE' });
+  ArchivoEvaluacion.belongsTo(EvaluacionOnline, { foreignKey: 'evaluacion_id', as: 'evaluacion' });
+
+  EvaluacionOnline.hasMany(Consentimiento, { foreignKey: 'evaluacion_id', as: 'consentimientos', onDelete: 'CASCADE' });
+  Consentimiento.belongsTo(EvaluacionOnline, { foreignKey: 'evaluacion_id', as: 'evaluacion' });
+
+  Usuario.hasMany(EvaluacionOnline, { foreignKey: 'responsable_id', as: 'evaluacionesAsignadas' });
+  EvaluacionOnline.belongsTo(Usuario, { foreignKey: 'responsable_id', as: 'responsable' });
+
+  EvaluacionOnline.hasMany(HistorialAuditoria, { foreignKey: 'evaluacion_id', as: 'auditorias', onDelete: 'CASCADE' });
+  HistorialAuditoria.belongsTo(EvaluacionOnline, { foreignKey: 'evaluacion_id', as: 'evaluacion' });
+
+  Usuario.hasMany(HistorialAuditoria, { foreignKey: 'usuario_id', as: 'auditoriasRealizadas' });
+  HistorialAuditoria.belongsTo(Usuario, { foreignKey: 'usuario_id', as: 'usuario' });
+
   // Sync Database
   console.log('🔄 Sincronizando tablas de la base de datos...');
   await sequelize.sync({ force: false });
@@ -77,6 +113,9 @@ async function initializeDatabase() {
 
   // Seed default data if database is empty
   await seedDefaultData(Cliente, Pago, Clase, Evaluacion, Contacto);
+
+  // Sembrado de planes online oficiales si no existen
+  await seedDefaultPlanes(Plan, FormularioVersion);
 
   // Las cuentas de acceso se siembran siempre que falten (independiente del resto)
   await seedDefaultUsers(Cliente, Usuario);
@@ -234,6 +273,102 @@ async function seedDefaultData(Cliente, Pago, Clase, Evaluacion, Contacto) {
   console.log('🌲 Sembrado de base de datos finalizado con éxito.');
 }
 
+async function seedDefaultPlanes(Plan, FormularioVersion) {
+  const count = await Plan.count();
+  if (count > 0) return;
+
+  console.log('🌱 Sembrando planes online oficiales...');
+
+  const pPersonalizado = await Plan.create({
+    codigo: 'personalizado',
+    nombre: 'Plan Personalizado Online',
+    subtitulo: 'Entrenamiento Personal + Plan de Alimentación Personal',
+    precio: 70.00,
+    moneda: 'USD',
+    vigencia: '5 semanas',
+    descripcion: 'Nuestro programa insignia. Cuenta con todo el apoyo, evaluación, correcciones, tips, resolución de dudas y seguimiento continuo para garantizar tus resultados.',
+    caracteristicas: [
+      'Programación personal del entrenamiento (Educación y correcciones continuas)',
+      'Valoración de medidas antropométricas + registro fotográfico inicial y final',
+      'Plan de alimentación personal acorde a tus objetivos',
+      'Asesoramiento nutricional inteligente y hábitos sostenibles',
+      'Control y seguimiento personalizado directamente por WhatsApp',
+      'Todo nuestro apoyo en resolución de dudas y ajustes',
+    ],
+    entregaDiasHabiles: 8,
+    activo: true,
+    badge: 'El Más Completo • Recomendado',
+    orden: 1,
+  });
+
+  const pBasico = await Plan.create({
+    codigo: 'basico',
+    nombre: 'Plan Básico Online',
+    subtitulo: 'Solo Plan de Entrenamiento + Guía básica de alimentación',
+    precio: 45.00,
+    moneda: 'USD',
+    vigencia: '5 semanas',
+    descripcion: 'Ideal para quienes desean una programación técnica exigente y periodizada para su gimnasio o casa con una guía base de bienestar físico.',
+    caracteristicas: [
+      'Programación estructurada del entrenamiento (Educación y correcciones)',
+      'Valoración de medidas antropométricas + registro fotográfico',
+      'Guía básica de alimentación (Programa bienestar físico)',
+      'Control y seguimiento mediante WhatsApp o Telegram',
+      'Evaluación, correcciones de técnica, tips y resolución de dudas',
+    ],
+    entregaDiasHabiles: 8,
+    activo: true,
+    badge: 'Entrenamiento Enfocado',
+    orden: 2,
+  });
+
+  const pNutricional = await Plan.create({
+    codigo: 'nutricional',
+    nombre: 'Plan Nutricional',
+    subtitulo: 'Solo Plan de Alimentación Personal',
+    precio: 35.00,
+    moneda: 'USD',
+    vigencia: 'mensual',
+    descripcion: 'Enfocado 100% en tu alimentación, recomposición corporal, pérdida de grasa o rendimiento deportivo guiado por nuestra especialista.',
+    caracteristicas: [
+      'Plan de alimentación personal acorde a tus objetivos y presupuesto',
+      'Valoración de medidas antropométricas + registro fotográfico',
+      'Asesoramiento nutricional y opciones de sustitución',
+      'Control y seguimiento personalizado directamente por WhatsApp o Telegram',
+      'Ajustes de calorías y macros según evolución mensual',
+    ],
+    entregaDiasHabiles: 8,
+    activo: true,
+    badge: 'Nutrición Inteligente',
+    orden: 3,
+  });
+
+  // Versión 1 inicial para cada plan
+  await FormularioVersion.bulkCreate([
+    {
+      planId: pPersonalizado.id,
+      version: 1,
+      titulo: 'Formulario de Evaluación Inicial — Plan Personalizado v1.0',
+      activo: true,
+    },
+    {
+      planId: pBasico.id,
+      version: 1,
+      titulo: 'Formulario de Evaluación Inicial — Plan Básico v1.0',
+      activo: true,
+    },
+    {
+      planId: pNutricional.id,
+      version: 1,
+      titulo: 'Formulario de Evaluación Inicial — Plan Nutricional v1.0',
+      activo: true,
+    },
+  ]);
+
+  console.log('✅ Planes online oficiales sembrados.');
+}
+
 module.exports = {
   initializeDatabase,
 };
+

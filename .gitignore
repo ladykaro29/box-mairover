@@ -39,6 +39,7 @@ Thumbs.db
 
 # Uploads
 backend/uploads/
+backend/storage/
 frontend/public/uploads/
 
 # Temporary

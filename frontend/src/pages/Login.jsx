@@ -40,6 +40,19 @@ export default function Login() {
   return (
     <div className="bg-dark-900 min-h-screen text-white py-20 px-4 flex items-center justify-center">
       <div className="max-w-md w-full bg-dark-800/40 border border-dark-700/50 p-8 rounded-xl backdrop-blur-md shadow-2xl">
+        <div className="flex justify-center mb-6">
+          <Link to="/">
+            <img 
+              src="/images/logos/logo-vertical.webp" 
+              alt="MairoverFit" 
+              className="h-16 w-auto object-contain transition-transform duration-200 hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = '/images/logos/logo-vertical.png';
+              }}
+            />
+          </Link>
+        </div>
         <h1 className="text-3xl font-bold tracking-tight text-white mb-2 text-center">
           INICIAR <span className="text-primary-500">SESIÓN</span>
         </h1>

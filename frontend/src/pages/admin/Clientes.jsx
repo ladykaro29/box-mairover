@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { api } from '../../utils/api';
 
 export default function Clientes() {
@@ -165,6 +166,14 @@ export default function Clientes() {
                         <div>
                           <p className="font-semibold text-white">{cliente.name}</p>
                           <p className="text-xs text-dark-300">Último pago: {cliente.lastPayment || 'Sin registros'}</p>
+                          {cliente.evaluacionesOnline?.length > 0 && (
+                            <Link
+                              to={`/admin/evaluaciones/${cliente.evaluacionesOnline[0].id}`}
+                              className="inline-flex items-center gap-1 text-[10px] text-primary-400 bg-primary-500/10 border border-primary-500/20 px-2 py-0.5 rounded-full mt-1 hover:underline"
+                            >
+                              📋 Ver Evaluación ({cliente.evaluacionesOnline[0].codigoReferencia})
+                            </Link>
+                          )}
                         </div>
                       </div>
                     </td>

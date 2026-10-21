@@ -6,6 +6,7 @@ const clienteRoutes = require('./clienteRoutes');
 
 const contactoController = require('../controllers/contactoController');
 const publicController = require('../controllers/publicController');
+const evaluacionPublicRoutes = require('./evaluacionPublicRoutes');
 
 const { authLimiter } = require('../middleware/rateLimiter');
 
@@ -21,6 +22,7 @@ router.get('/health', (req, res) => {
 // Public endpoints
 router.post('/contactos', authLimiter, contactoController.createContacto);
 router.get('/horarios', publicController.getPublicHorarios);
+router.use('/evaluaciones', evaluacionPublicRoutes);
 
 // Mount auth routes (públicas + sesión)
 router.use('/auth', authRoutes);

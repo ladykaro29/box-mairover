@@ -84,6 +84,30 @@ export default function MiCuenta() {
   const [loadingEvaluaciones, setLoadingEvaluaciones] = useState(true);
   const [chartMetric, setChartMetric] = useState('composicion'); // 'composicion' o 'peso'
 
+  // Estados para el Portal Online
+  const [onlineDay, setOnlineDay] = useState('dia1');
+  const [completedExercises, setCompletedExercises] = useState({});
+  const [videoFormData, setVideoFormData] = useState({ ejercicio: 'Back Squat (Sentadilla)', link: '', notas: '' });
+  const [videoFeedback, setVideoFeedback] = useState(null);
+
+  const toggleExercise = (id) => {
+    setCompletedExercises((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const handleSendVideoCorrection = (e) => {
+    e.preventDefault();
+    const msg = encodeURIComponent(
+      `📹 *CORRECCIÓN TÉCNICA ONLINE - ATLETA: ${cuenta?.name || user?.name || 'Cliente'}*\n\n` +
+      `• *Ejercicio:* ${videoFormData.ejercicio}\n` +
+      `• *Enlace del Video:* ${videoFormData.link || 'Te envío el video a continuación por aquí'}\n` +
+      `• *Dudas / Sensaciones:* ${videoFormData.notas || 'Revisión general de postura y profundidad'}\n\n` +
+      `Quedo atento(a) a tus correcciones, Coach Mauroly.`
+    );
+    window.open(`https://wa.me/584147225979?text=${msg}`, '_blank');
+    setVideoFeedback('¡Solicitud de revisión enviada a la Coach!');
+    setVideoFormData({ ejercicio: 'Back Squat (Sentadilla)', link: '', notas: '' });
+  };
+
   const {
     register,
     handleSubmit,
@@ -438,6 +462,28 @@ export default function MiCuenta() {
           >
             <span>🛡️</span>
             <span>Membresía & Seguridad</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('online')}
+            className={`flex-1 min-w-[140px] py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center justify-center gap-2 ${
+              activeTab === 'online'
+                ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-500/25'
+                : 'text-dark-300 hover:text-white hover:bg-dark-700/50'
+            }`}
+          >
+            <span>🌐</span>
+            <span>Plan Online & Rutinas</span>
+            <span
+              className={`px-2 py-0.2 rounded-full text-[10px] font-bold ${
+                activeTab === 'online'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-sky-500/10 text-sky-400'
+              }`}
+            >
+              Activo
+            </span>
           </button>
         </div>
 
@@ -837,6 +883,377 @@ export default function MiCuenta() {
             </section>
           </div>
         )}
+
+        {/* ======================================================== */}
+        {/* PESTAÑA 4: RUTINA & PLAN ONLINE */}
+        {/* ======================================================== */}
+        {activeTab === 'online' && (
+          <div className="space-y-8 animate-[fadeIn_0.3s_ease-out]">
+            
+            {/* Header del Plan Online */}
+            <section className="bg-gradient-to-r from-[#0B2240] to-[#071628] border border-sky-500/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md relative overflow-hidden shadow-xl">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-sky-500/10 rounded-full blur-[90px] pointer-events-none"></div>
+              
+              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-400 text-xs font-bold uppercase tracking-wider mb-3">
+                    <span>🌐</span> PROGRAMA ACTIVO • PLAN INTEGRAL
+                  </div>
+                  <h2 className="text-2xl font-black text-white uppercase tracking-tight">
+                    Tu Programación Online
+                  </h2>
+                  <p className="text-sm text-[#C2C0B6] mt-1 max-w-xl font-light">
+                    Asignado y supervisado por la Head Coach <strong>Mauroly Mercado</strong> (CF-L1 & Nutricionista). Rutina individualizada con progresión semanal.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly,%20tengo%20una%20consulta%20sobre%20mi%20rutina%20online"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 active:scale-95 transition-all"
+                  >
+                    <span>💬 WhatsApp Coach</span>
+                  </a>
+                  <a
+                    href="#correccion-video"
+                    className="px-5 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-sky-600/20 active:scale-95 transition-all"
+                  >
+                    <span>📹 Enviar Video</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Indicadores rápidos de la membresía online */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-6 border-t border-white/10 text-xs">
+                <div>
+                  <span className="text-dark-400 block uppercase tracking-wider text-[10px]">Fase Actual</span>
+                  <span className="font-bold text-white text-sm">Fase 2: Fuerza e Hipertrofia</span>
+                </div>
+                <div>
+                  <span className="text-dark-400 block uppercase tracking-wider text-[10px]">Frecuencia</span>
+                  <span className="font-bold text-sky-400 text-sm">5 Días / Semana</span>
+                </div>
+                <div>
+                  <span className="text-dark-400 block uppercase tracking-wider text-[10px]">Próximo Check-In</span>
+                  <span className="font-bold text-[#F43F5E] text-sm">Domingo (Medidas & Peso)</span>
+                </div>
+                <div>
+                  <span className="text-dark-400 block uppercase tracking-wider text-[10px]">Videos Disponibles</span>
+                  <span className="font-bold text-emerald-400 text-sm">Ilimitados (Plan Integral)</span>
+                </div>
+              </div>
+            </section>
+
+            {/* Selector de Días de la Rutina */}
+            <section className="bg-dark-800/40 border border-dark-700/50 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                    Rutina Semanal por Días
+                  </h3>
+                  <p className="text-xs text-[#C2C0B6]">
+                    Selecciona el día para ver tus bloques de trabajo, series y cargas recomendadas.
+                  </p>
+                </div>
+                <div className="text-xs text-sky-400 font-semibold">
+                  Marca las casillas al completar cada ejercicio ✓
+                </div>
+              </div>
+
+              {/* Días en botones */}
+              <div className="flex flex-wrap gap-2 mb-8">
+                {[
+                  { id: 'dia1', label: 'Día 1: Tren Superior', tag: 'Lunes' },
+                  { id: 'dia2', label: 'Día 2: Pierna & Sentadilla', tag: 'Martes' },
+                  { id: 'dia3', label: 'Día 3: WOD & MetCon', tag: 'Miércoles' },
+                  { id: 'dia4', label: 'Día 4: Empuje & Tracción', tag: 'Jueves' },
+                  { id: 'dia5', label: 'Día 5: Full Body & Core', tag: 'Viernes' },
+                ].map((d) => (
+                  <button
+                    key={d.id}
+                    type="button"
+                    onClick={() => setOnlineDay(d.id)}
+                    className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2 ${
+                      onlineDay === d.id
+                        ? 'bg-sky-500 text-white shadow-md shadow-sky-500/25'
+                        : 'bg-dark-900 border border-dark-700 text-dark-300 hover:text-white hover:border-dark-600'
+                    }`}
+                  >
+                    <span>{d.label}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Detalle del Día Seleccionado */}
+              <div className="space-y-4">
+                {onlineDay === 'dia1' && (
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-between">
+                      <div>
+                        <span className="text-xs font-bold text-sky-400 uppercase tracking-wider">Objetivo de la sesión</span>
+                        <h4 className="text-sm font-extrabold text-white">Fuerza Máxima de Torso + Volumen de Tracción</h4>
+                      </div>
+                      <span className="text-xs text-dark-400">⏱️ Duración estimada: 60 min</span>
+                    </div>
+
+                    {[
+                      { id: 'ex1_1', name: 'Calentamiento Dinámico', detail: 'Dislocaciones de hombro con pica + Band Pull-Aparts', sets: '2 series x 15 reps', rest: '30s', rpe: 'Activación' },
+                      { id: 'ex1_2', name: 'Press de Banca con Barra (Bench Press)', detail: 'Pausa de 1 segundo en el pecho. Codo a 45 grados.', sets: '4 series x 8 reps', rest: '90s', rpe: 'RPE 8' },
+                      { id: 'ex1_3', name: 'Dominadas Estrictas (o Jalón al Pecho)', detail: 'Rango completo, barbilla sobre la barra y extensión total abajo.', sets: '4 series x 8-10 reps', rest: '75s', rpe: 'RPE 8' },
+                      { id: 'ex1_4', name: 'Press Militar con Mancuernas', detail: 'De pie, core firme y bloqueo seguro sobre la cabeza.', sets: '3 series x 10 reps', rest: '60s', rpe: 'RPE 7.5' },
+                      { id: 'ex1_5', name: 'Remo con Mancuerna Unilateral', detail: 'Espalda recta paralela al banco, tracción al bolsillo.', sets: '3 series x 12 reps / lado', rest: '60s', rpe: 'RPE 8' },
+                      { id: 'ex1_6', name: 'Finisher Acondicionamiento (EMOM 10 Min)', detail: 'Minutos pares: 10 Push-ups estrictos | Minutos impares: 12 Kettlebell Swings', sets: '10 Rondas totales', rest: 'Descanso en remanente de cada min', rpe: 'Máximo esfuerzo' },
+                    ].map((ex) => (
+                      <div
+                        key={ex.id}
+                        onClick={() => toggleExercise(ex.id)}
+                        className={`p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                          completedExercises[ex.id]
+                            ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-200 opacity-80'
+                            : 'bg-dark-900/60 border-dark-700/60 hover:border-sky-500/40 text-white'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3.5">
+                          <input
+                            type="checkbox"
+                            checked={!!completedExercises[ex.id]}
+                            onChange={() => {}}
+                            className="w-5 h-5 rounded border-dark-600 text-sky-500 focus:ring-0 cursor-pointer"
+                          />
+                          <div>
+                            <h5 className={`text-sm font-bold ${completedExercises[ex.id] ? 'line-through text-emerald-300' : 'text-white'}`}>
+                              {ex.name}
+                            </h5>
+                            <p className="text-xs text-[#C2C0B6] mt-0.5">{ex.detail}</p>
+                          </div>
+                        </div>
+
+                        <div className="text-right shrink-0">
+                          <span className="text-xs font-extrabold text-sky-400 block">{ex.sets}</span>
+                          <span className="text-[10px] text-dark-400 block">Descanso: {ex.rest} | {ex.rpe}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {onlineDay === 'dia2' && (
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-between">
+                      <div>
+                        <span className="text-xs font-bold text-sky-400 uppercase tracking-wider">Objetivo de la sesión</span>
+                        <h4 className="text-sm font-extrabold text-white">Sentadilla Trasera Pesada & Dominancia de Cadera</h4>
+                      </div>
+                      <span className="text-xs text-dark-400">⏱️ Duración estimada: 65 min</span>
+                    </div>
+
+                    {[
+                      { id: 'ex2_1', name: 'Movilidad de Cadera & Tobillo', detail: 'Cossack Squats + 90/90 de cadera + 20 Air Squats', sets: '2 series x 10 reps', rest: '30s', rpe: 'Activación' },
+                      { id: 'ex2_2', name: 'Back Squat (Sentadilla Trasera con Barra)', detail: 'Romper paralelo, empujar con talones y rodillas alineadas.', sets: '5 series x 5 reps', rest: '120s', rpe: 'RPE 8.5' },
+                      { id: 'ex2_3', name: 'Peso Muerto Rumano (RDL)', detail: 'Bisagra de cadera pura, estiramiento profundo de isquiotibiales.', sets: '4 series x 8-10 reps', rest: '90s', rpe: 'RPE 8' },
+                      { id: 'ex2_4', name: 'Sentadilla Búlgara con Mancuernas', detail: 'Pie elevado en banco, torso ligeramente inclinado.', sets: '3 series x 10 reps / pierna', rest: '60s', rpe: 'RPE 8' },
+                      { id: 'ex2_5', name: 'Hip Thrust o Puentes de Glúteo', detail: 'Pausa de 2 segundos en el bloqueo superior.', sets: '3 series x 12 reps', rest: '60s', rpe: 'RPE 8' },
+                      { id: 'ex2_6', name: 'Core Finisher: Tabata 4 Minutos', detail: '20s Plancha Hollow / 10s descanso / 20s Superman Hold', sets: '8 intervalos', rest: '10s por intervalo', rpe: 'Intensidad alta' },
+                    ].map((ex) => (
+                      <div
+                        key={ex.id}
+                        onClick={() => toggleExercise(ex.id)}
+                        className={`p-4 rounded-xl border transition-all cursor-pointer flex items-center justify-between gap-4 ${
+                          completedExercises[ex.id]
+                            ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-200 opacity-80'
+                            : 'bg-dark-900/60 border-dark-700/60 hover:border-sky-500/40 text-white'
+                        }`}
+                      >
+                        <div className="flex items-center gap-3.5">
+                          <input
+                            type="checkbox"
+                            checked={!!completedExercises[ex.id]}
+                            onChange={() => {}}
+                            className="w-5 h-5 rounded border-dark-600 text-sky-500 focus:ring-0 cursor-pointer"
+                          />
+                          <div>
+                            <h5 className={`text-sm font-bold ${completedExercises[ex.id] ? 'line-through text-emerald-300' : 'text-white'}`}>
+                              {ex.name}
+                            </h5>
+                            <p className="text-xs text-[#C2C0B6] mt-0.5">{ex.detail}</p>
+                          </div>
+                        </div>
+
+                        <div className="text-right shrink-0">
+                          <span className="text-xs font-extrabold text-sky-400 block">{ex.sets}</span>
+                          <span className="text-[10px] text-dark-400 block">Descanso: {ex.rest} | {ex.rpe}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {['dia3', 'dia4', 'dia5'].includes(onlineDay) && (
+                  <div className="p-8 rounded-xl bg-dark-900 border border-dark-700 text-center">
+                    <p className="text-sm font-bold text-white mb-2">
+                      {onlineDay === 'dia3' && 'Día 3: WOD Acondicionamiento Metabólico (Chipper 20 Min)'}
+                      {onlineDay === 'dia4' && 'Día 4: Empuje & Tracción Hipertrofia Funcional'}
+                      {onlineDay === 'dia5' && 'Día 5: Full Body & Movilidad Activa'}
+                    </p>
+                    <p className="text-xs text-[#C2C0B6] max-w-md mx-auto mb-4">
+                      Bloque programado según tu nivel de la semana. Puedes consultar los detalles completos o solicitar modificaciones a la Coach.
+                    </p>
+                    <a
+                      href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly,%20quiero%20revisar%20mi%20sesión%20del%20día%20en%20el%20portal%20online"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold uppercase tracking-wider inline-block transition-colors"
+                    >
+                      Consultar detalles con la Coach
+                    </a>
+                  </div>
+                )}
+              </div>
+            </section>
+
+            {/* Módulo de Nutrición Online del Atleta */}
+            <section className="bg-dark-800/40 border border-dark-700/50 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <div className="inline-flex items-center gap-1.5 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">
+                    <span>🥗</span> Plan Nutricional Asignado
+                  </div>
+                  <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                    Objetivos de Nutrición & Macros
+                  </h3>
+                </div>
+                <span className="text-xs text-[#C2C0B6] font-light">
+                  Ajustado por Lic. Mauroly Mercado
+                </span>
+              </div>
+
+              {/* Tarjetas de Macronutrientes */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                <div className="p-4 rounded-xl bg-dark-900 border border-dark-700 text-center">
+                  <span className="text-[10px] text-dark-400 uppercase tracking-widest block mb-1">Calorías Meta</span>
+                  <span className="text-2xl font-black text-white">2,150</span>
+                  <span className="text-[10px] text-emerald-400 block mt-1">kcal / día</span>
+                </div>
+                <div className="p-4 rounded-xl bg-dark-900 border border-dark-700 text-center">
+                  <span className="text-[10px] text-dark-400 uppercase tracking-widest block mb-1">Proteínas</span>
+                  <span className="text-2xl font-black text-[#F43F5E]">145g</span>
+                  <span className="text-[10px] text-[#C2C0B6] block mt-1">2.0g / kg peso</span>
+                </div>
+                <div className="p-4 rounded-xl bg-dark-900 border border-dark-700 text-center">
+                  <span className="text-[10px] text-dark-400 uppercase tracking-widest block mb-1">Carbohidratos</span>
+                  <span className="text-2xl font-black text-sky-400">230g</span>
+                  <span className="text-[10px] text-[#C2C0B6] block mt-1">Energía limpia</span>
+                </div>
+                <div className="p-4 rounded-xl bg-dark-900 border border-dark-700 text-center">
+                  <span className="text-[10px] text-dark-400 uppercase tracking-widest block mb-1">Grasas Saludables</span>
+                  <span className="text-2xl font-black text-amber-400">65g</span>
+                  <span className="text-[10px] text-[#C2C0B6] block mt-1">Hormonal & salud</span>
+                </div>
+              </div>
+
+              {/* Consejos Clave de la Coach */}
+              <div className="p-5 rounded-xl bg-white/5 border border-white/10 space-y-2">
+                <h4 className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <span>💡</span> Pautas del Mes para tus Comidas
+                </h4>
+                <ul className="text-xs text-[#C2C0B6] space-y-1.5 font-light">
+                  <li>• <strong>Pre-Entreno (1-2h antes):</strong> Carbohidratos de fácil digestión (avena, plátano, pan blanco) + porción de proteína magra.</li>
+                  <li>• <strong>Post-Entreno:</strong> 25-35g de proteína rápida + hidratación con electrolitos o agua con una pizca de sal marina.</li>
+                  <li>• <strong>Agua diaria:</strong> Mínimo 3.2 litros diarios distribuidos durante el día para mantener el rendimiento muscular.</li>
+                </ul>
+              </div>
+            </section>
+
+            {/* Zona de Corrección Técnica en Video */}
+            <section id="correccion-video" className="bg-dark-800/40 border border-dark-700/50 rounded-2xl p-6 sm:p-8 backdrop-blur-md">
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-1.5 text-sky-400 text-xs font-bold uppercase tracking-wider mb-1">
+                  <span>📹</span> Feedback Técnico Directo
+                </div>
+                <h3 className="text-lg font-bold text-white uppercase tracking-wider">
+                  Enviar Video para Corrección de Técnica
+                </h3>
+                <p className="text-xs text-[#C2C0B6] font-light mt-1">
+                  Pega el enlace de tu video (Drive, iCloud, YouTube, etc.) o compártelo directo a WhatsApp para que tu Coach te envíe la retroalimentación.
+                </p>
+              </div>
+
+              {videoFeedback && (
+                <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs mb-6">
+                  {videoFeedback}
+                </div>
+              )}
+
+              <form onSubmit={handleSendVideoCorrection} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-[11px] font-bold text-dark-300 uppercase tracking-wider mb-1.5">
+                    Ejercicio a Corregir
+                  </label>
+                  <select
+                    value={videoFormData.ejercicio}
+                    onChange={(e) => setVideoFormData({ ...videoFormData, ejercicio: e.target.value })}
+                    className="w-full bg-dark-900 border border-dark-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-sky-500"
+                  >
+                    <option value="Back Squat (Sentadilla Trasera)">Back Squat (Sentadilla Trasera)</option>
+                    <option value="Deadlift (Peso Muerto)">Deadlift (Peso Muerto)</option>
+                    <option value="Bench Press (Press de Banca)">Bench Press (Press de Banca)</option>
+                    <option value="Clean & Jerk (Cargada y Envión)">Clean & Jerk (Cargada y Envión)</option>
+                    <option value="Snatch (Arrancada)">Snatch (Arrancada)</option>
+                    <option value="Pull-ups / Dominadas">Pull-ups / Dominadas</option>
+                    <option value="Otro Movimiento">Otro Movimiento</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-[11px] font-bold text-dark-300 uppercase tracking-wider mb-1.5">
+                    Enlace del Video (Drive / YouTube / iCloud)
+                  </label>
+                  <input
+                    type="url"
+                    placeholder="https://drive.google.com/..."
+                    value={videoFormData.link}
+                    onChange={(e) => setVideoFormData({ ...videoFormData, link: e.target.value })}
+                    className="w-full bg-dark-900 border border-dark-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-dark-500 focus:outline-none focus:border-sky-500"
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label className="block text-[11px] font-bold text-dark-300 uppercase tracking-wider mb-1.5">
+                    ¿Qué sentiste durante la serie o qué duda tienes?
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Ej. Sentí molestia en la zona lumbar en la última repetición / ¿Está bien mi profundidad?"
+                    value={videoFormData.notas}
+                    onChange={(e) => setVideoFormData({ ...videoFormData, notas: e.target.value })}
+                    className="w-full bg-dark-900 border border-dark-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder-dark-500 focus:outline-none focus:border-sky-500"
+                  />
+                </div>
+
+                <div className="sm:col-span-2 flex flex-wrap gap-3 pt-2">
+                  <button
+                    type="submit"
+                    className="px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md shadow-sky-500/20 active:scale-95 cursor-pointer"
+                  >
+                    Enviar a la Coach vía WhatsApp 📲
+                  </button>
+                  <a
+                    href="https://wa.me/584147225979?text=Hola%20Coach%20Mauroly,%20te%20adjunto%20directamente%20mi%20video%20para%20corrección%20técnica"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-6 py-3 bg-dark-900 hover:bg-dark-700 border border-dark-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center gap-2"
+                  >
+                    <span>Enviar archivo directo por WhatsApp</span>
+                  </a>
+                </div>
+              </form>
+            </section>
+
+          </div>
+        )}
+
 
       </div>
 
