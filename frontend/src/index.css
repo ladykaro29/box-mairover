@@ -26,6 +26,25 @@
   --color-dark-800: #0B2240; /* AZUL MARINO DE TARJETAS */
   --color-dark-900: #071628; /* AZUL NOCHE PROFUNDO */
 
+  /* Paleta Oficial Equilibrada MairoverFit */
+  --color-brand-coral: #EF7F7D;
+  --color-brand-cyan: #8BDBF6; /* Color de equilibrio celeste suave / aqua */
+  --color-brand-dark: #071628;
+  --color-brand-navy: #0B2240;
+  --color-brand-border: #13335A;
+
+  /* Escala Cyan Pastel Equilibrante (#8BDBF6) */
+  --color-cyan-50: #F0FAFE;
+  --color-cyan-100: #E1F5FD;
+  --color-cyan-200: #BAEAFB;
+  --color-cyan-300: #8BDBF6; /* Color clave solicitado */
+  --color-cyan-400: #5BC8EF;
+  --color-cyan-500: #2BB3E5;
+  --color-cyan-600: #1494C6;
+  --color-cyan-700: #0E749E;
+  --color-cyan-800: #0E5E7E;
+  --color-cyan-900: #104E68;
+
   --color-accent-gray: #94A3B8;
   --color-accent-gray-light: #E2E8F0;
 

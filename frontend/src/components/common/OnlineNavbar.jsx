@@ -66,7 +66,7 @@ export default function OnlineNavbar() {
             <Link
               to="/online"
               className={`text-xs font-extrabold uppercase tracking-wider transition-colors duration-200 py-2 ${
-                location.pathname === '/online' ? 'text-sky-400' : 'text-[#C2C0B6] hover:text-sky-400'
+                location.pathname === '/online' ? 'text-[#8BDBF6]' : 'text-[#C2C0B6] hover:text-[#8BDBF6]'
               }`}
             >
               INICIO ONLINE
@@ -82,11 +82,11 @@ export default function OnlineNavbar() {
                 type="button"
                 onClick={() => toggleDropdown('planes')}
                 className={`text-xs font-extrabold uppercase tracking-wider py-2 flex items-center gap-1.5 transition-colors duration-200 cursor-pointer ${
-                  activeDropdown === 'planes' ? 'text-sky-400' : 'text-[#C2C0B6] hover:text-sky-400'
+                  activeDropdown === 'planes' ? 'text-[#8BDBF6]' : 'text-[#C2C0B6] hover:text-[#8BDBF6]'
                 }`}
               >
                 <span>PLANES ONLINE</span>
-                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'planes' ? 'rotate-180 text-sky-400' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'planes' ? 'rotate-180 text-[#8BDBF6]' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -94,7 +94,7 @@ export default function OnlineNavbar() {
               {/* Panel Desplegable: PLANES */}
               {activeDropdown === 'planes' && (
                 <div className="absolute top-full left-0 w-72 pt-2 animate-[fadeIn_0.2s_ease-out]">
-                  <div className="bg-[#0B2240] border border-sky-900/50 rounded-2xl p-2.5 shadow-2xl backdrop-blur-xl">
+                  <div className="bg-[#0B2240] border border-[#8BDBF6]/30 rounded-2xl p-2.5 shadow-2xl backdrop-blur-xl">
                     <Link
                       to="/online#planes-online"
                       onClick={() => handleScrollTo('planes-online')}
@@ -102,7 +102,7 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">⭐</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Plan Personalizado ($70)</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Plan Personalizado ($70)</p>
                         <p className="text-[10px] text-[#C2C0B6]">Entrenamiento + Plan Nutricional por 5 semanas</p>
                       </div>
                     </Link>
@@ -114,7 +114,7 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">🏋️‍♂️</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Plan Básico ($45)</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Plan Básico ($45)</p>
                         <p className="text-[10px] text-[#C2C0B6]">Rutina a medida + Guía de Alimentación</p>
                       </div>
                     </Link>
@@ -126,7 +126,7 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">🥗</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Plan Nutricional ($35)</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Plan Nutricional ($35)</p>
                         <p className="text-[10px] text-[#C2C0B6]">Plan de alimentación personalizado mensual</p>
                       </div>
                     </Link>
@@ -138,8 +138,8 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">⏱️</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Cómo Funciona</p>
-                        <p className="text-[10px] text-sky-200/70">Paso a paso y entrega oficial en 8 días hábiles</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Cómo Funciona</p>
+                        <p className="text-[10px] text-[#8BDBF6]/75">Paso a paso y entrega oficial en 8 días hábiles</p>
                       </div>
                     </Link>
                   </div>
@@ -157,11 +157,11 @@ export default function OnlineNavbar() {
                 type="button"
                 onClick={() => toggleDropdown('evaluaciones')}
                 className={`text-xs font-extrabold uppercase tracking-wider py-2 flex items-center gap-1.5 transition-colors duration-200 cursor-pointer ${
-                  activeDropdown === 'evaluaciones' ? 'text-sky-400' : 'text-[#C2C0B6] hover:text-sky-400'
+                  activeDropdown === 'evaluaciones' ? 'text-[#8BDBF6]' : 'text-[#C2C0B6] hover:text-[#8BDBF6]'
                 }`}
               >
                 <span>EVALUACIONES</span>
-                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'evaluaciones' ? 'rotate-180 text-sky-400' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === 'evaluaciones' ? 'rotate-180 text-[#8BDBF6]' : ''}`} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -169,14 +169,14 @@ export default function OnlineNavbar() {
               {/* Panel Desplegable: EVALUACIONES */}
               {activeDropdown === 'evaluaciones' && (
                 <div className="absolute top-full left-0 w-72 pt-2 animate-[fadeIn_0.2s_ease-out]">
-                  <div className="bg-[#0B2240] border border-sky-900/50 rounded-2xl p-2.5 shadow-2xl backdrop-blur-xl">
+                  <div className="bg-[#0B2240] border border-[#8BDBF6]/30 rounded-2xl p-2.5 shadow-2xl backdrop-blur-xl">
                     <Link
                       to="/online/formulario/personalizado"
                       className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors group"
                     >
                       <span className="text-xl">📋</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Formulario Personalizado</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Formulario Personalizado</p>
                         <p className="text-[10px] text-[#C2C0B6]">Evaluación completa con medidas y fotos</p>
                       </div>
                     </Link>
@@ -187,7 +187,7 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">📋</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Formulario Básico</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Formulario Básico</p>
                         <p className="text-[10px] text-[#C2C0B6]">Evaluación de entrenamiento general</p>
                       </div>
                     </Link>
@@ -198,7 +198,7 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">📋</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Formulario Nutricional</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Formulario Nutricional</p>
                         <p className="text-[10px] text-[#C2C0B6]">Evaluación de hábitos y alimentación</p>
                       </div>
                     </Link>
@@ -210,8 +210,8 @@ export default function OnlineNavbar() {
                     >
                       <span className="text-xl">❓</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-400 transition-colors">Preguntas Frecuentes</p>
-                        <p className="text-[10px] text-sky-200/70">Dudas sobre envíos, pagos y seguimiento</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6] transition-colors">Preguntas Frecuentes</p>
+                        <p className="text-[10px] text-[#8BDBF6]/75">Dudas sobre envíos, pagos y seguimiento</p>
                       </div>
                     </Link>
                   </div>
@@ -222,7 +222,7 @@ export default function OnlineNavbar() {
             {/* 4. Coaches */}
             <Link
               to="/sobre-mi"
-              className="text-xs font-extrabold uppercase tracking-wider text-[#C2C0B6] hover:text-sky-400 transition-colors duration-200 py-2"
+              className="text-xs font-extrabold uppercase tracking-wider text-[#C2C0B6] hover:text-[#8BDBF6] transition-colors duration-200 py-2"
             >
               COACHES
             </Link>
@@ -236,7 +236,7 @@ export default function OnlineNavbar() {
               <button
                 type="button"
                 onClick={() => toggleDropdown('modalidad')}
-                className="px-3 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/35 text-sky-400 text-xs font-bold flex items-center gap-1.5 transition-all duration-200 cursor-pointer hover:bg-sky-500/25"
+                className="px-3 py-1.5 rounded-full bg-[#8BDBF6]/15 border border-[#8BDBF6]/35 text-[#8BDBF6] text-xs font-bold flex items-center gap-1.5 transition-all duration-200 cursor-pointer hover:bg-[#8BDBF6]/25"
               >
                 <span>🌐</span>
                 <span className="text-[11px] font-black uppercase tracking-wider">Online</span>
@@ -248,9 +248,9 @@ export default function OnlineNavbar() {
               {/* Panel Desplegable: CAMBIO DE MODALIDAD */}
               {activeDropdown === 'modalidad' && (
                 <div className="absolute top-full right-0 w-64 pt-2 animate-[fadeIn_0.2s_ease-out]">
-                  <div className="bg-[#0B2240] border border-sky-900/50 rounded-2xl p-2.5 shadow-2xl backdrop-blur-xl">
+                  <div className="bg-[#0B2240] border border-[#8BDBF6]/30 rounded-2xl p-2.5 shadow-2xl backdrop-blur-xl">
                     <div className="p-2 border-b border-white/10 mb-1">
-                      <p className="text-[10px] font-black text-sky-400 uppercase tracking-wider">Modalidad Actual:</p>
+                      <p className="text-[10px] font-black text-[#8BDBF6] uppercase tracking-wider">Modalidad Actual:</p>
                       <p className="text-xs font-bold text-white">🌐 Asesoría Online Internacional</p>
                     </div>
 
@@ -290,7 +290,7 @@ export default function OnlineNavbar() {
 
             <Link
               to="/online/formulario/personalizado"
-              className="px-5 py-2.5 bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 active:scale-95 text-white font-black text-xs rounded-full transition-all duration-200 tracking-wider shadow-lg shadow-sky-500/25 uppercase cursor-pointer"
+              className="px-5 py-2.5 bg-gradient-to-r from-[#8BDBF6] via-[#66cded] to-[#4ab9e0] hover:from-[#66cded] hover:to-[#8BDBF6] active:scale-95 text-[#071628] font-black text-xs rounded-full transition-all duration-200 tracking-wider shadow-lg shadow-[#8BDBF6]/25 uppercase cursor-pointer border border-white/30"
             >
               EVALUACIÓN ONLINE
             </Link>
@@ -325,9 +325,9 @@ export default function OnlineNavbar() {
 
       {/* Menú Desplegable Móvil Agrupado */}
       {isOpen && (
-        <div className="lg:hidden bg-[#071628]/98 border-b border-sky-900/50 px-5 py-6 space-y-4 animate-[slideDown_0.2s_ease-out] backdrop-blur-2xl">
+        <div className="lg:hidden bg-[#071628]/98 border-b border-[#8BDBF6]/30 px-5 py-6 space-y-4 animate-[slideDown_0.2s_ease-out] backdrop-blur-2xl">
           <div className="flex items-center justify-between pb-3 border-b border-white/10">
-            <span className="text-[11px] font-black text-sky-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-[11px] font-black text-[#8BDBF6] uppercase tracking-wider flex items-center gap-1.5">
               <span>🌐</span> Plataforma Online
             </span>
             <Link
@@ -341,7 +341,7 @@ export default function OnlineNavbar() {
 
           {/* Grupo 1: Planes */}
           <div>
-            <p className="text-[10px] font-black text-sky-300 uppercase tracking-widest mb-2 px-1">Planes Online</p>
+            <p className="text-[10px] font-black text-[#8BDBF6] uppercase tracking-widest mb-2 px-1">Planes Online</p>
             <div className="grid grid-cols-1 gap-2">
               <Link
                 to="/online#planes-online"
@@ -349,7 +349,7 @@ export default function OnlineNavbar() {
                 className="p-2.5 rounded-xl bg-white/5 text-xs font-bold text-white hover:bg-white/10 flex items-center justify-between"
               >
                 <span>⭐ Plan Personalizado</span>
-                <span className="text-sky-400 font-mono">$70</span>
+                <span className="text-[#8BDBF6] font-mono font-bold">$70</span>
               </Link>
               <Link
                 to="/online#planes-online"
@@ -357,7 +357,7 @@ export default function OnlineNavbar() {
                 className="p-2.5 rounded-xl bg-white/5 text-xs font-bold text-white hover:bg-white/10 flex items-center justify-between"
               >
                 <span>🏋️‍♂️ Plan Básico</span>
-                <span className="text-sky-400 font-mono">$45</span>
+                <span className="text-[#8BDBF6] font-mono font-bold">$45</span>
               </Link>
               <Link
                 to="/online#planes-online"
@@ -365,19 +365,19 @@ export default function OnlineNavbar() {
                 className="p-2.5 rounded-xl bg-white/5 text-xs font-bold text-white hover:bg-white/10 flex items-center justify-between"
               >
                 <span>🥗 Plan Nutricional</span>
-                <span className="text-sky-400 font-mono">$35</span>
+                <span className="text-[#8BDBF6] font-mono font-bold">$35</span>
               </Link>
             </div>
           </div>
 
           {/* Grupo 2: Formularios de Evaluación */}
           <div>
-            <p className="text-[10px] font-black text-sky-300 uppercase tracking-widest mb-2 px-1">Formularios Oficiales</p>
+            <p className="text-[10px] font-black text-[#8BDBF6] uppercase tracking-widest mb-2 px-1">Formularios Oficiales</p>
             <div className="grid grid-cols-1 gap-2">
               <Link
                 to="/online/formulario/personalizado"
                 onClick={() => setIsOpen(false)}
-                className="p-2.5 rounded-xl bg-sky-500/10 text-xs font-bold text-sky-300 hover:bg-sky-500/20 flex items-center gap-2 border border-sky-500/20"
+                className="p-2.5 rounded-xl bg-[#8BDBF6]/10 text-xs font-bold text-[#8BDBF6] hover:bg-[#8BDBF6]/20 flex items-center gap-2 border border-[#8BDBF6]/25"
               >
                 <span>📋</span> Formulario Plan Personalizado
               </Link>

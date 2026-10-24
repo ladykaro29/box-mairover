@@ -28,14 +28,14 @@ export default function Footer() {
               El box de CrossFit, entrenamiento funcional y halterofilia donde construyes disciplina, fuerza y hábitos duraderos. Coaching profesional CF-L1 & CF-L2 y comunidad de alto nivel.
             </p>
 
-            {/* Redes Sociales con efecto Material */}
+            {/* Redes Sociales con efecto Material Equilibrado */}
             <div className="flex items-center gap-3 pt-2">
               <a 
                 href="https://www.instagram.com/mairoverfitbox/" 
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="Instagram MairoverFit Box"
-                className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#F43F5E] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+                className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#EF7F7D] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 border border-white/5 hover:border-[#EF7F7D]"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
@@ -47,7 +47,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="Facebook MairoverFit"
-                className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#F43F5E] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+                className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#13335A] hover:text-[#8BDBF6] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 border border-white/5 hover:border-[#8BDBF6]/50"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
@@ -59,7 +59,7 @@ export default function Footer() {
                 target="_blank" 
                 rel="noreferrer" 
                 aria-label="WhatsApp MairoverFit"
-                className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#F43F5E] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95"
+                className="w-9 h-9 rounded-xl bg-[#0B2240] hover:bg-[#8BDBF6] hover:text-[#071628] text-white flex items-center justify-center transition-all duration-200 shadow-md hover:scale-105 active:scale-95 border border-white/5 hover:border-[#8BDBF6]"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.248 8.477 3.513 2.266 2.265 3.51 5.275 3.51 8.478-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.66.988 3.511 1.509 5.4 1.51 5.561 0 10.085-4.526 10.088-10.09.002-2.697-1.047-5.232-2.952-7.137C17.275 1.53 14.74.482 12.039.482 6.471.482 1.946 5.007 1.943 10.577c-.001 1.975.513 3.906 1.489 5.607L2.4 20.272l4.247-1.118z" />
@@ -71,7 +71,7 @@ export default function Footer() {
           {/* Columna 2: Navegación Rápida */}
           <div>
             <h3 className="text-white text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F43F5E]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#EF7F7D]"></span>
               Plataforma
             </h3>
             <ul className="space-y-2.5 text-xs">
@@ -102,14 +102,14 @@ export default function Footer() {
           {/* Columna 3: Legal, Normativa & Cumplimiento */}
           <div>
             <h3 className="text-white text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F43F5E]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8BDBF6]"></span>
               Legal & Seguridad
             </h3>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <Link 
                   to="/terminos" 
-                  className="hover:text-[#F43F5E] flex items-center gap-1.5 transition-colors duration-150"
+                  className="hover:text-[#8BDBF6] flex items-center gap-1.5 transition-colors duration-150"
                 >
                   <span className="text-[10px]">📜</span>
                   <span>Términos y Condiciones</span>
@@ -118,7 +118,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/privacidad" 
-                  className="hover:text-[#F43F5E] flex items-center gap-1.5 transition-colors duration-150"
+                  className="hover:text-[#8BDBF6] flex items-center gap-1.5 transition-colors duration-150"
                 >
                   <span className="text-[10px]">🛡️</span>
                   <span>Política de Privacidad</span>
@@ -127,7 +127,7 @@ export default function Footer() {
               <li>
                 <Link 
                   to="/descargo-salud" 
-                  className="hover:text-[#F43F5E] flex items-center gap-1.5 transition-colors duration-150"
+                  className="hover:text-[#8BDBF6] flex items-center gap-1.5 transition-colors duration-150"
                 >
                   <span className="text-[10px]">🩺</span>
                   <span>Descargo de Salud & PAR-Q</span>
@@ -139,7 +139,7 @@ export default function Footer() {
                     localStorage.removeItem('mairoverfit_cookie_consent');
                     window.location.reload();
                   }}
-                  className="text-left hover:text-[#F43F5E] flex items-center gap-1.5 transition-colors duration-150 cursor-pointer"
+                  className="text-left hover:text-[#8BDBF6] flex items-center gap-1.5 transition-colors duration-150 cursor-pointer"
                 >
                   <span className="text-[10px]">🍪</span>
                   <span>Configuración de Cookies</span>
@@ -154,7 +154,7 @@ export default function Footer() {
           {/* Columna 4: Garantías de Seguridad & Horarios */}
           <div className="space-y-4">
             <h3 className="text-white text-xs font-black uppercase tracking-widest mb-4 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F43F5E]"></span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8BDBF6]"></span>
               Seguridad Garantizada
             </h3>
 
@@ -218,7 +218,7 @@ export default function Footer() {
               href="https://www.kickoffdevelopment.com/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="font-bold text-white hover:text-[#F43F5E] transition-colors underline decoration-[#F43F5E]/50 hover:decoration-[#F43F5E]"
+              className="font-bold text-white hover:text-[#8BDBF6] transition-colors underline decoration-[#8BDBF6]/50 hover:decoration-[#8BDBF6]"
             >
               Kickoff Development
             </a>

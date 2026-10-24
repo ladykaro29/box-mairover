@@ -108,7 +108,7 @@ export default function PresencialNavbar() {
                       <span className="text-xl">📅</span>
                       <div>
                         <p className="text-xs font-bold text-white group-hover:text-[#EF7F7D] transition-colors">Horarios &amp; Turnos</p>
-                        <p className="text-[10px] text-[#C2C0B6]">Turnos de mañana y tarde con reserva</p>
+                        <p className="text-[10px] text-[#C2C0B6]">Turnos con <span className="text-[#8BDBF6] font-medium">reserva previa</span></p>
                       </div>
                     </Link>
 
@@ -157,7 +157,7 @@ export default function PresencialNavbar() {
                       <span className="text-xl">🏅</span>
                       <div>
                         <p className="text-xs font-bold text-white group-hover:text-[#EF7F7D] transition-colors">Nuestras Coaches</p>
-                        <p className="text-[10px] text-[#C2C0B6]">Mairover y Mauroly (CF-L1 &amp; CF-L2)</p>
+                        <p className="text-[10px] text-[#C2C0B6]">Mairover y Mauroly (<span className="text-[#8BDBF6] font-medium">CF-L1 &amp; L2</span>)</p>
                       </div>
                     </Link>
 
@@ -179,7 +179,7 @@ export default function PresencialNavbar() {
                       <span className="text-xl">📍</span>
                       <div>
                         <p className="text-xs font-bold text-white group-hover:text-[#EF7F7D] transition-colors">Contacto &amp; Ubicación</p>
-                        <p className="text-[10px] text-[#C2C0B6]">Sede en El Vigía y WhatsApp</p>
+                        <p className="text-[10px] text-[#C2C0B6]">Sede <span className="text-[#8BDBF6] font-medium">El Vigía</span> y WhatsApp</p>
                       </div>
                     </Link>
                   </div>
@@ -216,12 +216,12 @@ export default function PresencialNavbar() {
 
                     <Link
                       to="/online"
-                      className="flex items-start gap-2.5 p-2 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-400 transition-colors group mt-1"
+                      className="flex items-start gap-2.5 p-2 rounded-xl bg-[#8BDBF6]/10 hover:bg-[#8BDBF6]/20 border border-[#8BDBF6]/30 text-[#8BDBF6] transition-colors group mt-1"
                     >
                       <span className="text-base">🌐</span>
                       <div>
-                        <p className="text-xs font-bold text-white group-hover:text-sky-300">Cambiar a Modo Online</p>
-                        <p className="text-[10px] text-sky-200/70">Asesoría a distancia nacional e internacional</p>
+                        <p className="text-xs font-bold text-white group-hover:text-[#8BDBF6]">Cambiar a Modo Online</p>
+                        <p className="text-[10px] text-[#8BDBF6]/80">Asesoría a distancia nacional e internacional</p>
                       </div>
                     </Link>
 
@@ -250,7 +250,7 @@ export default function PresencialNavbar() {
 
             <Link
               to="/presencial/contacto"
-              className="px-5 py-2.5 bg-gradient-to-r from-[#EF7F7D] to-rose-500 hover:from-rose-500 hover:to-[#EF7F7D] active:scale-95 text-white font-black text-xs rounded-full transition-all duration-200 tracking-wider shadow-lg shadow-[#EF7F7D]/25 uppercase cursor-pointer"
+              className="px-5 py-2.5 bg-gradient-to-r from-[#EF7F7D] to-[#e66c6a] hover:from-[#e66c6a] hover:to-[#EF7F7D] active:scale-95 text-white font-black text-xs rounded-full transition-all duration-200 tracking-wider shadow-lg shadow-[#EF7F7D]/20 uppercase cursor-pointer"
             >
               CLASE DE PRUEBA
             </Link>
@@ -260,7 +260,7 @@ export default function PresencialNavbar() {
           <div className="lg:hidden flex items-center gap-2">
             <Link
               to="/online"
-              className="px-2.5 py-1 bg-sky-500/15 text-sky-400 text-[10px] font-black uppercase rounded-full border border-sky-500/30"
+              className="px-2.5 py-1 bg-[#8BDBF6]/15 text-[#8BDBF6] text-[10px] font-black uppercase rounded-full border border-[#8BDBF6]/30"
             >
               🌐 Online
             </Link>
@@ -360,7 +360,7 @@ export default function PresencialNavbar() {
             <Link
               to="/online"
               onClick={() => setIsOpen(false)}
-              className="w-full py-3 bg-sky-500/15 border border-sky-500/30 text-sky-400 font-black text-xs rounded-xl text-center flex items-center justify-center gap-2 uppercase tracking-wider"
+              className="w-full py-3 bg-[#8BDBF6]/15 border border-[#8BDBF6]/30 text-[#8BDBF6] font-black text-xs rounded-xl text-center flex items-center justify-center gap-2 uppercase tracking-wider"
             >
               <span>🌐 Cambiar a Modalidad Online</span>
             </Link>

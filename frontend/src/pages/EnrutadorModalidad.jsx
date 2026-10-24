@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 export default function EnrutadorModalidad() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#071628] via-[#09203a] to-[#0c2444] text-white flex flex-col justify-between p-6 sm:p-10 md:p-16 font-sans relative overflow-x-hidden selection:bg-[#EF7F7D] selection:text-white">
+    <div className="min-h-screen bg-gradient-to-br from-[#071628] via-[#09203a] to-[#0c2444] text-white flex flex-col justify-between p-6 sm:p-10 md:p-16 font-sans relative overflow-x-hidden selection:bg-[#8BDBF6] selection:text-[#071628]">
       
-      {/* Luces sutiles y elegantes de ambientación */}
-      <div className="absolute top-[-20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#EF7F7D]/10 rounded-full blur-[160px] pointer-events-none"></div>
-      <div className="absolute bottom-[-15%] right-[-10%] w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+      {/* Luces sutiles y elegantes de ambientación: Equilibrio Coral y Cyan #8BDBF6 */}
+      <div className="absolute top-[-20%] left-[-10%] w-[550px] h-[550px] bg-[#EF7F7D]/12 rounded-full blur-[160px] pointer-events-none"></div>
+      <div className="absolute bottom-[-15%] right-[-10%] w-[550px] h-[550px] bg-[#8BDBF6]/15 rounded-full blur-[160px] pointer-events-none"></div>
 
       {/* Contenedor Principal Centrado */}
       <main className="max-w-2xl w-full mx-auto relative z-10 flex-1 flex flex-col items-center justify-center text-center my-auto py-8">
@@ -24,18 +24,20 @@ export default function EnrutadorModalidad() {
           />
         </div>
 
-        {/* 2. Textos Claramente Separados con Jerarquía y Espaciado */}
+        {/* 2. Textos Claramente Separados con Jerarquía y Espaciado Equilibrado */}
         <div className="space-y-4 mb-10 sm:mb-12">
           
           <div className="inline-block">
-            <span className="px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-black tracking-widest text-[#EF7F7D] uppercase">
+            <span className="px-4 py-1.5 rounded-full bg-[#8BDBF6]/10 border border-[#8BDBF6]/30 text-xs font-black tracking-widest text-[#8BDBF6] uppercase">
               BIENVENIDO A MAIROVERFIT
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">
             SELECCIONA TU MODALIDAD <br className="hidden sm:inline" />
-            <span className="text-[#EF7F7D]">DE ENTRENAMIENTO</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EF7F7D] via-[#fcd3d2] to-[#8BDBF6]">
+              DE ENTRENAMIENTO
+            </span>
           </h1>
 
           <p className="text-sm sm:text-base text-[#C2C0B6] max-w-lg mx-auto font-light leading-relaxed pt-2">
@@ -44,13 +46,13 @@ export default function EnrutadorModalidad() {
 
         </div>
 
-        {/* 3. Selección de Modalidad: ÚNICAMENTE 2 BOTONES GRANDES E INDEPENDIENTES */}
+        {/* 3. Selección de Modalidad: 2 BOTONES EQUILIBRADOS (Coral & Cyan #8BDBF6) */}
         <div className="flex flex-col gap-5 w-full max-w-md mx-auto mb-12">
 
-          {/* Botón 1: Entrenamiento Presencial */}
+          {/* Botón 1: Entrenamiento Presencial (Coral Suave) */}
           <Link
             to="/presencial"
-            className="group relative w-full py-5 px-7 rounded-2xl bg-gradient-to-r from-[#EF7F7D] to-rose-500 hover:from-rose-500 hover:to-[#EF7F7D] text-white font-black text-base sm:text-lg uppercase tracking-wider text-center shadow-xl shadow-[#EF7F7D]/25 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-between border border-white/20"
+            className="group relative w-full py-5 px-7 rounded-2xl bg-gradient-to-r from-[#EF7F7D] to-[#e66c6a] hover:from-[#e66c6a] hover:to-[#EF7F7D] text-white font-black text-base sm:text-lg uppercase tracking-wider text-center shadow-xl shadow-[#EF7F7D]/20 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-between border border-white/20"
           >
             <div className="flex items-center gap-3.5">
               <span className="text-3xl">🏋️‍♂️</span>
@@ -58,7 +60,7 @@ export default function EnrutadorModalidad() {
                 <span className="block leading-tight text-white font-black text-sm sm:text-base">
                   ENTRENAMIENTO PRESENCIAL
                 </span>
-                <span className="text-[11px] text-white/80 font-semibold tracking-normal normal-case block">
+                <span className="text-[11px] text-white/85 font-semibold tracking-normal normal-case block">
                   Sede Box en El Vigía, Mérida
                 </span>
               </div>
@@ -69,24 +71,24 @@ export default function EnrutadorModalidad() {
             </span>
           </Link>
 
-          {/* Botón 2: Entrenamiento Online */}
+          {/* Botón 2: Entrenamiento Online (Celeste #8BDBF6 Equilibrante) */}
           <Link
             to="/online"
-            className="group relative w-full py-5 px-7 rounded-2xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white font-black text-base sm:text-lg uppercase tracking-wider text-center shadow-xl shadow-sky-500/25 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-between border border-white/20"
+            className="group relative w-full py-5 px-7 rounded-2xl bg-gradient-to-r from-[#8BDBF6] via-[#6ed0f2] to-[#54c4eb] hover:from-[#6ed0f2] hover:to-[#8BDBF6] text-[#071628] font-black text-base sm:text-lg uppercase tracking-wider text-center shadow-xl shadow-[#8BDBF6]/25 transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-between border border-white/40"
           >
             <div className="flex items-center gap-3.5">
               <span className="text-3xl">🌐</span>
               <div className="text-left">
-                <span className="block leading-tight text-white font-black text-sm sm:text-base">
+                <span className="block leading-tight text-[#071628] font-black text-sm sm:text-base">
                   ENTRENAMIENTO ONLINE
                 </span>
-                <span className="text-[11px] text-sky-100 font-semibold tracking-normal normal-case block">
+                <span className="text-[11px] text-[#071628]/85 font-bold tracking-normal normal-case block">
                   Asesoría a distancia (Nacional e Internacional)
                 </span>
               </div>
             </div>
 
-            <span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm group-hover:translate-x-1 transition-transform">
+            <span className="w-8 h-8 rounded-full bg-[#071628]/15 flex items-center justify-center text-[#071628] text-sm group-hover:translate-x-1 transition-transform">
               →
             </span>
           </Link>
@@ -97,7 +99,7 @@ export default function EnrutadorModalidad() {
         <div>
           <Link
             to="/login"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#C2C0B6] hover:text-white transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/5"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#C2C0B6] hover:text-[#8BDBF6] transition-colors duration-200 py-1 px-3 rounded-lg hover:bg-white/5"
           >
             <span>👤 ¿Ya eres miembro? Iniciar Sesión / Mi Cuenta</span>
             <span>→</span>
@@ -117,7 +119,7 @@ export default function EnrutadorModalidad() {
             href="https://www.kickoffdevelopment.com/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-white/80 hover:text-[#EF7F7D] underline decoration-white/30 transition-colors"
+            className="text-white/80 hover:text-[#8BDBF6] underline decoration-white/30 transition-colors"
           >
             Kickoff Development
           </a>
