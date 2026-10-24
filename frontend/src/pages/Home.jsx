@@ -34,7 +34,7 @@ export default function Home() {
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 mb-12">
                 <Link
-                  to="/modalidad"
+                  to="/presencial/planes"
                   className="px-8 py-4 bg-[#F43F5E] hover:bg-[#E11D48] active:scale-95 text-white font-extrabold text-sm rounded-full transition-all duration-300 shadow-lg shadow-[#F43F5E]/30 flex items-center gap-2"
                 >
                   QUIERO EMPEZAR
